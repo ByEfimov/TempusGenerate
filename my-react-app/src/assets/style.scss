@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $--w;
+  color: $--textColor;
   font-weight: 500;
   font-size: 36px;
   height: 8vh;
@@ -15,27 +15,28 @@
   &-arrow-right {
     transform: rotate(-90deg);
     position: absolute;
-    right: -10px;
-
+    right: -30px;
     background-color: $--secondColor;
     z-index: 10;
     height: 60px;
     width: 8vh;
+    padding-top: 2px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
   }
   &-arrow-left {
     transform: rotate(90deg);
     position: absolute;
-    left: -10px;
+    left: -30px;
     background-color: $--secondColor;
     z-index: 10;
     height: 60px;
+    padding-top: 2px;
     width: 8vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
   }
   .title {
     display: flex;
@@ -65,8 +66,35 @@ path {
   .place {
     flex-shrink: 0;
     width: 100vw;
-    padding: 20px;
+    padding: 15px;
     height: 92vh;
-    background-color: aliceblue;
+    background-color: $--bg;
+  }
+  .Main-place {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .Task {
+      gap: 10px;
+      align-items: center;
+      padding: 10px 10px;
+      border-radius: 10px;
+      display: flex;
+      background-color: $--secondColor;
+      .Label {
+        font-family: Raleway;
+        color: $--textColor;
+        width: 100%;
+        word-break: break-all;
+        font-weight: 400;
+        font-size: 20px;
+      }
+      .date {
+        padding-left: 10px;
+        font-family: Raleway;
+        font-weight: 600;
+        color: #570303;
+      }
+    }
   }
 }

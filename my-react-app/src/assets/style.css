@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #fff;
+  color: #e9d3c6;
   font-weight: 500;
   font-size: 36px;
   height: 8vh;
@@ -15,26 +15,28 @@
 .header-arrow-right {
   transform: rotate(-90deg);
   position: absolute;
-  right: -10px;
+  right: -30px;
   background-color: #23302b;
   z-index: 10;
   height: 60px;
   width: 8vh;
+  padding-top: 2px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 .header-arrow-left {
   transform: rotate(90deg);
   position: absolute;
-  left: -10px;
+  left: -30px;
   background-color: #23302b;
   z-index: 10;
   height: 60px;
+  padding-top: 2px;
   width: 8vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 .header .title {
   display: flex;
@@ -66,7 +68,34 @@ path {
 .body .place {
   flex-shrink: 0;
   width: 100vw;
-  padding: 20px;
+  padding: 15px;
   height: 92vh;
-  background-color: aliceblue;
+  background-color: #161c1a;
+}
+.body .Main-place {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.body .Main-place .Task {
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  background-color: #23302b;
+}
+.body .Main-place .Task .Label {
+  font-family: Raleway;
+  color: #e9d3c6;
+  width: 100%;
+  word-break: break-all;
+  font-weight: 400;
+  font-size: 20px;
+}
+.body .Main-place .Task .date {
+  padding-left: 10px;
+  font-family: Raleway;
+  font-weight: 600;
+  color: #570303;
 }/*# sourceMappingURL=style.css.map */
