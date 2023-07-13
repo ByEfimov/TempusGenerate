@@ -66,12 +66,13 @@ path {
   .place {
     flex-shrink: 0;
     width: 100vw;
-    padding: 15px;
+    padding: 13px;
     height: 92vh;
     background-color: $--bg;
   }
   .Main-place {
     display: flex;
+    overflow-y: auto;
     flex-direction: column;
     gap: 15px;
     .Task {
@@ -82,6 +83,7 @@ path {
       display: flex;
       background-color: $--secondColor;
       .Label {
+        pointer-events: none;
         font-family: Raleway;
         color: $--textColor;
         width: 100%;
@@ -90,12 +92,69 @@ path {
         font-size: 17px;
       }
       .date {
+        pointer-events: none;
         font-size: 15px;
         padding-left: 10px;
         font-family: Raleway;
         font-weight: 600;
         color: #920404;
       }
+      .CheckBox {
+        pointer-events: none;
+      }
+    }
+  }
+  .All-place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .callendar {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 10px;
+      align-items: start;
+
+      .day {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 1;
+        padding: 10px;
+        background-color: $--secondColor;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.noHaveTasks {
+  width: 100vw;
+  padding: 13px;
+  height: 92vh;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -13px;
+  &-body {
+    padding: 15px 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Raleway;
+    color: $--textColor;
+    font-size: 25px;
+    font-weight: 500;
+    gap: 15px;
+    background-color: $--secondColor;
+    border-radius: 10px;
+    .addtask {
+      background-color: #2e3935;
+      padding: 5px;
+      font-size: 20px;
+      border-radius: 8px;
     }
   }
 }

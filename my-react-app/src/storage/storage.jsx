@@ -1,4 +1,4 @@
-const userData = [
+const usersData = [
   {
     id: 0,
     userProperties: {
@@ -10,7 +10,7 @@ const userData = [
       InviteCode: "22",
     },
     userTasksToDay: [
-      { id: 0, TaskName: "Создать привет", TaskSatus: "Make", TaskPriority: 3 },
+      { id: 0, TaskName: "Создать привет", TaskSatus: "Make", TaskPriority: 1 },
       {
         id: 1,
         TaskName: "Приготовить тортик",
@@ -21,10 +21,11 @@ const userData = [
         id: 2,
         TaskName: "ГотовоГотовоГотовоГотово",
         TaskSatus: "Done",
-        TaskPriority: 1,
+        TaskPriority: 3,
       },
     ],
+    userTasksTommorow: {},
   },
 ];
 
-export default userData;
+export default usersData;
