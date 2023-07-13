@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&family=Roboto:wght@400;500&display=swap");
+.header {
+  width: 100vw;
+  font-family: Raleway;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-weight: 500;
+  font-size: 36px;
+  height: 8vh;
+  position: relative;
+  background-color: #23302b;
+}
+.header-arrow-right {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: -10px;
+  background-color: #23302b;
+  z-index: 10;
+  height: 60px;
+  width: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-arrow-left {
+  transform: rotate(90deg);
+  position: absolute;
+  left: -10px;
+  background-color: #23302b;
+  z-index: 10;
+  height: 60px;
+  width: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .title {
+  display: flex;
+  width: 100vw;
+  transition: all 0.5s;
+  pointer-events: none;
+  transform: translate3d(-100vw, 0px, 0px);
+}
+.header .title .title-text {
+  text-align: center;
+  padding: 0 20px;
+  min-width: 100vw;
+}
+
+svg {
+  pointer-events: none;
+}
+
+path {
+  pointer-events: none;
+}
+
+.body {
+  z-index: 10;
+  display: flex;
+  transition: all 0.5s;
+  transform: translate3d(-100vw, 0px, 0px);
+}
+.body .place {
+  flex-shrink: 0;
+  width: 100vw;
+  padding: 20px;
+  height: 92vh;
+  background-color: aliceblue;
+}/*# sourceMappingURL=style.css.map */

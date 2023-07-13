@@ -1,0 +1,72 @@
+@import "./variables.scss";
+
+.header {
+  width: 100vw;
+  font-family: Raleway;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $--w;
+  font-weight: 500;
+  font-size: 36px;
+  height: 8vh;
+  position: relative;
+  background-color: $--secondColor;
+  &-arrow-right {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: -10px;
+
+    background-color: $--secondColor;
+    z-index: 10;
+    height: 60px;
+    width: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-arrow-left {
+    transform: rotate(90deg);
+    position: absolute;
+    left: -10px;
+    background-color: $--secondColor;
+    z-index: 10;
+    height: 60px;
+    width: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .title {
+    display: flex;
+    width: 100vw;
+    transition: all 0.5s;
+    pointer-events: none;
+    transform: translate3d(-1 * 100vw, 0px, 0px);
+    .title-text {
+      text-align: center;
+      padding: 0 20px;
+      min-width: 100vw;
+    }
+  }
+}
+svg {
+  pointer-events: none;
+}
+path {
+  pointer-events: none;
+}
+
+.body {
+  z-index: 10;
+  display: flex;
+  transition: all 0.5s;
+  transform: translate3d(-1 * 100vw, 0px, 0px);
+  .place {
+    flex-shrink: 0;
+    width: 100vw;
+    padding: 20px;
+    height: 92vh;
+    background-color: aliceblue;
+  }
+}
