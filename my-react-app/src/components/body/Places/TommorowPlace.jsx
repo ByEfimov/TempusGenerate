@@ -8,6 +8,8 @@ function TommorowPlace(props) {
     user1[key] > user2[key] ? 1 : -1
   );
 
+  const sortedTasks2 = sortedTasks.filter((user) => user.date === nextDate());
+
   function nextDate() {
     const date = new Date();
     const year = date.getFullYear();
@@ -19,25 +21,20 @@ function TommorowPlace(props) {
 
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
-      {UserData[0].userTasks[0] ? (
-        sortedTasks.map((task) => {
-          if (task.date === nextDate()) {
-            count += 1;
-            return (
-              <div className="Task" key={task.id}>
-                <input
-                  id="CheckBox"
-                  defaultChecked={task.TaskSatus === "Done" ? true : false}
-                  className="CheckBox"
-                  type="checkbox"
-                />
-                <label className="Label">{task.TaskName}</label>
-                <div className="date">Завтра</div>
-              </div>
-            );
-          } else if (count === 0) {
-            return <NoHaveTasks page="TommorowPlace"></NoHaveTasks>;
-          }
+      {sortedTasks2[0] ? (
+        sortedTasks2.map((task) => {
+          return (
+            <div className="Task" key={task.id}>
+              <input
+                id="CheckBox"
+                defaultChecked={task.TaskSatus === "Done" ? true : false}
+                className="CheckBox"
+                type="checkbox"
+              />
+              <label className="Label">{task.TaskName}</label>
+              <div className="date">Завтра</div>
+            </div>
+          );
         })
       ) : (
         <NoHaveTasks page="TommorowPlace"></NoHaveTasks>
