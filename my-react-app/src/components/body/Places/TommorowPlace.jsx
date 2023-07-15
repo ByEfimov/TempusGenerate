@@ -1,7 +1,6 @@
 import NoHaveTasks from "../components/nohavetasks";
 
 function TommorowPlace(props) {
-  let count = 0;
   const key = "TaskPriority";
   const { UserData } = props;
   const sortedTasks = UserData[0].userTasks.sort((user1, user2) =>
@@ -14,7 +13,7 @@ function TommorowPlace(props) {
     const date = new Date();
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+    const day = String(date.getDate() + 1).padStart(2, "0");
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate;
   }
