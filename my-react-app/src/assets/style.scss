@@ -57,7 +57,34 @@ svg {
 path {
   pointer-events: none;
 }
-
+.Task {
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  background-color: $--secondColor;
+  .Label {
+    pointer-events: none;
+    font-family: Raleway;
+    color: $--textColor;
+    width: 100%;
+    word-break: break-all;
+    font-weight: 400;
+    font-size: 17px;
+  }
+  .date {
+    pointer-events: none;
+    font-size: 15px;
+    padding-left: 10px;
+    font-family: Raleway;
+    font-weight: 600;
+    color: #920404;
+  }
+  .CheckBox {
+    pointer-events: none;
+  }
+}
 .body {
   z-index: 10;
   display: flex;
@@ -75,49 +102,28 @@ path {
     overflow-y: auto;
     flex-direction: column;
     gap: 15px;
-    .Task {
-      gap: 10px;
-      align-items: center;
-      padding: 10px 10px;
-      border-radius: 10px;
-      display: flex;
-      background-color: $--secondColor;
-      .Label {
-        pointer-events: none;
-        font-family: Raleway;
-        color: $--textColor;
-        width: 100%;
-        word-break: break-all;
-        font-weight: 400;
-        font-size: 17px;
-      }
-      .date {
-        pointer-events: none;
-        font-size: 15px;
-        padding-left: 10px;
-        font-family: Raleway;
-        font-weight: 600;
-        color: #920404;
-      }
-      .CheckBox {
-        pointer-events: none;
-      }
-    }
+  }
+  .Tomorrow-place {
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    gap: 15px;
   }
   .All-place {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     .callendar {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 10px;
+      display: grid;
       align-items: start;
-
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(7, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
       .day {
+        color: $--textColor;
         width: 38px;
+        font-family: Roboto;
         height: 38px;
         flex-shrink: 1;
         padding: 10px;
@@ -139,6 +145,7 @@ path {
   align-items: center;
   margin-left: -13px;
   &-body {
+    margin-top: -50px;
     padding: 15px 23px;
     display: flex;
     flex-direction: column;
@@ -156,5 +163,26 @@ path {
       font-size: 20px;
       border-radius: 8px;
     }
+  }
+}
+
+@media (max-width: 352px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (min-width: 436px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (min-width: 500px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(9, 1fr);
+  }
+}
+@media (min-width: 550px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(10, 1fr);
   }
 }

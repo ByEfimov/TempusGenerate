@@ -9,22 +9,52 @@ const usersData = [
       Role: "admin",
       InviteCode: "22",
     },
-    userTasksToDay: [
-      { id: 0, TaskName: "Создать привет", TaskSatus: "Make", TaskPriority: 1 },
+    userTasks: [
+      {
+        id: 0,
+        TaskName: "Создать привет",
+        TaskSatus: "Make",
+        TaskPriority: 1,
+        date: "2023-07-17",
+      },
+
       {
         id: 1,
         TaskName: "Приготовить тортик",
         TaskSatus: "Make",
         TaskPriority: 2,
+        date: "2023-07-17",
       },
       {
-        id: 2,
+        id: 3,
         TaskName: "ГотовоГотовоГотовоГотово",
         TaskSatus: "Done",
         TaskPriority: 3,
+        date: "2023-07-17",
+      },
+      {
+        id: 0,
+        TaskName: "Создать привет",
+        TaskSatus: "Make",
+        TaskPriority: 1,
+        date: "2023-07-18",
+      },
+
+      {
+        id: 1,
+        TaskName: "Приготовить тортик",
+        TaskSatus: "Make",
+        TaskPriority: 2,
+        date: "2023-07-18",
+      },
+      {
+        id: 3,
+        TaskName: "ГотовоГотовоГотовоГотово",
+        TaskSatus: "Done",
+        TaskPriority: 3,
+        date: "2023-07-18",
       },
     ],
-    userTasksTommorow: {},
   },
 ];
 

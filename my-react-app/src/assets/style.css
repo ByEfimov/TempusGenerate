@@ -59,6 +59,35 @@ path {
   pointer-events: none;
 }
 
+.Task {
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  background-color: #23302b;
+}
+.Task .Label {
+  pointer-events: none;
+  font-family: Raleway;
+  color: #e9d3c6;
+  width: 100%;
+  word-break: break-all;
+  font-weight: 400;
+  font-size: 17px;
+}
+.Task .date {
+  pointer-events: none;
+  font-size: 15px;
+  padding-left: 10px;
+  font-family: Raleway;
+  font-weight: 600;
+  color: #920404;
+}
+.Task .CheckBox {
+  pointer-events: none;
+}
+
 .body {
   z-index: 10;
   display: flex;
@@ -78,33 +107,11 @@ path {
   flex-direction: column;
   gap: 15px;
 }
-.body .Main-place .Task {
-  gap: 10px;
-  align-items: center;
-  padding: 10px 10px;
-  border-radius: 10px;
+.body .Tomorrow-place {
   display: flex;
-  background-color: #23302b;
-}
-.body .Main-place .Task .Label {
-  pointer-events: none;
-  font-family: Raleway;
-  color: #e9d3c6;
-  width: 100%;
-  word-break: break-all;
-  font-weight: 400;
-  font-size: 17px;
-}
-.body .Main-place .Task .date {
-  pointer-events: none;
-  font-size: 15px;
-  padding-left: 10px;
-  font-family: Raleway;
-  font-weight: 600;
-  color: #920404;
-}
-.body .Main-place .Task .CheckBox {
-  pointer-events: none;
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 15px;
 }
 .body .All-place {
   display: flex;
@@ -112,13 +119,17 @@ path {
   align-items: center;
 }
 .body .All-place .callendar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
   align-items: start;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
 }
 .body .All-place .callendar .day {
+  color: #e9d3c6;
   width: 38px;
+  font-family: Roboto;
   height: 38px;
   flex-shrink: 1;
   padding: 10px;
@@ -138,6 +149,7 @@ path {
   margin-left: -13px;
 }
 .noHaveTasks-body {
+  margin-top: -50px;
   padding: 15px 23px;
   display: flex;
   flex-direction: column;
@@ -155,4 +167,25 @@ path {
   padding: 5px;
   font-size: 20px;
   border-radius: 8px;
+}
+
+@media (max-width: 352px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (min-width: 436px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (min-width: 500px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(9, 1fr);
+  }
+}
+@media (min-width: 550px) {
+  .body .All-place .callendar {
+    grid-template-columns: repeat(10, 1fr);
+  }
 }/*# sourceMappingURL=style.css.map */
