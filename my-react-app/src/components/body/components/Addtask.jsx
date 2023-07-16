@@ -1,5 +1,5 @@
 function AddTask(props) {
-  const { setSelectTilte, setOpenAdd } = props;
+  const { setOpenAdd } = props;
 
   function GoBack() {
     document.querySelector(".AddTask").style.cssText =

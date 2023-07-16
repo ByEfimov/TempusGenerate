@@ -3,12 +3,12 @@ import TommorowPlace from "./Places/TommorowPlace";
 import MainPlace from "./Places/MainPlace";
 import usersData from "../../storage/storage";
 import { useState } from "react";
-import AddTask from "./components/Addtask";
 
 function Body(props) {
   const { setSelectTilte, OpenAdd, setOpenAdd } = props;
   let count = 0;
 
+  // eslint-disable-next-line no-unused-vars
   const [UserData, setUserdata] = useState(usersData);
 
   if (JSON.parse(localStorage.getItem("storage")) != undefined && count == 0) {
