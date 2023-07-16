@@ -1,4 +1,5 @@
 import NoHaveTasks from "../components/nohavetasks";
+import LocalSave from "../../../storage/LocalStorageConfigurate";
 
 function MainPlace(props) {
   const { UserData } = props;
@@ -10,12 +11,26 @@ function MainPlace(props) {
 
   const sortedTasks2 = sortedTasks.filter((user) => user.date === thisDate());
 
-  console.log(sortedTasks2);
   function selectTask(e) {
     if (e.target.childNodes[0].checked === true) {
       e.target.childNodes[0].checked = false;
+      UserData[0].userTasks.map((task) => {
+        if (task.id == e.target.id) {
+          task.TaskSatus = "Make";
+          console.log(task);
+          LocalSave("storage", UserData[0].userTasks);
+        }
+      });
     } else {
       e.target.childNodes[0].checked = true;
+      UserData[0].userTasks.map((task) => {
+        if (task.id == e.target.id) {
+          task.TaskSatus = "Done";
+          console.log(task);
+
+          LocalSave("storage", UserData[0].userTasks);
+        }
+      });
     }
   }
 
@@ -33,7 +48,12 @@ function MainPlace(props) {
       {sortedTasks2[0] ? (
         sortedTasks2.map((task) => {
           return (
-            <div className="Task" onClick={selectTask} key={task.id}>
+            <div
+              className="Task"
+              onClick={selectTask}
+              id={task.id}
+              key={task.id}
+            >
               <input
                 id="CheckBox"
                 defaultChecked={task.TaskSatus === "Done" ? true : false}

@@ -1,13 +1,54 @@
 import { useState } from "react";
 
-function Header() {
+function Header(props) {
   const [selectMode, setSelectMode] = useState("ToDay");
+  const { selectTilte } = props;
 
   function selectHeader(e) {
     if (e.target.classList.contains("header-arrow-left")) {
       swipeLeft();
     } else if (e.target.classList.contains("header-arrow-right")) {
       swipeRight();
+    }
+  }
+
+  function thisDate() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+  function nextDate() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate() + 1).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+  function lastDate() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate() - 1).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+
+  function showTitle() {
+    switch (selectTilte) {
+      case "Все дни":
+        return "Все дни";
+      case thisDate():
+        return "Сегодня";
+      case nextDate():
+        return "Завтра";
+      case lastDate():
+        return "Вчера";
+      default:
+        return selectTilte;
     }
   }
 
@@ -94,7 +135,7 @@ function Header() {
         </svg>
       </div>
       <div className="title">
-        <div className="titleAll title-text">Все дни</div>
+        <div className="titleAll title-text">{showTitle()}</div>
         <div className="titleToDay title-text">Сегодня</div>
         <div className="titleTomorrowDay title-text">Завтра</div>
       </div>

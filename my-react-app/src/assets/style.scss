@@ -74,6 +74,7 @@ path {
     font-size: 17px;
   }
   .date {
+    white-space: nowrap;
     pointer-events: none;
     font-size: 15px;
     padding-left: 10px;
@@ -109,10 +110,17 @@ path {
     flex-direction: column;
     gap: 15px;
   }
+
   .All-place {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .place {
+      display: flex;
+      padding-top: 0;
+      flex-direction: column;
+      gap: 15px;
+    }
     .callendar {
       display: grid;
       align-items: start;
@@ -122,13 +130,17 @@ path {
       grid-row-gap: 10px;
       .day {
         color: $--textColor;
-        width: 38px;
+        width: 40px;
+        border-radius: 10px;
         font-family: Roboto;
-        height: 38px;
+        height: 40px;
         flex-shrink: 1;
         padding: 10px;
         background-color: $--secondColor;
         text-align: center;
+      }
+      .color {
+        background-color: #323f3b;
       }
     }
   }
