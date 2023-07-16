@@ -1,10 +1,11 @@
 import { useState } from "react";
 import SelectDay from "./selectDay";
+import AddTask from "../components/Addtask";
 
 function AllPlace(props) {
   const date = new Date();
   const day = String(date.getDate()).padStart(2, "0");
-  const { UserData, setSelectTilte } = props;
+  const { UserData, OpenAdd, setSelectTilte, setOpenAdd } = props;
   const key = "TaskPriority";
   const sortedTasks = UserData[0].userTasks.sort((user1, user2) =>
     user1[key] > user2[key] ? 1 : -1
@@ -60,8 +61,11 @@ function AllPlace(props) {
     <section className="All-place place" onClick={selectDay}>
       {openSelect ? (
         <SelectDay
+          OpenAdd={OpenAdd}
+          setSelectTilte={setSelectTilte}
           selectTaks={selectTaks}
           setOpenSelect={setOpenSelect}
+          setOpenAdd={setOpenAdd}
         ></SelectDay>
       ) : (
         <div className="callendar">{rows}</div>

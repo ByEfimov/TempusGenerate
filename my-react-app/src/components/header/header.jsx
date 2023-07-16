@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 function Header(props) {
-  const [selectMode, setSelectMode] = useState("ToDay");
-  const { selectTilte } = props;
+  const { selectTilte, selectMode, setSelectMode, OpenAdd } = props;
 
   function selectHeader(e) {
     if (e.target.classList.contains("header-arrow-left")) {
-      swipeLeft();
+      OpenAdd ? "" : swipeLeft();
     } else if (e.target.classList.contains("header-arrow-right")) {
-      swipeRight();
+      OpenAdd ? "" : swipeRight();
     }
   }
 
@@ -106,10 +105,10 @@ function Header(props) {
     const diff = touchDown - currentTouch;
 
     if (diff > 5) {
-      swipeRight();
+      OpenAdd ? "" : swipeRight();
     }
     if (diff < -5) {
-      swipeLeft();
+      OpenAdd ? "" : swipeLeft();
     }
     setTouchPosition(null);
   };

@@ -6,10 +6,21 @@ import Header from "./components/header/header";
 
 function App() {
   const [selectTilte, setSelectTilte] = useState("Все дни");
+  const [selectMode, setSelectMode] = useState("ToDay");
+  const [OpenAdd, setOpenAdd] = useState(false);
   return (
     <>
-      <Header selectTilte={selectTilte}></Header>
-      <Body setSelectTilte={setSelectTilte}></Body>
+      <Header
+        selectMode={selectMode}
+        setSelectMode={setSelectMode}
+        selectTilte={selectTilte}
+        OpenAdd={OpenAdd}
+      ></Header>
+      <Body
+        OpenAdd={OpenAdd}
+        setOpenAdd={setOpenAdd}
+        setSelectTilte={setSelectTilte}
+      ></Body>
       <footer className="footers"></footer>
     </>
   );

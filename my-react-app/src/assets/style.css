@@ -100,26 +100,38 @@ path {
   width: 100vw;
   padding: 13px;
   height: 92vh;
+  overflow: hidden;
   background-color: #161c1a;
 }
-.body .Main-place {
+.body .place .scroll {
   display: flex;
   overflow-y: auto;
   flex-direction: column;
   gap: 15px;
 }
+.body .Main-place {
+  display: flex;
+  overflow-y: hidden;
+  flex-direction: column;
+  position: relative;
+  gap: 15px;
+}
 .body .Tomorrow-place {
   display: flex;
-  overflow-y: auto;
+  position: relative;
+  overflow-y: hidden;
   flex-direction: column;
   gap: 15px;
 }
 .body .All-place {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
+  overflow-y: hidden;
 }
 .body .All-place .place {
+  overflow-y: hidden;
   display: flex;
   padding-top: 0;
   flex-direction: column;
@@ -199,4 +211,72 @@ path {
   .body .All-place .callendar {
     grid-template-columns: repeat(10, 1fr);
   }
+}
+.AddTask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 92vh;
+  width: 100vw;
+  background-color: #323f3b;
+  z-index: 100;
+  animation: 0.5s AddTask forwards;
+}
+
+@keyframes AddTask {
+  from {
+    bottom: -92vh;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+@keyframes CloseAddTask {
+  from {
+    bottom: 0;
+    opacity: 1;
+  }
+  to {
+    bottom: -92vh;
+    opacity: 0;
+  }
+}
+.addButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Raleway;
+  color: #e9d3c6;
+  font-size: 40px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: #23302b;
+}
+
+.GoBack {
+  position: absolute;
+  bottom: 20px;
+  right: 90px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Raleway;
+  color: #e9d3c6;
+  font-size: 40px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: #23302b;
+}
+
+.s {
+  right: 20px;
 }/*# sourceMappingURL=style.css.map */

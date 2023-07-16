@@ -1,8 +1,10 @@
 import NoHaveTasks from "../components/nohavetasks";
 import LocalSave from "../../../storage/LocalStorageConfigurate";
+import AddButton from "../components/AddButton";
+import AddTask from "../components/Addtask";
 
 function MainPlace(props) {
-  const { UserData } = props;
+  const { UserData, setOpenAdd, setSelectTilte, OpenAdd } = props;
   const key = "TaskPriority";
 
   const sortedTasks = UserData[0].userTasks.sort((user1, user2) =>
@@ -45,28 +47,39 @@ function MainPlace(props) {
 
   return (
     <section className="Main-place place" id="modetoday">
-      {sortedTasks2[0] ? (
-        sortedTasks2.map((task) => {
-          return (
-            <div
-              className="Task"
-              onClick={selectTask}
-              id={task.id}
-              key={task.id}
-            >
-              <input
-                id="CheckBox"
-                defaultChecked={task.TaskSatus === "Done" ? true : false}
-                className="CheckBox"
-                type="checkbox"
-              />
-              <label className="Label">{task.TaskName}</label>
-              <div className="date">Сегодня</div>
-            </div>
-          );
-        })
+      <div className="scroll">
+        {sortedTasks2[0] ? (
+          sortedTasks2.map((task) => {
+            return (
+              <div
+                className="Task"
+                onClick={selectTask}
+                id={task.id}
+                key={task.id}
+              >
+                <input
+                  id="CheckBox"
+                  defaultChecked={task.TaskSatus === "Done" ? true : false}
+                  className="CheckBox"
+                  type="checkbox"
+                />
+                <label className="Label">{task.TaskName}</label>
+                <div className="date">Сегодня</div>
+              </div>
+            );
+          })
+        ) : (
+          <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>
+        )}
+      </div>
+      {sortedTasks2[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
+      {OpenAdd ? (
+        <AddTask
+          setOpenAdd={setOpenAdd}
+          setSelectTilte={setSelectTilte}
+        ></AddTask>
       ) : (
-        <NoHaveTasks page="MainPlace"></NoHaveTasks>
+        ""
       )}
     </section>
   );

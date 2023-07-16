@@ -1,8 +1,10 @@
 import NoHaveTasks from "../components/nohavetasks";
+import AddButton from "../components/AddButton";
+import AddTask from "../components/Addtask";
 
 function TommorowPlace(props) {
   const key = "TaskPriority";
-  const { UserData } = props;
+  const { UserData, setOpenAdd, OpenAdd, setSelectTilte } = props;
   const sortedTasks = UserData[0].userTasks.sort((user1, user2) =>
     user1[key] > user2[key] ? 1 : -1
   );
@@ -20,23 +22,37 @@ function TommorowPlace(props) {
 
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
-      {sortedTasks2[0] ? (
-        sortedTasks2.map((task) => {
-          return (
-            <div className="Task" key={task.id}>
-              <input
-                id="CheckBox"
-                defaultChecked={task.TaskSatus === "Done" ? true : false}
-                className="CheckBox"
-                type="checkbox"
-              />
-              <label className="Label">{task.TaskName}</label>
-              <div className="date">Завтра</div>
-            </div>
-          );
-        })
+      <div className="scroll">
+        {sortedTasks2[0] ? (
+          sortedTasks2.map((task) => {
+            return (
+              <div className="Task" key={task.id}>
+                <input
+                  id="CheckBox"
+                  defaultChecked={task.TaskSatus === "Done" ? true : false}
+                  className="CheckBox"
+                  type="checkbox"
+                />
+                <label className="Label">{task.TaskName}</label>
+                <div className="date">Завтра</div>
+              </div>
+            );
+          })
+        ) : (
+          <NoHaveTasks
+            setOpenAdd={setOpenAdd}
+            page="TommorowPlace"
+          ></NoHaveTasks>
+        )}
+      </div>
+      {sortedTasks2[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
+      {OpenAdd ? (
+        <AddTask
+          setOpenAdd={setOpenAdd}
+          setSelectTilte={setSelectTilte}
+        ></AddTask>
       ) : (
-        <NoHaveTasks page="TommorowPlace"></NoHaveTasks>
+        ""
       )}
     </section>
   );
