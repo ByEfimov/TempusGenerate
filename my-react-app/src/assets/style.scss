@@ -95,7 +95,7 @@ path {
     flex-shrink: 0;
     width: 100vw;
     padding: 13px;
-    height: 92vh;
+    height: 92dvh;
     overflow: hidden;
     background-color: $--bg;
     .scroll {
@@ -216,7 +216,7 @@ path {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 92vh;
+  height: 92dvh;
   width: 100vw;
   background-color: #323f3b;
   z-index: 100;
@@ -225,7 +225,7 @@ path {
 
 @keyframes AddTask {
   from {
-    bottom: -92vh;
+    bottom: -92dvh;
     opacity: 0;
   }
   to {
