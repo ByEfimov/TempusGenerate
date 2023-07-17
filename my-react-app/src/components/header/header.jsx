@@ -1,39 +1,15 @@
 import { useState } from "react";
+import { nextDate, lastDate, thisDate } from "../time";
 
 function Header(props) {
-  const { selectTilte, selectMode, setSelectMode, OpenAdd } = props;
+  const { selectTilte, selectMode, setSelectMode } = props;
 
   function selectHeader(e) {
     if (e.target.classList.contains("header-arrow-left")) {
-      OpenAdd ? "" : swipeLeft();
+      swipeLeft();
     } else if (e.target.classList.contains("header-arrow-right")) {
-      OpenAdd ? "" : swipeRight();
+      swipeRight();
     }
-  }
-
-  function thisDate() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
-  }
-  function nextDate() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate() + 1).padStart(2, "0");
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
-  }
-  function lastDate() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate() - 1).padStart(2, "0");
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
   }
 
   function showTitle() {
@@ -105,10 +81,10 @@ function Header(props) {
     const diff = touchDown - currentTouch;
 
     if (diff > 5) {
-      OpenAdd ? "" : swipeRight();
+      swipeRight();
     }
     if (diff < -5) {
-      OpenAdd ? "" : swipeLeft();
+      swipeLeft();
     }
     setTouchPosition(null);
   };

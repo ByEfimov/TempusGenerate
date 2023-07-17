@@ -5,7 +5,15 @@ import usersData from "../../storage/storage";
 import { useState } from "react";
 
 function Body(props) {
-  const { setSelectTilte, OpenAdd, setOpenAdd } = props;
+  const {
+    setSelectTilte,
+    OpenAddToDay,
+    setOpenAddToDay,
+    OpenAddTommorow,
+    setOpenAddTommorow,
+    OpenAddAll,
+    setOpenAddAll,
+  } = props;
   let count = 0;
 
   // eslint-disable-next-line no-unused-vars
@@ -19,22 +27,20 @@ function Body(props) {
   return (
     <section className="body">
       <AllPlace
-        OpenAdd={OpenAdd}
-        setOpenAdd={setOpenAdd}
+        OpenAdd={OpenAddAll}
+        setOpenAdd={setOpenAddAll}
         UserData={UserData}
         setSelectTilte={setSelectTilte}
       ></AllPlace>
       <MainPlace
-        setSelectTilte={setSelectTilte}
-        OpenAdd={OpenAdd}
-        setOpenAdd={setOpenAdd}
+        OpenAdd={OpenAddToDay}
+        setOpenAdd={setOpenAddToDay}
         UserData={UserData}
       ></MainPlace>
       <TommorowPlace
-        setSelectTilte={setSelectTilte}
-        OpenAdd={OpenAdd}
+        OpenAdd={OpenAddTommorow}
         UserData={UserData}
-        setOpenAdd={setOpenAdd}
+        setOpenAdd={setOpenAddTommorow}
       ></TommorowPlace>
     </section>
   );

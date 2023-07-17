@@ -3,23 +3,33 @@ import AddButton from "../components/AddButton";
 import AddTask from "../components/Addtask";
 
 function SelectDay(props) {
-  const { setOpenSelect, OpenAdd, selectTaks, setOpenAdd, setSelectTilte } =
-    props;
+  const {
+    UserData,
+    setOpenSelect,
+    dayOpen,
+    OpenAdd,
+    selectTaks,
+    setOpenAdd,
+    setSelectTilte,
+  } = props;
 
   function GoBack() {
-    setOpenSelect(false);
-    setSelectTilte("Все дни");
+    document.querySelector(".selectDay").style.cssText =
+      "animation: 0.3s closeSelect forwards;";
+    setTimeout(() => {
+      setOpenSelect(false);
+      setSelectTilte("Все дни");
+    }, 250);
   }
 
   return (
-    <div className="place">
+    <div className="place selectDay">
       <div className="scroll">
         {selectTaks[0] ? (
           selectTaks.map((task) => {
             return (
               <div className="Task" id={task.id} key={task.id}>
                 <input
-                  id="CheckBox"
                   defaultChecked={task.TaskSatus === "Done" ? true : false}
                   className="CheckBox"
                   type="checkbox"
@@ -51,8 +61,10 @@ function SelectDay(props) {
       )}
       {OpenAdd ? (
         <AddTask
+          GoBackSelect={GoBack}
+          UserData={UserData}
+          dayOpen={dayOpen}
           setOpenAdd={setOpenAdd}
-          setSelectTilte={setSelectTilte}
         ></AddTask>
       ) : (
         ""

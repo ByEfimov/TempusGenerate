@@ -86,11 +86,36 @@ path {
     pointer-events: none;
   }
 }
+
 .body {
   z-index: 10;
   display: flex;
   transition: all 0.5s;
   transform: translate3d(-1 * 100vw, 0px, 0px);
+  .selectDay {
+    animation: 0.3s openSelect forwards;
+  }
+  @keyframes openSelect {
+    from {
+      margin-left: -92dvh;
+      opacity: 0;
+    }
+    to {
+      margin-left: 0;
+      opacity: 1;
+    }
+  }
+  @keyframes closeSelect {
+    from {
+      margin-left: 0;
+      opacity: 1;
+    }
+    to {
+      margin-left: -92dvh;
+      opacity: 0;
+    }
+  }
+
   .place {
     flex-shrink: 0;
     width: 100vw;
@@ -137,6 +162,7 @@ path {
     .callendar {
       display: grid;
       align-items: start;
+      animation: 0.3s forwards Opasity1;
       grid-template-columns: repeat(7, 1fr);
       grid-template-rows: repeat(7, 1fr);
       grid-column-gap: 10px;
@@ -183,8 +209,8 @@ path {
     background-color: $--secondColor;
     border-radius: 10px;
     .addtask {
-      background-color: #2e3935;
-      padding: 5px;
+      background-color: $--thirdColo;
+      padding: 10px;
       font-size: 20px;
       border-radius: 8px;
     }
@@ -218,9 +244,51 @@ path {
   left: 0;
   height: 92dvh;
   width: 100vw;
-  background-color: #323f3b;
+  background-color: $--secondColor;
   z-index: 100;
   animation: 0.5s AddTask forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 13px;
+  input {
+    color: $--textColor;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  input::placeholder {
+    color: #585858;
+  }
+  .Name {
+    border-radius: 15px;
+    background: $--thirdColo;
+    padding: 12px 15px;
+  }
+  .date {
+    border-radius: 15px;
+    background: $--thirdColo;
+    padding: 12px 15px;
+  }
+  .Priority {
+    border-radius: 15px;
+    background: $--thirdColo;
+    padding: 12px 15px;
+  }
+  .AddTaskButton {
+    color: $--textColor;
+    font-family: Raleway;
+    font-size: 20px;
+    padding: 12px 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    border-radius: 15px;
+    margin-top: 50px;
+    border: 2px solid $--textColor;
+  }
 }
 
 @keyframes AddTask {
@@ -279,4 +347,23 @@ path {
 }
 .s {
   right: 20px;
+  background-color: $--thirdColo;
+}
+
+@keyframes Opasity1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes Opasity0 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

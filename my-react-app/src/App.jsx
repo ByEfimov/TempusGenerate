@@ -7,18 +7,23 @@ import Header from "./components/header/header";
 function App() {
   const [selectTilte, setSelectTilte] = useState("Все дни");
   const [selectMode, setSelectMode] = useState("ToDay");
-  const [OpenAdd, setOpenAdd] = useState(false);
+  const [OpenAddToDay, setOpenAddToDay] = useState(false);
+  const [OpenAddTommorow, setOpenAddTommorow] = useState(false);
+  const [OpenAddAll, setOpenAddAll] = useState(false);
   return (
     <>
       <Header
         selectMode={selectMode}
         setSelectMode={setSelectMode}
         selectTilte={selectTilte}
-        OpenAdd={OpenAdd}
       ></Header>
       <Body
-        OpenAdd={OpenAdd}
-        setOpenAdd={setOpenAdd}
+        OpenAddToDay={OpenAddToDay}
+        setOpenAddToDay={setOpenAddToDay}
+        OpenAddTommorow={OpenAddTommorow}
+        setOpenAddTommorow={setOpenAddTommorow}
+        OpenAddAll={OpenAddAll}
+        setOpenAddAll={setOpenAddAll}
         setSelectTilte={setSelectTilte}
       ></Body>
       <footer className="footers"></footer>

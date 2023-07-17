@@ -2,16 +2,15 @@ import NoHaveTasks from "../components/nohavetasks";
 import LocalSave from "../../../storage/LocalStorageConfigurate";
 import AddButton from "../components/AddButton";
 import AddTask from "../components/Addtask";
+import { thisDate } from "../../time";
 
 function MainPlace(props) {
-  const { UserData, setOpenAdd, setSelectTilte, OpenAdd } = props;
+  const { UserData, setOpenAdd, OpenAdd } = props;
   const key = "TaskPriority";
 
-  const sortedTasks = UserData[0].userTasks.sort((user1, user2) =>
-    user1[key] > user2[key] ? 1 : -1
-  );
-
-  const sortedTasks2 = sortedTasks.filter((user) => user.date === thisDate());
+  const sortedTasks = UserData[0].userTasks
+    .sort((user1, user2) => (user1[key] > user2[key] ? 1 : -1))
+    .filter((user) => user.date === thisDate());
 
   function selectTask(e) {
     if (e.target.childNodes[0].checked === true) {
@@ -19,7 +18,6 @@ function MainPlace(props) {
       UserData[0].userTasks.map((task) => {
         if (task.id == e.target.id) {
           task.TaskSatus = "Make";
-          console.log(task);
           LocalSave("storage", UserData[0].userTasks);
         }
       });
@@ -28,28 +26,17 @@ function MainPlace(props) {
       UserData[0].userTasks.map((task) => {
         if (task.id == e.target.id) {
           task.TaskSatus = "Done";
-          console.log(task);
-
           LocalSave("storage", UserData[0].userTasks);
         }
       });
     }
   }
 
-  function thisDate() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
-  }
-
   return (
     <section className="Main-place place" id="modetoday">
       <div className="scroll">
-        {sortedTasks2[0] ? (
-          sortedTasks2.map((task) => {
+        {sortedTasks[0] ? (
+          sortedTasks.map((task) => {
             return (
               <div
                 className="Task"
@@ -58,7 +45,6 @@ function MainPlace(props) {
                 key={task.id}
               >
                 <input
-                  id="CheckBox"
                   defaultChecked={task.TaskSatus === "Done" ? true : false}
                   className="CheckBox"
                   type="checkbox"
@@ -72,11 +58,12 @@ function MainPlace(props) {
           <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>
         )}
       </div>
-      {sortedTasks2[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
+      {sortedTasks[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
       {OpenAdd ? (
         <AddTask
+          UserData={UserData}
+          dayOpen={thisDate()}
           setOpenAdd={setOpenAdd}
-          setSelectTilte={setSelectTilte}
         ></AddTask>
       ) : (
         ""

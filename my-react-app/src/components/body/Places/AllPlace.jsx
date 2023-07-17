@@ -1,10 +1,8 @@
 import { useState } from "react";
 import SelectDay from "./selectDay";
-import AddTask from "../components/Addtask";
+import { thisDay } from "../../time";
 
 function AllPlace(props) {
-  const date = new Date();
-  const day = String(date.getDate()).padStart(2, "0");
   const { UserData, OpenAdd, setSelectTilte, setOpenAdd } = props;
   const key = "TaskPriority";
   const sortedTasks = UserData[0].userTasks.sort((user1, user2) =>
@@ -12,6 +10,7 @@ function AllPlace(props) {
   );
   const [openSelect, setOpenSelect] = useState(false);
   const [selectTaks, setSelectTaks] = useState([]);
+  const [dayOpen, setDayOpen] = useState("");
 
   function GetDaysOnMounth() {
     const date = new Date();
@@ -23,7 +22,7 @@ function AllPlace(props) {
 
   const rows = [];
   for (let i = 1; i < GetDaysOnMounth() + 1; i++) {
-    if (i == day) {
+    if (i == thisDay) {
       rows.push(
         <div className="day color" key={i}>
           {i}
@@ -39,6 +38,9 @@ function AllPlace(props) {
   }
 
   function selectDate(day) {
+    if (day < 11) {
+      day = "0" + day;
+    }
     const date = new Date();
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -52,6 +54,7 @@ function AllPlace(props) {
         (user) => user.date === selectDate(e.target.textContent)
       );
       setSelectTilte(selectDate(e.target.textContent));
+      setDayOpen(selectDate(e.target.textContent));
       setSelectTaks(sortedTasks2);
       setOpenSelect(true);
     }
@@ -61,6 +64,8 @@ function AllPlace(props) {
     <section className="All-place place" onClick={selectDay}>
       {openSelect ? (
         <SelectDay
+          UserData={UserData}
+          dayOpen={dayOpen}
           OpenAdd={OpenAdd}
           setSelectTilte={setSelectTilte}
           selectTaks={selectTaks}
@@ -68,8 +73,9 @@ function AllPlace(props) {
           setOpenAdd={setOpenAdd}
         ></SelectDay>
       ) : (
-        <div className="callendar">{rows}</div>
+        ""
       )}
+      <div className="callendar">{rows}</div>
     </section>
   );
 }
