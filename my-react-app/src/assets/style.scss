@@ -85,6 +85,14 @@ path {
   .CheckBox {
     pointer-events: none;
   }
+  .dellButton {
+    background-image: url(./backet.svg);
+    height: 18px;
+    width: 18px;
+    padding-right: 18px;
+    background-position: center;
+    background-size: contain;
+  }
 }
 
 .body {
@@ -250,7 +258,7 @@ path {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  justify-content: center;
+
   padding: 13px;
   input {
     color: $--textColor;

@@ -1,6 +1,8 @@
 import NoHaveTasks from "../components/nohavetasks";
 import AddButton from "../components/AddButton";
 import AddTask from "../components/Addtask";
+import { selectTask } from "../logic/selectTask";
+import { deleteTask } from "../logic/deleteTask";
 
 function SelectDay(props) {
   const {
@@ -28,7 +30,12 @@ function SelectDay(props) {
         {selectTaks[0] ? (
           selectTaks.map((task) => {
             return (
-              <div className="Task" id={task.id} key={task.id}>
+              <div
+                className="Task"
+                onClick={selectTask}
+                id={task.id}
+                key={task.id}
+              >
                 <input
                   defaultChecked={task.TaskSatus === "Done" ? true : false}
                   className="CheckBox"
@@ -42,6 +49,7 @@ function SelectDay(props) {
                     task.date[8] +
                     task.date[9]}
                 </div>
+                <div className="dellButton" onClick={deleteTask}></div>
               </div>
             );
           })

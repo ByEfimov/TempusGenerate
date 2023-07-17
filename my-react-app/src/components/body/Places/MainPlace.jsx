@@ -1,8 +1,9 @@
 import NoHaveTasks from "../components/nohavetasks";
-import LocalSave from "../../../storage/LocalStorageConfigurate";
 import AddButton from "../components/AddButton";
 import AddTask from "../components/Addtask";
-import { thisDate } from "../../time";
+import { thisDate } from "../logic/time";
+import { selectTask } from "../logic/selectTask";
+import { deleteTask } from "../logic/deleteTask";
 
 function MainPlace(props) {
   const { UserData, setOpenAdd, OpenAdd } = props;
@@ -11,26 +12,6 @@ function MainPlace(props) {
   const sortedTasks = UserData[0].userTasks
     .sort((user1, user2) => (user1[key] > user2[key] ? 1 : -1))
     .filter((user) => user.date === thisDate());
-
-  function selectTask(e) {
-    if (e.target.childNodes[0].checked === true) {
-      e.target.childNodes[0].checked = false;
-      UserData[0].userTasks.map((task) => {
-        if (task.id == e.target.id) {
-          task.TaskSatus = "Make";
-          LocalSave("storage", UserData[0].userTasks);
-        }
-      });
-    } else {
-      e.target.childNodes[0].checked = true;
-      UserData[0].userTasks.map((task) => {
-        if (task.id == e.target.id) {
-          task.TaskSatus = "Done";
-          LocalSave("storage", UserData[0].userTasks);
-        }
-      });
-    }
-  }
 
   return (
     <section className="Main-place place" id="modetoday">
@@ -51,6 +32,7 @@ function MainPlace(props) {
                 />
                 <label className="Label">{task.TaskName}</label>
                 <div className="date">Сегодня</div>
+                <div className="dellButton" onClick={deleteTask}></div>
               </div>
             );
           })

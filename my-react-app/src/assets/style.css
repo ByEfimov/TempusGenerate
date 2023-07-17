@@ -88,6 +88,14 @@ path {
 .Task .CheckBox {
   pointer-events: none;
 }
+.Task .dellButton {
+  background-image: url(./backet.svg);
+  height: 18px;
+  width: 18px;
+  padding-right: 18px;
+  background-position: center;
+  background-size: contain;
+}
 
 .body {
   z-index: 10;
@@ -268,13 +276,16 @@ path {
   border-radius: 15px;
   background: #2e3935;
   padding: 12px 15px;
+  width: calc(100vw - 26px);
 }
 .AddTask .date {
+  width: calc(100vw - 26px);
   border-radius: 15px;
   background: #2e3935;
   padding: 12px 15px;
 }
 .AddTask .Priority {
+  width: calc(100vw - 26px);
   border-radius: 15px;
   background: #2e3935;
   padding: 12px 15px;

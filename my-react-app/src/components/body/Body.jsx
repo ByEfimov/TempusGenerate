@@ -4,6 +4,8 @@ import MainPlace from "./Places/MainPlace";
 import usersData from "../../storage/storage";
 import { useState } from "react";
 
+export let UsersData;
+
 function Body(props) {
   const {
     setSelectTilte,
@@ -14,16 +16,17 @@ function Body(props) {
     OpenAddAll,
     setOpenAddAll,
   } = props;
-  let count = 0;
 
   // eslint-disable-next-line no-unused-vars
   const [UserData, setUserdata] = useState(usersData);
 
-  if (JSON.parse(localStorage.getItem("storage")) != undefined && count == 0) {
-    count++;
-    UserData[0].userTasks = JSON.parse(localStorage.getItem("storage"));
+  function UpdateTasks() {
+    if (JSON.parse(localStorage.getItem("storage")) != undefined) {
+      UserData[0].userTasks = JSON.parse(localStorage.getItem("storage"));
+    }
   }
-
+  UsersData = UserData;
+  UpdateTasks();
   return (
     <section className="body">
       <AllPlace

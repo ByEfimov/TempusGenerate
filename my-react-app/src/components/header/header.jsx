@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { nextDate, lastDate, thisDate } from "../time";
+import { nextDate, lastDate, thisDate } from "../body/logic/time";
 
 function Header(props) {
   const { selectTilte, selectMode, setSelectMode } = props;

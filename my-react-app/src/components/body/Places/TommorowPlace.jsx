@@ -1,7 +1,9 @@
 import NoHaveTasks from "../components/nohavetasks";
 import AddButton from "../components/AddButton";
 import AddTask from "../components/Addtask";
-import { nextDate } from "../../time";
+import { nextDate } from "../logic/time";
+import { deleteTask } from "../logic/deleteTask";
+import { selectTask } from "../logic/selectTask";
 
 function TommorowPlace(props) {
   const key = "TaskPriority";
@@ -16,7 +18,12 @@ function TommorowPlace(props) {
         {sortedTasks[0] ? (
           sortedTasks.map((task) => {
             return (
-              <div className="Task" key={task.id}>
+              <div
+                className="Task"
+                id={task.id}
+                onClick={selectTask}
+                key={task.id}
+              >
                 <input
                   defaultChecked={task.TaskSatus === "Done" ? true : false}
                   className="CheckBox"
@@ -24,6 +31,7 @@ function TommorowPlace(props) {
                 />
                 <label className="Label">{task.TaskName}</label>
                 <div className="date">Завтра</div>
+                <div className="dellButton" onClick={deleteTask}></div>
               </div>
             );
           })

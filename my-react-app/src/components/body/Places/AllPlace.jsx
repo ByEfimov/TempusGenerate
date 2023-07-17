@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SelectDay from "./selectDay";
-import { thisDay } from "../../time";
+import { thisDay } from "../logic/time";
 
 function AllPlace(props) {
   const { UserData, OpenAdd, setSelectTilte, setOpenAdd } = props;
