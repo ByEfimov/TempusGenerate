@@ -250,6 +250,7 @@ path {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  justify-content: center;
   padding: 13px;
   input {
     color: $--textColor;
@@ -266,16 +267,16 @@ path {
     border-radius: 15px;
     background: $--thirdColo;
     padding: 12px 15px;
-    width: 100%;
+    width: calc(100vw - 26px);
   }
   .date {
-    width: 100%;
+    width: calc(100vw - 26px);
     border-radius: 15px;
     background: $--thirdColo;
     padding: 12px 15px;
   }
   .Priority {
-    width: 100%;
+    width: calc(100vw - 26px);
     border-radius: 15px;
     background: $--thirdColo;
     padding: 12px 15px;
