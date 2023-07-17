@@ -339,6 +339,10 @@ path {
   font-weight: 500;
   border-radius: 10px;
   background-color: $--secondColor;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-image: url(../assets/pluss.svg);
 }
 
 .GoBack {
@@ -356,9 +360,15 @@ path {
   font-weight: 500;
   border-radius: 10px;
   background-color: $--secondColor;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-image: url(../assets/back.svg);
 }
 .s {
   right: 20px;
+}
+.bg {
   background-color: $--thirdColo;
 }
 
@@ -378,4 +388,10 @@ path {
   to {
     opacity: 1;
   }
+}
+.opacity1 {
+  opacity: 1;
+}
+.opacity07 {
+  opacity: 0.7;
 }

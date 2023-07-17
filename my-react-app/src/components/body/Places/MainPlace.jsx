@@ -4,23 +4,21 @@ import AddTask from "../components/Addtask";
 import { thisDate } from "../logic/time";
 import { selectTask } from "../logic/selectTask";
 import { deleteTask } from "../logic/deleteTask";
+import { sortedTasksToDay } from "../logic/sorted";
 
 function MainPlace(props) {
   const { UserData, setOpenAdd, OpenAdd } = props;
-  const key = "TaskPriority";
-
-  const sortedTasks = UserData[0].userTasks
-    .sort((user1, user2) => (user1[key] > user2[key] ? 1 : -1))
-    .filter((user) => user.date === thisDate());
 
   return (
     <section className="Main-place place" id="modetoday">
       <div className="scroll">
-        {sortedTasks[0] ? (
-          sortedTasks.map((task) => {
+        {sortedTasksToDay(UserData)[0] ? (
+          sortedTasksToDay(UserData).map((task) => {
             return (
               <div
-                className="Task"
+                className={
+                  task.TaskSatus === "Done" ? "opacity07 Task" : "opacity1 Task"
+                }
                 onClick={selectTask}
                 id={task.id}
                 key={task.id}
@@ -40,7 +38,11 @@ function MainPlace(props) {
           <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>
         )}
       </div>
-      {sortedTasks[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
+      {sortedTasksToDay(UserData)[0] ? (
+        <AddButton setOpenAdd={setOpenAdd}></AddButton>
+      ) : (
+        ""
+      )}
       {OpenAdd ? (
         <AddTask
           UserData={UserData}

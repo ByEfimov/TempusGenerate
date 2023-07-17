@@ -338,6 +338,10 @@ path {
   font-weight: 500;
   border-radius: 10px;
   background-color: #23302b;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-image: url(../assets/pluss.svg);
 }
 
 .GoBack {
@@ -355,10 +359,17 @@ path {
   font-weight: 500;
   border-radius: 10px;
   background-color: #23302b;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-image: url(../assets/back.svg);
 }
 
 .s {
   right: 20px;
+}
+
+.bg {
   background-color: #2e3935;
 }
 
@@ -377,4 +388,11 @@ path {
   to {
     opacity: 1;
   }
+}
+.opacity1 {
+  opacity: 1;
+}
+
+.opacity07 {
+  opacity: 0.7;
 }/*# sourceMappingURL=style.css.map */

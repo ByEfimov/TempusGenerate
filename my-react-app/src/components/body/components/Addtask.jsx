@@ -87,9 +87,7 @@ function AddTask(props) {
         Добавить задачу
       </button>
 
-      <div className="GoBack s" onClick={GoBack}>
-        s
-      </div>
+      <div className="GoBack s bg" onClick={GoBack}></div>
     </div>
   );
 }

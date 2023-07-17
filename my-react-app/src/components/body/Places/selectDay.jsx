@@ -31,7 +31,9 @@ function SelectDay(props) {
           selectTaks.map((task) => {
             return (
               <div
-                className="Task"
+                className={
+                  task.TaskSatus === "Done" ? "opacity07 Task" : "opacity1 Task"
+                }
                 onClick={selectTask}
                 id={task.id}
                 key={task.id}
@@ -59,13 +61,9 @@ function SelectDay(props) {
       </div>
       {selectTaks[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
       {selectTaks[0] ? (
-        <div className="GoBack" onClick={GoBack}>
-          s
-        </div>
+        <div className="GoBack" onClick={GoBack}></div>
       ) : (
-        <div className="GoBack s" onClick={GoBack}>
-          s
-        </div>
+        <div className="GoBack s" onClick={GoBack}></div>
       )}
       {OpenAdd ? (
         <AddTask

@@ -4,22 +4,21 @@ import AddTask from "../components/Addtask";
 import { nextDate } from "../logic/time";
 import { deleteTask } from "../logic/deleteTask";
 import { selectTask } from "../logic/selectTask";
+import { sortedTasksNextDay } from "../logic/sorted";
 
 function TommorowPlace(props) {
-  const key = "TaskPriority";
   const { UserData, setOpenAdd, OpenAdd } = props;
-  const sortedTasks = UserData[0].userTasks
-    .sort((user1, user2) => (user1[key] > user2[key] ? 1 : -1))
-    .filter((user) => user.date === nextDate());
 
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
       <div className="scroll">
-        {sortedTasks[0] ? (
-          sortedTasks.map((task) => {
+        {sortedTasksNextDay(UserData)[0] ? (
+          sortedTasksNextDay(UserData).map((task) => {
             return (
               <div
-                className="Task"
+                className={
+                  task.TaskSatus === "Done" ? "opacity07 Task" : "opacity1 Task"
+                }
                 id={task.id}
                 onClick={selectTask}
                 key={task.id}
@@ -42,7 +41,11 @@ function TommorowPlace(props) {
           ></NoHaveTasks>
         )}
       </div>
-      {sortedTasks[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
+      {sortedTasksNextDay(UserData)[0] ? (
+        <AddButton setOpenAdd={setOpenAdd}></AddButton>
+      ) : (
+        ""
+      )}
       {OpenAdd ? (
         <AddTask
           UserData={UserData}

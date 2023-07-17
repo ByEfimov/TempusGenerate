@@ -10,6 +10,7 @@ export function selectTask(e) {
           task.TaskSatus = "Make";
           LocalSave("storage", usersData[0].userTasks);
         }
+        e.target.style.opacity = "1";
       });
     } else {
       e.target.childNodes[0].checked = true;
@@ -18,6 +19,7 @@ export function selectTask(e) {
           task.TaskSatus = "Done";
           LocalSave("storage", usersData[0].userTasks);
         }
+        e.target.style.opacity = "0.7";
       });
     }
   }

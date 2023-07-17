@@ -3,11 +3,7 @@ function AddButton(props) {
   function clickButtonAdd() {
     setOpenAdd(true);
   }
-  return (
-    <div className="addButton" onClick={clickButtonAdd}>
-      +
-    </div>
-  );
+  return <div className="addButton" onClick={clickButtonAdd}></div>;
 }
 
 export default AddButton;
