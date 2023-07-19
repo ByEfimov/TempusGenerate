@@ -8,36 +8,7 @@ const UserData = {
     Role: "admin",
     InviteCode: "22",
   },
-  userTasks: [
-    {
-      id: 1,
-      TaskName: "ale1",
-      TaskSatus: "Make",
-      TaskPriority: 1,
-      date: "2023-07-19",
-    },
-    {
-      id: 2,
-      TaskName: "ale2",
-      TaskSatus: "Make",
-      TaskPriority: 2,
-      date: "2023-07-19",
-    },
-    {
-      id: 3,
-      TaskName: "ale3",
-      TaskSatus: "Make",
-      TaskPriority: 1,
-      date: "2023-07-20",
-    },
-    {
-      id: 4,
-      TaskName: "ale4",
-      TaskSatus: "Make",
-      TaskPriority: 1,
-      date: "2023-07-25",
-    },
-  ],
+  userTasks: [],
 };
 
 export const userReduser = (state = UserData, action) => {
