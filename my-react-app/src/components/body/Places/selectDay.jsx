@@ -1,19 +1,31 @@
 import NoHaveTasks from "../components/nohavetasks";
 import AddButton from "../components/AddButton";
 import AddTask from "../components/Addtask";
-import { selectTask } from "../logic/selectTask";
-import { deleteTask } from "../logic/deleteTask";
+import { SelectTask } from "../logic/selectTask";
+import DeleteTask from "../logic/deleteTask";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function SelectDay(props) {
-  const {
-    UserData,
-    setOpenSelect,
-    dayOpen,
-    OpenAdd,
-    selectTaks,
-    setOpenAdd,
-    setSelectTilte,
-  } = props;
+  const { setOpenSelect, setSelectTilte, OpenAdd, setOpenAdd, clickDay } =
+    props;
+
+  const UserTasks = useSelector((state) => state.user.userTasks);
+
+  function selectDate(day) {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+
+  function sortedTasksSelectDay() {
+    const key = "TaskPriority";
+    return UserTasks.sort((user1, user2) =>
+      user1[key] > user2[key] ? 1 : -1
+    ).filter((user) => user.date === selectDate(clickDay));
+  }
 
   function GoBack() {
     document.querySelector(".selectDay").style.cssText =
@@ -24,17 +36,21 @@ function SelectDay(props) {
     }, 250);
   }
 
+  useEffect(() => {
+    props.setSelectTilte(selectDate(clickDay));
+  }, []);
+
   return (
     <div className="place selectDay">
       <div className="scroll">
-        {selectTaks[0] ? (
-          selectTaks.map((task) => {
+        {sortedTasksSelectDay().length > 0 ? (
+          sortedTasksSelectDay().map((task) => {
             return (
               <div
                 className={
                   task.TaskSatus === "Done" ? "opacity07 Task" : "opacity1 Task"
                 }
-                onClick={selectTask}
+                onClick={SelectTask}
                 id={task.id}
                 key={task.id}
               >
@@ -51,7 +67,7 @@ function SelectDay(props) {
                     task.date[8] +
                     task.date[9]}
                 </div>
-                <div className="dellButton" onClick={deleteTask}></div>
+                <div className="dellButton" onClick={DeleteTask}></div>
               </div>
             );
           })
@@ -59,17 +75,19 @@ function SelectDay(props) {
           <NoHaveTasks setOpenAdd={setOpenAdd} page="MainPlace"></NoHaveTasks>
         )}
       </div>
-      {selectTaks[0] ? <AddButton setOpenAdd={setOpenAdd}></AddButton> : ""}
-      {selectTaks[0] ? (
+      {sortedTasksSelectDay().length > 0 ? (
+        <AddButton setOpenAdd={setOpenAdd}></AddButton>
+      ) : (
+        ""
+      )}
+      {sortedTasksSelectDay().length > 0 ? (
         <div className="GoBack" onClick={GoBack}></div>
       ) : (
         <div className="GoBack s" onClick={GoBack}></div>
       )}
       {OpenAdd ? (
         <AddTask
-          GoBackSelect={GoBack}
-          UserData={UserData}
-          dayOpen={dayOpen}
+          dayOpen={selectDate(clickDay)}
           setOpenAdd={setOpenAdd}
         ></AddTask>
       ) : (

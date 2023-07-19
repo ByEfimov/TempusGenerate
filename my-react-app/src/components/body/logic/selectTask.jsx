@@ -1,23 +1,31 @@
-import LocalSave from "../../../storage/LocalStorageConfigurate";
-import usersData from "../../../storage/storage";
+import { UsersData } from "../Body";
+import { DellDispatch } from "../Body";
 
-export function selectTask(e) {
+export function SelectTask(e) {
   if (e.target.classList.contains("Task")) {
     if (e.target.childNodes[0].checked === true) {
       e.target.childNodes[0].checked = false;
-      usersData[0].userTasks.map((task) => {
+      UsersData.map((task) => {
         if (task.id == e.target.id) {
           task.TaskSatus = "Make";
-          LocalSave("storage", usersData[0].userTasks);
+          DellDispatch({
+            type: "CHANGE_TASK",
+            taskId: e.target.id,
+            newStatus: "Make",
+          });
         }
         e.target.style.opacity = "1";
       });
     } else {
       e.target.childNodes[0].checked = true;
-      usersData[0].userTasks.map((task) => {
+      UsersData.map((task) => {
         if (task.id == e.target.id) {
           task.TaskSatus = "Done";
-          LocalSave("storage", usersData[0].userTasks);
+          DellDispatch({
+            type: "CHANGE_TASK",
+            taskId: e.target.id,
+            newStatus: "Done",
+          });
         }
         e.target.style.opacity = "0.7";
       });

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import LocalSave from "../../../storage/LocalStorageConfigurate";
+import { useDispatch, useSelector } from "react-redux";
 
 function AddTask(props) {
-  const { setOpenAdd, dayOpen, UserData, GoBackSelect } = props;
-
+  const { setOpenAdd, dayOpen } = props;
+  const UserTasks = useSelector((state) => state.user.userTasks);
+  const dispatch = useDispatch();
   const [inputDate, setInputDate] = useState(dayOpen);
   const [inputName, setInputName] = useState("");
   const [inputPriority, setInputPriority] = useState("");
@@ -18,7 +19,7 @@ function AddTask(props) {
 
   function findMaxid() {
     let result = 0;
-    UserData[0].userTasks.map((item) => {
+    UserTasks.map((item) => {
       if (item.id > result) {
         result = item.id;
       }
@@ -33,12 +34,11 @@ function AddTask(props) {
         id: findMaxid(),
         TaskName: inputName,
         TaskSatus: "Make",
-        TaskPriority: inputPriority,
+        TaskPriority: Number(inputPriority),
         date: inputDate,
       };
-      UserData[0].userTasks.push(NewTask);
-      LocalSave("storage", UserData[0].userTasks);
-      GoBackSelect ? GoBackSelect() : "";
+      dispatch({ type: "ADD_TASK", payload: NewTask });
+      console.log(UserTasks);
       GoBack();
     }
   }
