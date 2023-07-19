@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&family=Roboto:wght@400;500&display=swap");
+body {
+  min-height: calc(100vh + 1px);
+}
+
+html {
+  height: calc(100vh + 1px);
+}
+
 .header {
   width: 100vw;
   font-family: Raleway;
@@ -108,7 +116,7 @@ path {
 }
 @keyframes openSelect {
   from {
-    margin-left: -92dvh;
+    margin-left: -92vh;
     opacity: 0;
   }
   to {
@@ -122,7 +130,7 @@ path {
     opacity: 1;
   }
   to {
-    margin-left: -92dvh;
+    margin-left: -92vh;
     opacity: 0;
   }
 }
@@ -305,7 +313,7 @@ path {
 
 @keyframes AddTask {
   from {
-    bottom: -92dvh;
+    bottom: -92vh;
     opacity: 0;
   }
   to {
