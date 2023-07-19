@@ -10,6 +10,7 @@ function Body(props) {
   const {
     setSelectTilte,
     OpenAddToDay,
+    RefBody,
     setOpenAddToDay,
     OpenAddTommorow,
     setOpenAddTommorow,
@@ -23,7 +24,7 @@ function Body(props) {
   UsersData = UserTasks;
   DellDispatch = dispatch;
   return (
-    <section className="body">
+    <section className="body" ref={RefBody}>
       <AllPlace
         OpenAdd={OpenAddAll}
         setOpenAdd={setOpenAddAll}

@@ -4,11 +4,13 @@ import AddTask from "../components/Addtask";
 import { SelectTask } from "../logic/selectTask";
 import DeleteTask from "../logic/deleteTask";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 function SelectDay(props) {
   const { setOpenSelect, setSelectTilte, OpenAdd, setOpenAdd, clickDay } =
     props;
+
+  const RefSelectDay = React.createRef();
 
   const UserTasks = useSelector((state) => state.user.userTasks);
 
@@ -28,7 +30,7 @@ function SelectDay(props) {
   }
 
   function GoBack() {
-    document.querySelector(".selectDay").style.cssText =
+    RefSelectDay.current.style.cssText =
       "animation: 0.3s closeSelect forwards;";
     setTimeout(() => {
       setOpenSelect(false);
@@ -41,7 +43,7 @@ function SelectDay(props) {
   }, []);
 
   return (
-    <div className="place selectDay">
+    <div className="place selectDay" ref={RefSelectDay}>
       <div className="scroll">
         {sortedTasksSelectDay().length > 0 ? (
           sortedTasksSelectDay().map((task) => {

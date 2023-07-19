@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function AddTask(props) {
@@ -8,10 +8,10 @@ function AddTask(props) {
   const [inputDate, setInputDate] = useState(dayOpen);
   const [inputName, setInputName] = useState("");
   const [inputPriority, setInputPriority] = useState("");
+  const RefAddtask = React.createRef();
 
   function GoBack() {
-    document.querySelector(".AddTask").style.cssText =
-      "animation: 0.5s CloseAddTask forwards;";
+    RefAddtask.current.style.cssText = "animation: 0.5s CloseAddTask forwards;";
     setTimeout(() => {
       setOpenAdd(false);
     }, 500);
@@ -44,7 +44,7 @@ function AddTask(props) {
   }
 
   return (
-    <div className="AddTask">
+    <div ref={RefAddtask} className="AddTask">
       <input
         type="text"
         value={inputName}

@@ -10,7 +10,6 @@ function MainPlace(props) {
   const { UserData, setOpenAdd, OpenAdd } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
 
-  console.log(UserTasks);
   const key = "TaskPriority";
 
   function sortedTasksToDay() {

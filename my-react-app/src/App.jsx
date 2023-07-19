@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "./assets/style.css";
 import Body from "./components/body/Body";
@@ -10,14 +10,17 @@ function App() {
   const [OpenAddToDay, setOpenAddToDay] = useState(false);
   const [OpenAddTommorow, setOpenAddTommorow] = useState(false);
   const [OpenAddAll, setOpenAddAll] = useState(false);
+  const RefBody = React.createRef();
   return (
     <>
       <Header
         selectMode={selectMode}
         setSelectMode={setSelectMode}
         selectTilte={selectTilte}
+        RefBody={RefBody}
       ></Header>
       <Body
+        RefBody={RefBody}
         OpenAddToDay={OpenAddToDay}
         setOpenAddToDay={setOpenAddToDay}
         OpenAddTommorow={OpenAddTommorow}
