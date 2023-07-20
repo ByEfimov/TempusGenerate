@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&family=Roboto:wght@400;500&display=swap");
 body {
-  min-height: calc(100vh + 1px);
+  min-height: calc(100dvh + 1px);
 }
 
 html {
-  height: calc(100vh + 1px);
+  height: calc(100dvh + 1px);
 }
 
 .header {
-  width: 100vw;
+  width: 100dvw;
   font-family: Raleway;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@ html {
   color: #e9d3c6;
   font-weight: 500;
   font-size: 36px;
-  height: 8vh;
+  height: 8dvh;
   position: relative;
   background-color: #23302b;
 }
@@ -27,7 +27,7 @@ html {
   background-color: #23302b;
   z-index: 10;
   height: 60px;
-  width: 8vh;
+  width: 8dvh;
   padding-top: 2px;
   cursor: pointer;
   display: flex;
@@ -43,14 +43,14 @@ html {
   z-index: 10;
   height: 60px;
   padding-top: 2px;
-  width: 8vh;
+  width: 8dvh;
   display: flex;
   justify-content: center;
   align-items: start;
 }
 .header .title {
   display: flex;
-  width: 100vw;
+  width: 100dvw;
   transition: all 0.5s;
   pointer-events: none;
   transform: translate3d(-100vw, 0px, 0px);
@@ -120,7 +120,7 @@ path {
 }
 @keyframes openSelect {
   from {
-    margin-left: -92vh;
+    margin-left: -92dvh;
     opacity: 0;
   }
   to {
@@ -134,7 +134,7 @@ path {
     opacity: 1;
   }
   to {
-    margin-left: -92vh;
+    margin-left: -92dvh;
     opacity: 0;
   }
 }
@@ -142,7 +142,7 @@ path {
   flex-shrink: 0;
   width: 100vw;
   padding: 13px;
-  height: 92vh;
+  height: 92dvh;
   overflow: hidden;
   background-color: #161c1a;
 }
@@ -209,7 +209,7 @@ path {
 .noHaveTasks {
   width: 100vw;
   padding: 13px;
-  height: 92vh;
+  height: 92dvh;
   position: absolute;
   bottom: 0;
   display: flex;
@@ -262,7 +262,7 @@ path {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 92vh;
+  height: 92dvh;
   width: 100vw;
   background-color: #23302b;
   z-index: 100;
@@ -319,7 +319,7 @@ path {
 
 @keyframes AddTask {
   from {
-    bottom: -92vh;
+    bottom: -92dvh;
     opacity: 0;
   }
   to {
@@ -333,7 +333,7 @@ path {
     opacity: 1;
   }
   to {
-    bottom: -92vh;
+    bottom: -92dvh;
     opacity: 0;
   }
 }
@@ -458,4 +458,4 @@ path {
   margin-top: 20px;
   font-weight: 400;
   text-align: center;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
