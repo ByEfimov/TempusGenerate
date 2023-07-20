@@ -414,7 +414,8 @@ path {
 
 .statist {
   max-width: 500px;
-  margin-top: 30px;
+  transition: all 0s;
+  margin-top: 20px;
   width: calc(100vw - 30px);
   padding-top: 10px;
   border-radius: 10px;
@@ -424,6 +425,7 @@ path {
   background-color: #23302b;
 }
 .statist .title {
+  transition: all 0s;
   font-family: Raleway;
   color: #e9d3c6;
   font-size: 25px;
@@ -433,13 +435,20 @@ path {
   justify-content: space-between;
 }
 .statist .title .button {
+  transition: all 0s;
   cursor: pointer;
 }
 .statist .distogram {
   display: flex;
+  width: 100%;
   justify-content: center;
   background-color: #23302b;
   margin-top: 20px;
+  transition: all 0s;
+}
+.statist .distogram canvas {
+  transition: all 0s;
+  min-width: 100%;
 }
 .statist .text-stat {
   font-family: Raleway;

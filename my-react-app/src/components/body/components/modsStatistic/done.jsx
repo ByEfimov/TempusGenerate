@@ -55,7 +55,6 @@ function Done(props) {
               ],
             },
             options: {
-              animation: false,
               scales: { y: { display: false } },
               hover: { mode: null },
             },

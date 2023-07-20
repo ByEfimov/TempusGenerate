@@ -51,7 +51,6 @@ function All(props) {
               ],
             },
             options: {
-              animation: false,
               scales: { y: { display: false } },
               hover: { mode: null },
             },
