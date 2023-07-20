@@ -44,6 +44,7 @@ function All(props) {
               labels: data.map((row) => row.date),
               datasets: [
                 {
+                  spanGaps: true,
                   label: "",
                   borderColor: "#e9d3c6",
                   data: data.map((row) => row.count),
@@ -51,6 +52,7 @@ function All(props) {
               ],
             },
             options: {
+              spanGaps: true,
               scales: { y: { display: false } },
               hover: { mode: null },
             },
