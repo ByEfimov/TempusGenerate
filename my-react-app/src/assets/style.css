@@ -445,10 +445,11 @@ path {
   background-color: #23302b;
   margin-top: 20px;
   transition: all 0s;
+  overflow: hidden;
 }
 .statist .distogram canvas {
   transition: all 0s;
-  min-width: 100%;
+  width: 100%;
 }
 .statist .text-stat {
   font-family: Raleway;

@@ -442,10 +442,11 @@ path {
     background-color: $--secondColor;
     margin-top: 20px;
     transition: all 0s;
-    canvas {
-      transition: all 0s;
-      min-width: 100%;
-    }
+    overflow: hidden;
+  }
+  .distogram canvas {
+    transition: all 0s;
+    width: 100%;
   }
   .text-stat {
     font-family: Raleway;
