@@ -433,6 +433,8 @@ path {
     }
   }
   .distogram {
+    display: flex;
+    justify-content: center;
     background-color: $--secondColor;
     margin-top: 20px;
   }

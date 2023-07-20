@@ -436,6 +436,8 @@ path {
   cursor: pointer;
 }
 .statist .distogram {
+  display: flex;
+  justify-content: center;
   background-color: #23302b;
   margin-top: 20px;
 }
