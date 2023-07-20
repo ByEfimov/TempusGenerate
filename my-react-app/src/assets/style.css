@@ -29,11 +29,13 @@ html {
   height: 60px;
   width: 8vh;
   padding-top: 2px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: start;
 }
 .header-arrow-left {
+  cursor: pointer;
   transform: rotate(90deg);
   position: absolute;
   left: -30px;
@@ -73,6 +75,7 @@ path {
   padding: 10px 10px;
   border-radius: 10px;
   display: flex;
+  cursor: pointer;
   background-color: #23302b;
 }
 .Task .Label {
@@ -99,6 +102,7 @@ path {
 .Task .dellButton {
   background-image: url(./backet.svg);
   height: 18px;
+  cursor: pointer;
   width: 18px;
   padding-right: 18px;
   background-position: center;
@@ -184,8 +188,10 @@ path {
   grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  max-height: 240px;
 }
 .body .All-place .callendar .day {
+  cursor: pointer;
   color: #e9d3c6;
   width: 40px;
   border-radius: 10px;
@@ -334,6 +340,7 @@ path {
 .addButton {
   position: absolute;
   bottom: 20px;
+  cursor: pointer;
   right: 20px;
   width: 50px;
   height: 50px;
@@ -403,4 +410,40 @@ path {
 
 .opacity07 {
   opacity: 0.7;
+}
+
+.statist {
+  max-width: 500px;
+  margin-top: 30px;
+  width: calc(100vw - 30px);
+  padding-top: 10px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #23302b;
+}
+.statist .title {
+  font-family: Raleway;
+  color: #e9d3c6;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+.statist .title .button {
+  cursor: pointer;
+}
+.statist .distogram {
+  background-color: #23302b;
+  margin-top: 20px;
+}
+.statist .text-stat {
+  font-family: Raleway;
+  color: #e9d3c6;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 400;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */

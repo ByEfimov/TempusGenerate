@@ -1,11 +1,14 @@
 import { useState } from "react";
 import SelectDay from "./selectDay";
 import { thisDay } from "../logic/time";
+import { useSelector } from "react-redux";
+import Statistic from "../components/statistic-router";
 
 function AllPlace(props) {
   const { OpenAdd, setOpenAdd, setSelectTilte } = props;
   const [openSelect, setOpenSelect] = useState(false);
   const [clickDay, setClickDay] = useState("");
+  const UserTasks = useSelector((state) => state.user.userTasks);
 
   function showDaysOnMounth() {
     function GetDaysOnMounth() {
@@ -61,6 +64,12 @@ function AllPlace(props) {
         ""
       )}
       <div className="callendar">{showDaysOnMounth()}</div>
+
+      {UserTasks.length > 0 ? (
+        <Statistic showDaysOnMounth={showDaysOnMounth}></Statistic>
+      ) : (
+        ""
+      )}
     </section>
   );
 }
