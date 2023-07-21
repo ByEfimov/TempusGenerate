@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function AddTask(props) {
+import AddTask from "../logic/AddTask";
+
+function AddTaskPlace(props) {
   const { setOpenAdd, dayOpen } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
   const dispatch = useDispatch();
@@ -15,46 +17,9 @@ function AddTask(props) {
       setOpenAdd(false);
     }, 500);
   }
-
-  function findMaxid() {
-    let result = 0;
-    UserTasks.map((item) => {
-      if (item.id > result) {
-        result = item.id;
-      }
-    });
-    result++;
-    return result;
-  }
-
-  function Addtask() {
-    if (inputName != "") {
-      let Value = 1000;
-      if (document.querySelector(".Priority").value == "С верху") {
-        UserTasks.map((task) => {
-          if (task.FirstPrior <= Value) {
-            Value = Value - 1;
-          }
-        });
-      } else if (document.querySelector(".Priority").value == "С низу") {
-        UserTasks.map((task) => {
-          if (task.FirstPrior >= Value) {
-            Value = Value + 1;
-          }
-        });
-      }
-
-      const NewTask = {
-        id: findMaxid(),
-        TaskName: inputName,
-        TaskSatus: "Make",
-        TaskPriority: Value,
-        date: inputDate,
-        FirstPrior: Value,
-      };
-      dispatch({ type: "ADD_TASK", payload: NewTask });
-      GoBack();
-    }
+  function Addhendler() {
+    console.log(UserTasks);
+    AddTask(inputName, inputDate, GoBack, UserTasks, dispatch);
   }
 
   return (
@@ -94,7 +59,7 @@ function AddTask(props) {
         <option value="3"></option>
       </datalist>
 
-      <button className="AddTaskButton" onClick={Addtask}>
+      <button className="AddTaskButton" onClick={Addhendler}>
         Добавить задачу
       </button>
 
@@ -102,4 +67,4 @@ function AddTask(props) {
     </div>
   );
 }
-export default AddTask;
+export default AddTaskPlace;

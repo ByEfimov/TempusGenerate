@@ -1,6 +1,6 @@
 import NoHaveTasks from "../components/nohavetasks";
 import AddButton from "../components/AddButton";
-import AddTask from "../components/Addtask";
+import AddTask from "./AddtaskPlace";
 import { SelectTask } from "../logic/selectTask";
 import DeleteTask from "../logic/deleteTask";
 import { useSelector } from "react-redux";

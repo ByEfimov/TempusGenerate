@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SelectDay from "./selectDay";
+import SelectDay from "./selectDayPlace";
 import { thisDay } from "../logic/time";
 import { useSelector } from "react-redux";
-import Statistic from "../components/statistic-router";
+import Statistic from "../components/statistic/statistic-router";
 
 function AllPlace(props) {
   const { OpenAdd, setOpenAdd, setSelectTilte } = props;

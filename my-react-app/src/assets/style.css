@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&family=Roboto:wght@400;500&display=swap");
 body {
-  min-height: calc(100dvh + 1px);
+  min-height: 100dvh;
 }
 
 html {
-  height: calc(100dvh + 1px);
+  height: 100dvh;
 }
 
 .header {
