@@ -116,7 +116,7 @@ path {
   }
   @keyframes openSelect {
     from {
-      margin-left: -92vh;
+      margin-left: -92dvh;
       opacity: 0;
     }
     to {
@@ -130,7 +130,7 @@ path {
       opacity: 1;
     }
     to {
-      margin-left: -92vh;
+      margin-left: -92dvh;
       opacity: 0;
     }
   }
@@ -139,7 +139,7 @@ path {
     flex-shrink: 0;
     width: 100vw;
     padding: 13px;
-    height: 92vh;
+    height: 92dvh;
     overflow: hidden;
     background-color: $--bg;
     .scroll {
@@ -207,9 +207,9 @@ path {
 }
 
 .noHaveTasks {
-  width: 100vw;
+  width: 100dvw;
   padding: 13px;
-  height: 92vh;
+  height: 92dvh;
   position: absolute;
   bottom: 0;
   display: flex;
@@ -263,15 +263,14 @@ path {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 92vh;
-  width: 100vw;
+  height: 92dvh;
+  width: 100dvw;
   background-color: $--secondColor;
   z-index: 100;
   animation: 0.5s AddTask forwards;
   display: flex;
   flex-direction: column;
   gap: 15px;
-
   padding: 13px;
   input {
     color: $--textColor;
@@ -284,20 +283,28 @@ path {
   input::placeholder {
     color: #585858;
   }
+  select {
+    color: $--textColor;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
   .Name {
     border-radius: 15px;
     background: $--thirdColo;
     padding: 12px 15px;
-    width: calc(100vw - 26px);
+    width: calc(100dvw - 26px);
   }
   .date {
-    width: calc(100vw - 26px);
+    width: calc(100dvw - 26px);
     border-radius: 15px;
     background: $--thirdColo;
     padding: 12px 15px;
   }
   .Priority {
-    width: calc(100vw - 26px);
+    width: calc(100dvw - 26px);
     border-radius: 15px;
     background: $--thirdColo;
     padding: 12px 15px;
@@ -318,7 +325,7 @@ path {
 
 @keyframes AddTask {
   from {
-    bottom: -92vh;
+    bottom: -92dvh;
     opacity: 0;
   }
   to {
@@ -332,7 +339,7 @@ path {
     opacity: 1;
   }
   to {
-    bottom: -92vh;
+    bottom: -92dvh;
     opacity: 0;
   }
 }

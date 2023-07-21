@@ -22,11 +22,24 @@ export const userReduser = (state = UserData, action) => {
           (task) => task.id !== action.payload + 1
         ),
       };
+    case "CHANGE_PRIOR":
+      return {
+        ...state.userTasks,
+        userTasks: state.userTasks.map((task) => {
+          if (task.id == action.taskId) {
+            return {
+              ...task,
+              TaskPriority: action.newPriority,
+            };
+          }
+          return task;
+        }),
+      };
     case "CHANGE_TASK":
       return {
         ...state.userTasks,
         userTasks: state.userTasks.map((task) => {
-          if (task.id === action.taskId) {
+          if (task.id == action.taskId) {
             return {
               ...task,
               TaskSatus: action.newStatus,
@@ -35,6 +48,7 @@ export const userReduser = (state = UserData, action) => {
           return task;
         }),
       };
+
     default:
       return state;
   }

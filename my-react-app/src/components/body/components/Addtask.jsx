@@ -7,7 +7,6 @@ function AddTask(props) {
   const dispatch = useDispatch();
   const [inputDate, setInputDate] = useState(dayOpen);
   const [inputName, setInputName] = useState("");
-  const [inputPriority, setInputPriority] = useState("");
   const RefAddtask = React.createRef();
 
   function GoBack() {
@@ -29,16 +28,31 @@ function AddTask(props) {
   }
 
   function Addtask() {
-    if (inputPriority > 0 && inputName != "") {
+    if (inputName != "") {
+      let Value = 1000;
+      if (document.querySelector(".Priority").value == "С верху") {
+        UserTasks.map((task) => {
+          if (task.FirstPrior <= Value) {
+            Value = Value - 1;
+          }
+        });
+      } else if (document.querySelector(".Priority").value == "С низу") {
+        UserTasks.map((task) => {
+          if (task.FirstPrior >= Value) {
+            Value = Value + 1;
+          }
+        });
+      }
+
       const NewTask = {
         id: findMaxid(),
         TaskName: inputName,
         TaskSatus: "Make",
-        TaskPriority: Number(inputPriority),
+        TaskPriority: Value,
         date: inputDate,
+        FirstPrior: Value,
       };
       dispatch({ type: "ADD_TASK", payload: NewTask });
-      console.log(UserTasks);
       GoBack();
     }
   }
@@ -63,20 +77,17 @@ function AddTask(props) {
         }}
         placeholder="Дата"
       />
-      <input
+      <select
         type="number"
         max="3"
         min="1"
         className="Priority"
         list="priorites"
-        value={inputPriority}
-        onChange={(e) =>
-          e.target.value >= 0 && e.target.value < 4
-            ? setInputPriority(e.target.value)
-            : ""
-        }
         placeholder="Приоритет"
-      />
+      >
+        <option>С верху</option>
+        <option>С низу</option>
+      </select>
       <datalist id="priorites">
         <option value="1"></option>
         <option value="2"></option>

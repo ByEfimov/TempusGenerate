@@ -16,7 +16,7 @@ html {
   color: #e9d3c6;
   font-weight: 500;
   font-size: 36px;
-  height: 8dvh;
+  height: 8vh;
   position: relative;
   background-color: #23302b;
 }
@@ -27,7 +27,7 @@ html {
   background-color: #23302b;
   z-index: 10;
   height: 60px;
-  width: 8dvh;
+  width: 8vh;
   padding-top: 2px;
   cursor: pointer;
   display: flex;
@@ -43,7 +43,7 @@ html {
   z-index: 10;
   height: 60px;
   padding-top: 2px;
-  width: 8dvh;
+  width: 8vh;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -207,7 +207,7 @@ path {
 }
 
 .noHaveTasks {
-  width: 100vw;
+  width: 100dvw;
   padding: 13px;
   height: 92dvh;
   position: absolute;
@@ -263,7 +263,7 @@ path {
   bottom: 0;
   left: 0;
   height: 92dvh;
-  width: 100vw;
+  width: 100dvw;
   background-color: #23302b;
   z-index: 100;
   animation: 0.5s AddTask forwards;
@@ -286,20 +286,28 @@ path {
 .AddTask input::placeholder {
   color: #585858;
 }
+.AddTask select {
+  color: #e9d3c6;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
 .AddTask .Name {
   border-radius: 15px;
   background: #2e3935;
   padding: 12px 15px;
-  width: calc(100vw - 26px);
+  width: calc(100dvw - 26px);
 }
 .AddTask .date {
-  width: calc(100vw - 26px);
+  width: calc(100dvw - 26px);
   border-radius: 15px;
   background: #2e3935;
   padding: 12px 15px;
 }
 .AddTask .Priority {
-  width: calc(100vw - 26px);
+  width: calc(100dvw - 26px);
   border-radius: 15px;
   background: #2e3935;
   padding: 12px 15px;
@@ -458,4 +466,4 @@ path {
   margin-top: 20px;
   font-weight: 400;
   text-align: center;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

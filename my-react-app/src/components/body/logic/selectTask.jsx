@@ -13,6 +13,11 @@ export function SelectTask(e) {
             taskId: e.target.id,
             newStatus: "Make",
           });
+          DellDispatch({
+            type: "CHANGE_PRIOR",
+            taskId: e.target.id,
+            newPriority: task.FirstPrior,
+          });
         }
         e.target.style.opacity = "1";
       });
@@ -25,6 +30,11 @@ export function SelectTask(e) {
             type: "CHANGE_TASK",
             taskId: e.target.id,
             newStatus: "Done",
+          });
+          DellDispatch({
+            type: "CHANGE_PRIOR",
+            taskId: e.target.id,
+            newPriority: 9999,
           });
         }
         e.target.style.opacity = "0.7";
