@@ -10,6 +10,7 @@ function AddTaskPlace(props) {
   const [inputDate, setInputDate] = useState(dayOpen);
   const [inputName, setInputName] = useState("");
   const RefAddtask = React.createRef();
+  console.log(UserTasks);
 
   function GoBack() {
     RefAddtask.current.style.cssText = "animation: 0.5s CloseAddTask forwards;";
@@ -48,10 +49,11 @@ function AddTaskPlace(props) {
         min="1"
         className="Priority"
         list="priorites"
+        defaultValue="down"
         placeholder="Приоритет"
       >
-        <option>Сверху</option>
-        <option selected>Снизу</option>
+        <option value="up">Сверху</option>
+        <option value="down">Снизу</option>
       </select>
 
       <button className="AddTaskButton" onClick={Addhendler}>

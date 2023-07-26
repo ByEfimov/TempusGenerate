@@ -13,16 +13,16 @@ function AddTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
   function Addtasks() {
     if (inputName != "") {
       let Value = 1000;
-      if (document.querySelector(".Priority").value == "С верху") {
+      if (document.querySelector(".Priority").value == "up") {
         UserTasks.map((task) => {
           if (task.FirstPrior <= Value) {
-            Value = Value - 1;
+            Value = task.FirstPrior - 1;
           }
         });
-      } else if (document.querySelector(".Priority").value == "С низу") {
+      } else if (document.querySelector(".Priority").value == "down") {
         UserTasks.map((task) => {
           if (task.FirstPrior >= Value) {
-            Value = Value + 1;
+            Value = task.FirstPrior + 1;
           }
         });
       }
@@ -36,6 +36,7 @@ function AddTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
         FirstPrior: Value,
       };
       dispatch({ type: "ADD_TASK", payload: NewTask });
+
       GoBack();
     }
   }
