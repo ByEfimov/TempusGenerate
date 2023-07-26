@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Statistic from "../components/statistic/statistic-router";
 
 function AllPlace(props) {
-  const { OpenAdd, setOpenAdd, setSelectTilte } = props;
+  const { setSelectTilte, setSettingOpen } = props;
   const [openSelect, setOpenSelect] = useState(false);
   const [clickDay, setClickDay] = useState("");
   const UserTasks = useSelector((state) => state.user.userTasks);
@@ -49,16 +49,18 @@ function AllPlace(props) {
     }
   }
 
+  function openSettings() {
+    setSettingOpen(true);
+    setSelectTilte("настройки");
+  }
+
   return (
     <section className="All-place place" onClick={selectDay}>
       {openSelect ? (
         <SelectDay
-          OpenAdd={OpenAdd}
           setOpenSelect={setOpenSelect}
-          setClickDay={setClickDay}
           clickDay={clickDay}
           setSelectTilte={setSelectTilte}
-          setOpenAdd={setOpenAdd}
         ></SelectDay>
       ) : (
         ""
@@ -70,6 +72,9 @@ function AllPlace(props) {
       ) : (
         ""
       )}
+      <div className="settings-button" onClick={openSettings}>
+        Открыть настройки
+      </div>
     </section>
   );
 }

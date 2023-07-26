@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { nextDate, lastDate, thisDate } from "../body/logic/time";
+import { useCustomHook } from "../../App";
 
 function Header(props) {
   const { selectTilte, selectMode, setSelectMode, RefBody } = props;
+  const { OpenAdd } = useCustomHook();
 
   function selectHeader(e) {
     if (e.target.classList.contains("header-arrow-left")) {
@@ -11,6 +13,7 @@ function Header(props) {
       swipeRight();
     }
   }
+
   const RefTitle = React.createRef();
 
   function showTitle() {
@@ -29,26 +32,30 @@ function Header(props) {
   }
 
   function swipeLeft() {
-    if (selectMode === "ToDay") {
-      RefBody.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
-      RefTitle.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
-      setSelectMode("AllDays");
-    } else if (selectMode === "TomorrowDay") {
-      RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-      RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-      setSelectMode("ToDay");
+    if (!OpenAdd) {
+      if (selectMode === "ToDay") {
+        RefBody.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
+        RefTitle.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
+        setSelectMode("AllDays");
+      } else if (selectMode === "TomorrowDay") {
+        RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+        RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+        setSelectMode("ToDay");
+      }
     }
   }
 
   function swipeRight() {
-    if (selectMode === "ToDay") {
-      RefBody.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
-      RefTitle.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
-      setSelectMode("TomorrowDay");
-    } else if (selectMode === "AllDays") {
-      RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-      RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-      setSelectMode("ToDay");
+    if (!OpenAdd) {
+      if (selectMode === "ToDay") {
+        RefBody.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
+        RefTitle.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
+        setSelectMode("TomorrowDay");
+      } else if (selectMode === "AllDays") {
+        RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+        RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+        setSelectMode("ToDay");
+      }
     }
   }
 

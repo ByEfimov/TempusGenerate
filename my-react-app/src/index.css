@@ -107,3 +107,33 @@ label {
 legend {
   display: block;
 }
+
+html[data-theme="Stas"] {
+  --bg: #16171b;
+  --secondColor: #202124;
+  --w: #fff;
+  --textColor: #cccccc;
+  --thirdColo: #2b2c30;
+  --red: #a3332b;
+  --green: #017e54;
+}
+
+html[data-theme="Tempus"] {
+  --bg: #161c1a;
+  --secondColor: #23302b;
+  --w: #fff;
+  --textColor: #e9d3c6;
+  --thirdColo: #2e3935;
+  --red: #8d2c25;
+  --green: #568371;
+}
+
+html[data-theme="Apple"] {
+  --bg: #000000;
+  --secondColor: #1c1c1e;
+  --w: #fff;
+  --textColor: #fcfcfc;
+  --thirdColo: #28272b;
+  --red: #91180f;
+  --green: #017afb;
+}

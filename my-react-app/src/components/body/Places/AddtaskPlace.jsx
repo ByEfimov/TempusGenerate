@@ -17,6 +17,7 @@ function AddTaskPlace(props) {
       setOpenAdd(false);
     }, 500);
   }
+
   function Addhendler() {
     console.log(UserTasks);
     AddTask(inputName, inputDate, GoBack, UserTasks, dispatch);
@@ -51,13 +52,8 @@ function AddTaskPlace(props) {
         placeholder="Приоритет"
       >
         <option>С верху</option>
-        <option>С низу</option>
+        <option selected>С низу</option>
       </select>
-      <datalist id="priorites">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-      </datalist>
 
       <button className="AddTaskButton" onClick={Addhendler}>
         Добавить задачу

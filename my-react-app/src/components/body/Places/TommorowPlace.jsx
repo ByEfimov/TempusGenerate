@@ -5,21 +5,18 @@ import { nextDate } from "../logic/time";
 import DeleteTask from "../logic/deleteTask";
 import { SelectTask } from "../logic/selectTask";
 import { useSelector } from "react-redux";
+import { sortedTasksNextDay } from "../logic/sorting";
+import { useCustomHook } from "../../../App";
 
-function TommorowPlace(props) {
-  const { UserData, setOpenAdd, OpenAdd } = props;
+function TommorowPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
-  const key = "TaskPriority";
-  function sortedTasksNextDay() {
-    return UserTasks.sort((user1, user2) =>
-      user1[key] > user2[key] ? 1 : -1
-    ).filter((user) => user.date === nextDate());
-  }
+  const { OpenAdd, setOpenAdd } = useCustomHook();
+
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
       <div className="scroll">
-        {sortedTasksNextDay().length > 0 ? (
-          sortedTasksNextDay().map((task) => {
+        {sortedTasksNextDay(UserTasks, nextDate).length > 0 ? (
+          sortedTasksNextDay(UserTasks, nextDate).map((task) => {
             return (
               <div
                 className={
@@ -47,17 +44,13 @@ function TommorowPlace(props) {
           ></NoHaveTasks>
         )}
       </div>
-      {sortedTasksNextDay().length > 0 ? (
+      {sortedTasksNextDay(UserTasks, nextDate).length > 0 ? (
         <AddButton setOpenAdd={setOpenAdd}></AddButton>
       ) : (
         ""
       )}
       {OpenAdd ? (
-        <AddTask
-          UserData={UserData}
-          dayOpen={nextDate()}
-          setOpenAdd={setOpenAdd}
-        ></AddTask>
+        <AddTask dayOpen={nextDate()} setOpenAdd={setOpenAdd}></AddTask>
       ) : (
         ""
       )}

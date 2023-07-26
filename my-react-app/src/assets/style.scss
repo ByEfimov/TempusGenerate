@@ -7,23 +7,55 @@ html {
   height: 100dvh;
 }
 
+html[data-theme="Stas"] {
+  --bg: #16171b;
+  --secondColor: #202124;
+  --w: #fff;
+  --textColor: #c1c1c1;
+  --thirdColo: #2b2c30;
+  --red: #a3332b;
+  --green: #017e54;
+}
+
+html[data-theme="Tempus"] {
+  --bg: #161c1a;
+  --secondColor: #23302b;
+  --w: #fff;
+  --textColor: #e9d3c6;
+  --thirdColo: #2e3935;
+  --red: #8d2c25;
+  --green: #23302b;
+}
+
+html[data-theme="Apple"] {
+  --bg: #000000;
+  --secondColor: #1c1c1e;
+  --w: #fff;
+  --textColor: #fcfcfc;
+  --thirdColo: #28272b;
+  --red: #91180f;
+  --green: #017afb;
+}
+
 .header {
   width: 100dvw;
   font-family: Raleway;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $--textColor;
+  color: var(--textColor);
   font-weight: 500;
   font-size: 36px;
+  transition: color 200ms linear, background-color 200ms linear;
   height: 8vh;
   position: relative;
-  background-color: $--secondColor;
+  background-color: var(--secondColor);
   &-arrow-right {
     transform: rotate(-90deg);
     position: absolute;
     right: -30px;
-    background-color: $--secondColor;
+    transition: color 200ms linear, background-color 200ms linear;
+    background-color: var(--secondColor);
     z-index: 10;
     height: 60px;
     width: 8vh;
@@ -38,7 +70,8 @@ html {
     transform: rotate(90deg);
     position: absolute;
     left: -30px;
-    background-color: $--secondColor;
+    transition: color 200ms linear, background-color 200ms linear;
+    background-color: var(--secondColor);
     z-index: 10;
     height: 60px;
     padding-top: 2px;
@@ -72,16 +105,18 @@ path {
   padding: 10px 10px;
   border-radius: 10px;
   display: flex;
+  transition: color 200ms linear, background-color 200ms linear;
   cursor: pointer;
-  background-color: $--secondColor;
+  background-color: var(--secondColor);
   .Label {
     pointer-events: none;
     font-family: Raleway;
-    color: $--textColor;
+    color: var(--textColor);
     width: 100%;
     word-break: break-all;
     font-weight: 400;
     font-size: 17px;
+    transition: color 200ms linear, background-color 200ms linear;
   }
   .date {
     white-space: nowrap;
@@ -90,7 +125,8 @@ path {
     padding-left: 10px;
     font-family: Raleway;
     font-weight: 600;
-    color: #920404;
+    color: var(--red);
+    transition: color 200ms linear, background-color 200ms linear;
   }
   .CheckBox {
     pointer-events: none;
@@ -140,8 +176,9 @@ path {
     width: 100vw;
     padding: 13px;
     height: 92dvh;
+    transition: color 200ms linear, background-color 200ms linear;
     overflow: hidden;
-    background-color: $--bg;
+    background-color: var(--bg);
     .scroll {
       display: flex;
       overflow-y: auto;
@@ -189,18 +226,20 @@ path {
       max-height: 240px;
       .day {
         cursor: pointer;
-        color: $--textColor;
+        color: var(--textColor);
         width: 40px;
         border-radius: 10px;
+        transition: color 200ms linear, background-color 200ms linear;
         font-family: Roboto;
         height: 40px;
         flex-shrink: 1;
         padding: 10px;
-        background-color: $--secondColor;
+        background-color: var(--secondColor);
         text-align: center;
       }
       .color {
-        background-color: #323f3b;
+        transition: color 200ms linear, background-color 200ms linear;
+        background-color: var(--green);
       }
     }
   }
@@ -223,16 +262,18 @@ path {
     flex-direction: column;
     align-items: center;
     font-family: Raleway;
-    color: $--textColor;
+    color: var(--textColor);
     font-size: 25px;
     font-weight: 500;
+    transition: color 200ms linear, background-color 200ms linear;
     gap: 15px;
-    background-color: $--secondColor;
+    background-color: var(--secondColor);
     border-radius: 10px;
     .addtask {
-      background-color: $--thirdColo;
+      background-color: var(--thirdColo);
       padding: 10px;
       font-size: 20px;
+      transition: color 200ms linear, background-color 200ms linear;
       border-radius: 8px;
     }
   }
@@ -265,61 +306,66 @@ path {
   left: 0;
   height: 92dvh;
   width: 100dvw;
-  background-color: $--secondColor;
+  background-color: var(--secondColor);
   z-index: 100;
   animation: 0.5s AddTask forwards;
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 13px;
+  transition: color 200ms linear, background-color 200ms linear;
   input {
-    color: $--textColor;
+    color: var(--textColor);
     font-family: Raleway;
     font-size: 20px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    transition: color 200ms linear, background-color 200ms linear;
   }
   input::placeholder {
     color: #585858;
   }
   select {
-    color: $--textColor;
+    color: var(--textColor);
     font-family: Raleway;
     font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    transition: color 200ms linear, background-color 200ms linear;
   }
   .Name {
     border-radius: 15px;
-    background: $--thirdColo;
+    background: var(--thirdColo);
     padding: 12px 15px;
     width: calc(100dvw - 26px);
   }
   .date {
     width: calc(100dvw - 26px);
     border-radius: 15px;
-    background: $--thirdColo;
+    background-color: var(--thirdColo);
     padding: 12px 15px;
+    transition: color 200ms linear, background-color 200ms linear;
   }
   .Priority {
     width: calc(100dvw - 26px);
     border-radius: 15px;
-    background: $--thirdColo;
+    background: var(--thirdColo);
     padding: 12px 15px;
   }
   .AddTaskButton {
-    color: $--textColor;
+    color: var(--textColor);
     font-family: Raleway;
     font-size: 20px;
     padding: 12px 15px;
     font-style: normal;
+    transition: background-color, border 5000ms linear;
     font-weight: 300;
     line-height: normal;
     border-radius: 15px;
     margin-top: 50px;
-    border: 2px solid $--textColor;
+    border: 2px solid var(--textColor);
   }
 }
 
@@ -355,11 +401,12 @@ path {
   justify-content: center;
   align-items: center;
   font-family: Raleway;
-  color: $--textColor;
+  color: var(--textColor);
   font-size: 40px;
   font-weight: 500;
+  transition: color 200ms linear, background-color 200ms linear;
   border-radius: 10px;
-  background-color: $--secondColor;
+  background-color: var(--green);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 70%;
@@ -376,11 +423,12 @@ path {
   justify-content: center;
   align-items: center;
   font-family: Raleway;
-  color: $--textColor;
+  color: var(--textColor);
   font-size: 40px;
   font-weight: 500;
+  transition: color 200ms linear, background-color 200ms linear;
   border-radius: 10px;
-  background-color: $--secondColor;
+  background-color: var(--secondColor);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 70%;
@@ -390,7 +438,8 @@ path {
   right: 20px;
 }
 .bg {
-  background-color: $--thirdColo;
+  background-color: var(--thirdColo);
+  transition: color 200ms linear, background-color 200ms linear;
 }
 
 @keyframes Opasity1 {
@@ -427,12 +476,14 @@ path {
   padding-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: $--secondColor;
+  transition: color 200ms linear, background-color 200ms linear;
+  background-color: var(--secondColor);
   .title {
     transition: all 0s;
     font-family: Raleway;
-    color: $--textColor;
+    color: var(--textColor);
     font-size: 25px;
+    transition: color 200ms linear, background-color 200ms linear;
     font-weight: 500;
     text-align: left;
     display: flex;
@@ -446,9 +497,10 @@ path {
     display: flex;
     width: 100%;
     justify-content: center;
-    background-color: $--secondColor;
+    background-color: var(--secondColor);
     margin-top: 20px;
     transition: all 0s;
+    transition: color 200ms linear, background-color 200ms linear;
     overflow: hidden;
   }
   .distogram canvas {
@@ -457,10 +509,60 @@ path {
   }
   .text-stat {
     font-family: Raleway;
-    color: $--textColor;
+    color: var(--textColor);
     font-size: 20px;
     margin-top: 20px;
     font-weight: 400;
     text-align: center;
   }
+}
+
+.settings {
+  position: absolute;
+  .settings-theme {
+    background-color: var(--secondColor);
+    border-radius: 10px;
+    padding: 10px;
+    transition: color 200ms linear, background-color 200ms linear;
+    .title {
+      font-size: 25px;
+      font-weight: 400;
+      font-family: Raleway;
+      transition: color 200ms linear, background-color 200ms linear;
+      color: var(--textColor);
+    }
+    .themes {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+      justify-content: space-between;
+      .theme {
+        img {
+          border-radius: 50%;
+          border: 1px solid var(--textColor);
+          pointer-events: none;
+        }
+        .select {
+          border: 1px solid var(--green);
+        }
+      }
+    }
+  }
+}
+
+.settings-button {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  transition: color 200ms linear, background-color 200ms linear;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: var(--secondColor);
+  font-family: Raleway;
+  color: var(--textColor);
 }

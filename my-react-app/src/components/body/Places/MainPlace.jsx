@@ -5,24 +5,18 @@ import { thisDate } from "../logic/time";
 import { SelectTask } from "../logic/selectTask";
 import DeleteTask from "../logic/deleteTask";
 import { useSelector } from "react-redux";
+import { sortedTasksToDay } from "../logic/sorting";
+import { useCustomHook } from "../../../App";
 
-function MainPlace(props) {
-  const { UserData, setOpenAdd, OpenAdd } = props;
+function MainPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
-
-  const key = "TaskPriority";
-
-  function sortedTasksToDay() {
-    return UserTasks.sort((user1, user2) =>
-      user1[key] > user2[key] ? 1 : -1
-    ).filter((user) => user.date === thisDate());
-  }
+  const { OpenAdd, setOpenAdd } = useCustomHook();
 
   return (
     <section className="Main-place place" id="modetoday">
       <div className="scroll">
-        {sortedTasksToDay().length > 0 ? (
-          sortedTasksToDay().map((task) => {
+        {sortedTasksToDay(UserTasks, thisDate).length > 0 ? (
+          sortedTasksToDay(UserTasks, thisDate).map((task) => {
             return (
               <div
                 className={
@@ -47,17 +41,13 @@ function MainPlace(props) {
           <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>
         )}
       </div>
-      {sortedTasksToDay().length > 0 ? (
+      {sortedTasksToDay(UserTasks, thisDate).length > 0 ? (
         <AddButton setOpenAdd={setOpenAdd}></AddButton>
       ) : (
         ""
       )}
       {OpenAdd ? (
-        <AddTask
-          UserData={UserData}
-          dayOpen={thisDate()}
-          setOpenAdd={setOpenAdd}
-        ></AddTask>
+        <AddTask dayOpen={thisDate()} setOpenAdd={setOpenAdd}></AddTask>
       ) : (
         ""
       )}

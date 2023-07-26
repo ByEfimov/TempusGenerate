@@ -1,5 +1,4 @@
 function AddTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
-  console.log(UserTasks ? console.log(UserTasks) : "");
   function findMaxid() {
     let result = 0;
     UserTasks.map((item) => {

@@ -2,42 +2,37 @@ import AllPlace from "./Places/AllPlace";
 import TommorowPlace from "./Places/TommorowPlace";
 import MainPlace from "./Places/MainPlace";
 import { useSelector, useDispatch } from "react-redux";
+import SettingsPlace from "./Places/SettingsPlace";
+import { useState } from "react";
 
 export let UsersData;
 export let DellDispatch;
 
 function Body(props) {
-  const {
-    setSelectTilte,
-    OpenAddToDay,
-    RefBody,
-    setOpenAddToDay,
-    OpenAddTommorow,
-    setOpenAddTommorow,
-    OpenAddAll,
-    setOpenAddAll,
-  } = props;
+  const { setSelectTilte, RefBody } = props;
+  const [SettingOpen, setSettingOpen] = useState(false);
 
-  const dispatch = useDispatch();
+  DellDispatch = useDispatch();
 
   const UserTasks = useSelector((state) => state.user.userTasks);
   UsersData = UserTasks;
-  DellDispatch = dispatch;
   return (
     <section className="body" ref={RefBody}>
       <AllPlace
-        OpenAdd={OpenAddAll}
-        setOpenAdd={setOpenAddAll}
+        setSettingOpen={setSettingOpen}
         setSelectTilte={setSelectTilte}
       ></AllPlace>
-      <MainPlace
-        OpenAdd={OpenAddToDay}
-        setOpenAdd={setOpenAddToDay}
-      ></MainPlace>
-      <TommorowPlace
-        OpenAdd={OpenAddTommorow}
-        setOpenAdd={setOpenAddTommorow}
-      ></TommorowPlace>
+      <MainPlace></MainPlace>
+      <TommorowPlace></TommorowPlace>
+
+      {SettingOpen ? (
+        <SettingsPlace
+          setSelectTilte={setSelectTilte}
+          setSettingOpen={setSettingOpen}
+        ></SettingsPlace>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

@@ -1,7 +1,9 @@
 import Chart from "chart.js/auto";
 import { useSelector } from "react-redux";
+import { useTheme } from "../../../../../hooks/UseTheme";
 
 function Done(props) {
+  const { theme } = useTheme();
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { showDaysOnMounth } = props;
 
@@ -50,7 +52,12 @@ function Done(props) {
                 {
                   spanGaps: true,
                   label: "",
-                  borderColor: "#e9d3c6",
+                  borderColor:
+                    theme == "Apple"
+                      ? "#017afb"
+                      : theme == "Tempus"
+                      ? "#446457"
+                      : "#017e54",
                   data: data.map((row) => row.count),
                 },
               ],
@@ -63,7 +70,12 @@ function Done(props) {
             plugins: {},
           });
           Chart.defaults.elements.point = "false";
-          Chart.defaults.elements.bar.backgroundColor = "#e9d3c6";
+          Chart.defaults.elements.bar.backgroundColor =
+            theme == "Apple"
+              ? "#017afb"
+              : theme == "Tempus"
+              ? "#446457"
+              : "#017e54";
           Chart.defaults.plugins.tooltip.enabled = false;
           Chart.defaults.plugins.legend.display = false;
           Chart.defaults.font.size = "13";

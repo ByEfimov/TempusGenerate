@@ -1,7 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&family=Roboto:wght@400;500&display=swap");
 
-$--bg: #161c1a;
-$--secondColor: #23302b;
-$--w: #fff;
-$--textColor: #e9d3c6;
-$--thirdColo: #2e3935;
+html[data-theme="Stas"] {
+  $--bg: #16171b;
+  $--secondColor: #202124;
+  $--w: #fff;
+  $--textColor: #c1c1c1;
+  $--thirdColo: #2b2c30;
+  $--red: #a3332b;
+  $--green: #017e54;
+}
+
+html[data-theme="Tempus"] {
+  $--bg: #161c1a;
+  $--secondColor: #23302b;
+  $--w: #fff;
+  $--textColor: #e9d3c6;
+  $--thirdColo: #2e3935;
+  $--red: #8d2c25;
+  $--green: #23302b;
+}
+
+html[data-theme="Apple"] {
+  $--bg: #000000;
+  $--secondColor: #1c1c1e;
+  $--w: #fff;
+  $--textColor: #fcfcfc;
+  $--thirdColo: #28272b;
+  $--red: #91180f;
+  $--green: #017afb;
+}

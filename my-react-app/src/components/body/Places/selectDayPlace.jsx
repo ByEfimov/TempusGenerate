@@ -5,14 +5,14 @@ import { SelectTask } from "../logic/selectTask";
 import DeleteTask from "../logic/deleteTask";
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
+import { sortedTasksSelectDay } from "../logic/sorting";
+import { useCustomHook } from "../../../App";
 
 function SelectDay(props) {
-  const { setOpenSelect, setSelectTilte, OpenAdd, setOpenAdd, clickDay } =
-    props;
-
-  const RefSelectDay = React.createRef();
-
+  const { setOpenSelect, setSelectTilte, clickDay } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
+  const RefSelectDay = React.createRef();
+  const { OpenAdd, setOpenAdd } = useCustomHook();
 
   function selectDate(day) {
     const date = new Date();
@@ -20,13 +20,6 @@ function SelectDay(props) {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate;
-  }
-
-  function sortedTasksSelectDay() {
-    const key = "TaskPriority";
-    return UserTasks.sort((user1, user2) =>
-      user1[key] > user2[key] ? 1 : -1
-    ).filter((user) => user.date === selectDate(clickDay));
   }
 
   function GoBack() {
@@ -45,8 +38,8 @@ function SelectDay(props) {
   return (
     <div className="place selectDay" ref={RefSelectDay}>
       <div className="scroll">
-        {sortedTasksSelectDay().length > 0 ? (
-          sortedTasksSelectDay().map((task) => {
+        {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
+          sortedTasksSelectDay(UserTasks, selectDate, clickDay).map((task) => {
             return (
               <div
                 className={
@@ -77,12 +70,12 @@ function SelectDay(props) {
           <NoHaveTasks setOpenAdd={setOpenAdd} page="MainPlace"></NoHaveTasks>
         )}
       </div>
-      {sortedTasksSelectDay().length > 0 ? (
+      {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
         <AddButton setOpenAdd={setOpenAdd}></AddButton>
       ) : (
         ""
       )}
-      {sortedTasksSelectDay().length > 0 ? (
+      {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
         <div className="GoBack" onClick={GoBack}></div>
       ) : (
         <div className="GoBack s" onClick={GoBack}></div>

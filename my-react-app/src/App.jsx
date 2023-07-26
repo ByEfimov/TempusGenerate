@@ -3,13 +3,17 @@ import "./App.css";
 import "./assets/style.css";
 import Body from "./components/body/Body";
 import Header from "./components/header/header";
+import { useTheme } from "./hooks/UseTheme";
+
+export let useCustomHook = () => {
+  const [OpenAdd, setOpenAdd] = useState(false);
+  return { OpenAdd, setOpenAdd };
+};
 
 function App() {
   const [selectTilte, setSelectTilte] = useState("Все дни");
   const [selectMode, setSelectMode] = useState("ToDay");
-  const [OpenAddToDay, setOpenAddToDay] = useState(false);
-  const [OpenAddTommorow, setOpenAddTommorow] = useState(false);
-  const [OpenAddAll, setOpenAddAll] = useState(false);
+  const { theme, setTheme } = useTheme();
   const RefBody = React.createRef();
   return (
     <>
@@ -19,16 +23,7 @@ function App() {
         selectTilte={selectTilte}
         RefBody={RefBody}
       ></Header>
-      <Body
-        RefBody={RefBody}
-        OpenAddToDay={OpenAddToDay}
-        setOpenAddToDay={setOpenAddToDay}
-        OpenAddTommorow={OpenAddTommorow}
-        setOpenAddTommorow={setOpenAddTommorow}
-        OpenAddAll={OpenAddAll}
-        setOpenAddAll={setOpenAddAll}
-        setSelectTilte={setSelectTilte}
-      ></Body>
+      <Body RefBody={RefBody} setSelectTilte={setSelectTilte}></Body>
       <footer className="footers"></footer>
     </>
   );
