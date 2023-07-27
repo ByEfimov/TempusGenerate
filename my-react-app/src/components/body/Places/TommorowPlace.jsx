@@ -16,7 +16,13 @@ function TommorowPlace() {
       <div className="scroll">
         {sortedTasksNextDay(UserTasks, nextDate).length > 0 ? (
           sortedTasksNextDay(UserTasks, nextDate).map((task) => {
-            return TaskRender(task, "Завтра");
+            return (
+              <TaskRender
+                task={task}
+                Day={"Сегодня"}
+                key={task.id}
+              ></TaskRender>
+            );
           })
         ) : (
           <NoHaveTasks

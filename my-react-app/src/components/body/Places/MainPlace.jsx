@@ -16,7 +16,13 @@ function MainPlace() {
       <div className="scroll">
         {sortedTasksToDay(UserTasks, thisDate).length > 0 ? (
           sortedTasksToDay(UserTasks, thisDate).map((task) => {
-            return TaskRender(task, "Сегодня");
+            return (
+              <TaskRender
+                task={task}
+                Day={"Сегодня"}
+                key={task.id}
+              ></TaskRender>
+            );
           })
         ) : (
           <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>

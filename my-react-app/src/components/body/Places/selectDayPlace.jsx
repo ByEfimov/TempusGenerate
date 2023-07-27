@@ -40,15 +40,18 @@ function SelectDay(props) {
       <div className="scroll">
         {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
           sortedTasksSelectDay(UserTasks, selectDate, clickDay).map((task) => {
-            return TaskRender(
-              task,
-              `${
-                task.date[5] +
-                task.date[6] +
-                task.date[7] +
-                task.date[8] +
-                task.date[9]
-              }`
+            return (
+              <TaskRender
+                task={task}
+                Day={
+                  task.date[5] +
+                  task.date[6] +
+                  task.date[7] +
+                  task.date[8] +
+                  task.date[9]
+                }
+                key={task.id}
+              ></TaskRender>
             );
           })
         ) : (
