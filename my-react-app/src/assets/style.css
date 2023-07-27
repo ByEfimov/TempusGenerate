@@ -37,8 +37,23 @@ html[data-theme=Apple] {
   --green: #017afb;
 }
 
+html {
+  --height92: 92vh;
+  --height8: 8vh;
+  --width100: 100vw;
+  --height100: 100vh;
+}
+
+@supports (height: 100dvh) {
+  html {
+    --height92: 92dvh;
+    --height8: 8dvh;
+    --height100: 100dvh;
+    --width100: 100dvw;
+  }
+}
 .header {
-  width: 100dvw;
+  width: var(--width100);
   font-family: Raleway;
   display: flex;
   align-items: center;
@@ -47,7 +62,7 @@ html[data-theme=Apple] {
   font-weight: 500;
   font-size: 36px;
   transition: color 200ms linear, background-color 200ms linear;
-  height: 8vh;
+  height: var(--height8);
   position: relative;
   background-color: var(--secondColor);
 }
@@ -83,7 +98,7 @@ html[data-theme=Apple] {
 }
 .header .title {
   display: flex;
-  width: 100dvw;
+  width: var(--width100);
   transition: all 0.5s;
   pointer-events: none;
   transform: translate3d(-100vw, 0px, 0px);
@@ -91,7 +106,7 @@ html[data-theme=Apple] {
 .header .title .title-text {
   text-align: center;
   padding: 0 20px;
-  min-width: 100vw;
+  min-width: var(--width100);
 }
 
 svg {
@@ -156,21 +171,21 @@ path {
 }
 @keyframes openSelect {
   from {
-    margin-left: -92dvh;
+    margin-right: var(--height92);
     opacity: 0;
   }
   to {
-    margin-left: 0;
+    margin-right: 0;
     opacity: 1;
   }
 }
 @keyframes closeSelect {
   from {
-    margin-left: 0;
+    margin-right: 0;
     opacity: 1;
   }
   to {
-    margin-left: -92dvh;
+    margin-right: var(--height92);
     opacity: 0;
   }
 }
@@ -178,7 +193,7 @@ path {
   flex-shrink: 0;
   width: 100vw;
   padding: 13px;
-  height: 92dvh;
+  height: var(--height92);
   transition: color 200ms linear, background-color 200ms linear;
   overflow: hidden;
   background-color: var(--bg);
@@ -246,9 +261,9 @@ path {
 }
 
 .noHaveTasks {
-  width: 100dvw;
+  width: var(--width100);
   padding: 13px;
-  height: 92dvh;
+  height: var(--height92);
   position: absolute;
   bottom: 0;
   display: flex;
@@ -303,8 +318,8 @@ path {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 92dvh;
-  width: 100dvw;
+  height: var(--height92);
+  width: var(--width100);
   background-color: var(--secondColor);
   z-index: 100;
   animation: 0.5s AddTask forwards;
@@ -342,17 +357,17 @@ path {
   border-radius: 15px;
   background: var(--thirdColo);
   padding: 12px 15px;
-  width: calc(100dvw - 26px);
+  width: calc(var(--width100) - 26px);
 }
 .AddTask .date {
-  width: calc(100dvw - 26px);
+  width: calc(var(--width100) - 26px);
   border-radius: 15px;
   background-color: var(--thirdColo);
   padding: 12px 15px;
   transition: color 200ms linear, background-color 200ms linear;
 }
 .AddTask .Priority {
-  width: calc(100dvw - 26px);
+  width: calc(var(--width100) - 26px);
   border-radius: 15px;
   background: var(--thirdColo);
   padding: 12px 15px;
@@ -373,21 +388,21 @@ path {
 
 @keyframes AddTask {
   from {
-    bottom: -92dvh;
+    top: var(--height92);
     opacity: 0;
   }
   to {
-    bottom: 0;
+    top: 0;
     opacity: 1;
   }
 }
 @keyframes CloseAddTask {
   from {
-    bottom: 0;
+    top: 0;
     opacity: 1;
   }
   to {
-    bottom: -92dvh;
+    top: var(--height92);
     opacity: 0;
   }
 }

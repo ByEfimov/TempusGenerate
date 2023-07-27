@@ -10,7 +10,6 @@ function All(props) {
   setTimeout(() => {
     createDistAll();
   }, 1);
-  console.log(theme);
 
   function createDistAll() {
     var existingChart = Chart.getChart("distogram-body-all");

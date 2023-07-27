@@ -137,3 +137,14 @@ html[data-theme="Apple"] {
   --red: #91180f;
   --green: #017afb;
 }
+
+html[data-support-svh="True"] {
+  --height92: 92dvh;
+  --height8: 8dvh;
+  --height100: 100dvh;
+}
+html[data-support-svh="False"] {
+  --height92: 92vh;
+  --height8: 8vh;
+  --height100: 100vh;
+}

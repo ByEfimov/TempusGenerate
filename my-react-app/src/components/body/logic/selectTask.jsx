@@ -34,7 +34,7 @@ export function SelectTask(e) {
           DellDispatch({
             type: "CHANGE_PRIOR",
             taskId: e.target.id,
-            newPriority: 9999,
+            newPriority: task.FirstPrior + 1000,
           });
         }
         e.target.style.opacity = "0.7";

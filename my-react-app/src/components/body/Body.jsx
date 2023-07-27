@@ -16,6 +16,7 @@ function Body(props) {
 
   const UserTasks = useSelector((state) => state.user.userTasks);
   UsersData = UserTasks;
+  console.log(UserTasks);
   return (
     <section className="body" ref={RefBody}>
       <AllPlace
