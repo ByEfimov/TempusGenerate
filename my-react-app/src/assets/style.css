@@ -210,6 +210,27 @@ path {
   flex-direction: column;
   gap: 15px;
 }
+.body .place .scroll .groups {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.body .place .scroll .groups .group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.body .place .scroll .groups .group .title {
+  font-family: Raleway;
+  color: var(--textColor);
+  font-size: 18px;
+  font-weight: 500;
+}
+.body .place .scroll .groups .group .tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 .body .Main-place {
   display: flex;
   overflow-y: hidden;

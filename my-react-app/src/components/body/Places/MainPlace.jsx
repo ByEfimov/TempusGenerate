@@ -15,15 +15,76 @@ function MainPlace() {
     <section className="Main-place place" id="modetoday">
       <div className="scroll">
         {sortedTasksToDay(UserTasks, thisDate).length > 0 ? (
-          sortedTasksToDay(UserTasks, thisDate).map((task) => {
-            return (
-              <TaskRender
-                task={task}
-                Day={"Сегодня"}
-                key={task.id}
-              ></TaskRender>
-            );
-          })
+          <div className="groups">
+            {sortedTasksToDay(UserTasks, thisDate).some(
+              (task) => task.TaskSatus === "Plan"
+            ) ? (
+              <div className="group">
+                <div className="title">Планы</div>
+                <div className="tasks">
+                  {sortedTasksToDay(UserTasks, thisDate).map((task) => {
+                    if (task.TaskSatus == "Plan") {
+                      return (
+                        <TaskRender
+                          task={task}
+                          Day={"Сегодня"}
+                          key={task.id}
+                        ></TaskRender>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {sortedTasksToDay(UserTasks, thisDate).some(
+              (task) => task.TaskSatus === "Make"
+            ) ? (
+              <div className="group">
+                <div className="title">Задачи</div>
+                <div className="tasks">
+                  {sortedTasksToDay(UserTasks, thisDate).map((task) => {
+                    if (task.TaskSatus == "Make") {
+                      return (
+                        <TaskRender
+                          task={task}
+                          Day={"Сегодня"}
+                          key={task.id}
+                        ></TaskRender>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {sortedTasksToDay(UserTasks, thisDate).some(
+              (task) => task.TaskSatus === "Done"
+            ) ? (
+              <div className="group">
+                <div className="title">Выполнено</div>
+                <div className="tasks">
+                  {sortedTasksToDay(UserTasks, thisDate).map((task) => {
+                    if (task.TaskSatus == "Done") {
+                      return (
+                        <TaskRender
+                          task={task}
+                          Day={"Сегодня"}
+                          key={task.id}
+                        ></TaskRender>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         ) : (
           <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>
         )}

@@ -207,6 +207,27 @@ path {
       overflow-y: auto;
       flex-direction: column;
       gap: 15px;
+      .groups {
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+        .group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .title {
+            font-family: Raleway;
+            color: var(--textColor);
+            font-size: 18px;
+            font-weight: 500;
+          }
+          .tasks {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+        }
+      }
     }
   }
   .Main-place {

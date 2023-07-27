@@ -33,27 +33,105 @@ function SelectDay(props) {
 
   useEffect(() => {
     props.setSelectTilte(selectDate(clickDay));
-  }, []);
+  });
 
   return (
     <div className="place selectDay" ref={RefSelectDay}>
       <div className="scroll">
         {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
-          sortedTasksSelectDay(UserTasks, selectDate, clickDay).map((task) => {
-            return (
-              <TaskRender
-                task={task}
-                Day={
-                  task.date[5] +
-                  task.date[6] +
-                  task.date[7] +
-                  task.date[8] +
-                  task.date[9]
-                }
-                key={task.id}
-              ></TaskRender>
-            );
-          })
+          <div className="groups">
+            {sortedTasksSelectDay(UserTasks, selectDate, clickDay).some(
+              (task) => task.TaskSatus === "Plan"
+            ) ? (
+              <div className="group">
+                <div className="title">Планы</div>
+                <div className="tasks">
+                  {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
+                    (task) => {
+                      if (task.TaskSatus == "Plan") {
+                        return (
+                          <TaskRender
+                            task={task}
+                            Day={
+                              task.date[5] +
+                              task.date[6] +
+                              task.date[7] +
+                              task.date[8] +
+                              task.date[9]
+                            }
+                            key={task.id}
+                          ></TaskRender>
+                        );
+                      }
+                    }
+                  )}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {sortedTasksSelectDay(UserTasks, selectDate, clickDay).some(
+              (task) => task.TaskSatus === "Make"
+            ) ? (
+              <div className="group">
+                <div className="title">Задачи</div>
+                <div className="tasks">
+                  {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
+                    (task) => {
+                      if (task.TaskSatus == "Make") {
+                        return (
+                          <TaskRender
+                            task={task}
+                            Day={
+                              task.date[5] +
+                              task.date[6] +
+                              task.date[7] +
+                              task.date[8] +
+                              task.date[9]
+                            }
+                            key={task.id}
+                          ></TaskRender>
+                        );
+                      }
+                    }
+                  )}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {sortedTasksSelectDay(UserTasks, selectDate, clickDay).some(
+              (task) => task.TaskSatus === "Done"
+            ) ? (
+              <div className="group">
+                <div className="title">Выполнено</div>
+                <div className="tasks">
+                  {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
+                    (task) => {
+                      if (task.TaskSatus == "Done") {
+                        return (
+                          <TaskRender
+                            task={task}
+                            Day={
+                              task.date[5] +
+                              task.date[6] +
+                              task.date[7] +
+                              task.date[8] +
+                              task.date[9]
+                            }
+                            key={task.id}
+                          ></TaskRender>
+                        );
+                      }
+                    }
+                  )}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         ) : (
           <NoHaveTasks setOpenAdd={setOpenAdd} page="MainPlace"></NoHaveTasks>
         )}
