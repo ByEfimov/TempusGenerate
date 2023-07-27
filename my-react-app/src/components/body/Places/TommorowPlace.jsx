@@ -91,14 +91,7 @@ function TommorowPlace() {
               (task) => task.TaskSatus === "Done"
             ) ? (
               <div className="group">
-                <div className="title">
-                  Выполнено{" "}
-                  <img
-                    src={theme == "LTempus" ? businessIcon : businessIconD}
-                    alt=""
-                    onClick={OpenBussinesMode}
-                  />
-                </div>
+                <div className="title">Выполнено</div>
                 <div className="tasks">
                   {sortedTasksNextDay(UserTasks, nextDate).map((task) => {
                     if (task.TaskSatus == "Done") {

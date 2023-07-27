@@ -98,18 +98,7 @@ function MainPlace() {
               (task) => task.TaskSatus === "Done"
             ) ? (
               <div className="group">
-                <div className="title">
-                  Выполнено{" "}
-                  {theme == "LTempus" ? (
-                    <img src={businessIcon} onClick={OpenBussinesMode} alt="" />
-                  ) : (
-                    <img
-                      src={businessIconD}
-                      onClick={OpenBussinesMode}
-                      alt=""
-                    />
-                  )}
-                </div>
+                <div className="title">Выполнено</div>
                 <div className="tasks">
                   {sortedTasksToDay(UserTasks, thisDate).map((task) => {
                     if (task.TaskSatus == "Done") {

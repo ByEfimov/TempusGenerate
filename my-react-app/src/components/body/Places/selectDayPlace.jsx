@@ -129,14 +129,7 @@ function SelectDay(props) {
               (task) => task.TaskSatus === "Done"
             ) ? (
               <div className="group">
-                <div className="title">
-                  Выполнено{" "}
-                  <img
-                    onClick={OpenBussinesMode}
-                    src={theme == "LTempus" ? businessIcon : businessIconD}
-                    alt=""
-                  />
-                </div>
+                <div className="title">Выполнено</div>
                 <div className="tasks">
                   {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
                     (task) => {
