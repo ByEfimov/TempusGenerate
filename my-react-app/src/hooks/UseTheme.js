@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 
 export const useTheme = () => {
   const [theme, setTheme] = useState(
-    localStorage.getItem("app-theme") || "LTempus"
+    localStorage.getItem("app-theme") || "Tempus"
   );
   useLayoutEffect(() => {
     document.documentElement.setAttribute("Data-Theme", theme);
