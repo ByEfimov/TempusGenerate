@@ -2,17 +2,27 @@ import NoHaveTasks from "../components/nohavetasks";
 import AddButton from "../components/AddButton";
 import AddTask from "./AddtaskPlace";
 import { useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { sortedTasksSelectDay } from "../logic/sorting";
 import { useCustomHook } from "../../../App";
 import TaskRender from "../components/TaskRender";
 import GoBackComp from "../components/GoBack";
+import businessIcon from "../../../assets/light/info-circle.svg";
+import businessIconD from "../../../assets/dark/info-circle.svg";
+import { useTheme } from "../../../hooks/UseTheme";
+import BusinessMode from "./businesMode";
 
 function SelectDay(props) {
   const { setOpenSelect, setSelectTilte, clickDay } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
   const RefSelectDay = React.createRef();
   const { OpenAdd, setOpenAdd } = useCustomHook();
+  const { theme } = useTheme();
+  const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
+
+  function OpenBussinesMode() {
+    setBusinesModeOpen(true);
+  }
 
   function selectDate(day) {
     const date = new Date();
@@ -44,7 +54,14 @@ function SelectDay(props) {
               (task) => task.TaskSatus === "Plan"
             ) ? (
               <div className="group">
-                <div className="title">Планы</div>
+                <div className="title">
+                  Планы{" "}
+                  <img
+                    onClick={OpenBussinesMode}
+                    src={theme == "LTempus" ? businessIcon : businessIconD}
+                    alt=""
+                  />
+                </div>
                 <div className="tasks">
                   {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
                     (task) => {
@@ -74,7 +91,14 @@ function SelectDay(props) {
               (task) => task.TaskSatus === "Make"
             ) ? (
               <div className="group">
-                <div className="title">Задачи</div>
+                <div className="title">
+                  Задачи{" "}
+                  <img
+                    onClick={OpenBussinesMode}
+                    src={theme == "LTempus" ? businessIcon : businessIconD}
+                    alt=""
+                  />
+                </div>
                 <div className="tasks">
                   {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
                     (task) => {
@@ -105,7 +129,14 @@ function SelectDay(props) {
               (task) => task.TaskSatus === "Done"
             ) ? (
               <div className="group">
-                <div className="title">Выполнено</div>
+                <div className="title">
+                  Выполнено{" "}
+                  <img
+                    onClick={OpenBussinesMode}
+                    src={theme == "LTempus" ? businessIcon : businessIconD}
+                    alt=""
+                  />
+                </div>
                 <div className="tasks">
                   {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
                     (task) => {
@@ -151,6 +182,14 @@ function SelectDay(props) {
           dayOpen={selectDate(clickDay)}
           setOpenAdd={setOpenAdd}
         ></AddTask>
+      ) : (
+        ""
+      )}
+      {BusinesModeOpen ? (
+        <BusinessMode
+          filtredTasks={sortedTasksSelectDay(UserTasks, selectDate, clickDay)}
+          setBusinesMode={setBusinesModeOpen}
+        ></BusinessMode>
       ) : (
         ""
       )}

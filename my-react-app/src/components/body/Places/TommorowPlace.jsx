@@ -5,11 +5,22 @@ import { nextDate } from "../logic/time";
 import { useSelector } from "react-redux";
 import { sortedTasksNextDay } from "../logic/sorting";
 import { useCustomHook } from "../../../App";
+import businessIcon from "../../../assets/light/info-circle.svg";
+import businessIconD from "../../../assets/dark/info-circle.svg";
+import { useTheme } from "../../../hooks/UseTheme";
 import TaskRender from "../components/TaskRender";
+import BusinessMode from "./businesMode";
+import { useState } from "react";
 
 function TommorowPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { OpenAdd, setOpenAdd } = useCustomHook();
+  const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
+  const { theme } = useTheme();
+
+  function OpenBussinesMode() {
+    setBusinesModeOpen(true);
+  }
 
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
@@ -20,7 +31,14 @@ function TommorowPlace() {
               (task) => task.TaskSatus === "Plan"
             ) ? (
               <div className="group">
-                <div className="title">Планы</div>
+                <div className="title">
+                  Планы
+                  <img
+                    src={theme == "LTempus" ? businessIcon : businessIconD}
+                    alt=""
+                    onClick={OpenBussinesMode}
+                  />
+                </div>
                 <div className="tasks">
                   {sortedTasksNextDay(UserTasks, nextDate).map((task) => {
                     if (task.TaskSatus == "Plan") {
@@ -43,7 +61,14 @@ function TommorowPlace() {
               (task) => task.TaskSatus === "Make"
             ) ? (
               <div className="group">
-                <div className="title">Задачи</div>
+                <div className="title">
+                  Задачи{" "}
+                  <img
+                    src={theme == "LTempus" ? businessIcon : businessIconD}
+                    alt=""
+                    onClick={OpenBussinesMode}
+                  />
+                </div>
                 <div className="tasks">
                   {sortedTasksNextDay(UserTasks, nextDate).map((task) => {
                     if (task.TaskSatus == "Make") {
@@ -66,7 +91,14 @@ function TommorowPlace() {
               (task) => task.TaskSatus === "Done"
             ) ? (
               <div className="group">
-                <div className="title">Выполнено</div>
+                <div className="title">
+                  Выполнено{" "}
+                  <img
+                    src={theme == "LTempus" ? businessIcon : businessIconD}
+                    alt=""
+                    onClick={OpenBussinesMode}
+                  />
+                </div>
                 <div className="tasks">
                   {sortedTasksNextDay(UserTasks, nextDate).map((task) => {
                     if (task.TaskSatus == "Done") {
@@ -99,6 +131,14 @@ function TommorowPlace() {
       )}
       {OpenAdd ? (
         <AddTask dayOpen={nextDate()} setOpenAdd={setOpenAdd}></AddTask>
+      ) : (
+        ""
+      )}
+      {BusinesModeOpen ? (
+        <BusinessMode
+          filtredTasks={sortedTasksNextDay(UserTasks, nextDate)}
+          setBusinesMode={setBusinesModeOpen}
+        ></BusinessMode>
       ) : (
         ""
       )}

@@ -5,7 +5,12 @@ import { useSelector } from "react-redux";
 import Statistic from "../components/statistic/statistic-router";
 
 function AllPlace(props) {
-  const { setSelectTilte, setSettingOpen } = props;
+  const {
+    setSelectTilte,
+    setSettingOpen,
+    setFiltredTasks,
+    setBusinesModeOpen,
+  } = props;
   const [openSelect, setOpenSelect] = useState(false);
   const [clickDay, setClickDay] = useState("");
   const UserTasks = useSelector((state) => state.user.userTasks);
@@ -58,6 +63,8 @@ function AllPlace(props) {
     <section className="All-place place" onClick={selectDay}>
       {openSelect ? (
         <SelectDay
+          setBusinesModeOpen={setBusinesModeOpen}
+          setFiltredTasks={setFiltredTasks}
           setOpenSelect={setOpenSelect}
           clickDay={clickDay}
           setSelectTilte={setSelectTilte}

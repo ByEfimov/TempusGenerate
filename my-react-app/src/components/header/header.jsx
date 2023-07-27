@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { nextDate, lastDate, thisDate } from "../body/logic/time";
-import { useCustomHook } from "../../App";
 import { useTheme } from "../../hooks/UseTheme";
 
 function Header(props) {
   const { selectTilte, selectMode, setSelectMode, RefBody } = props;
-  const { OpenAdd } = useCustomHook();
   const { theme } = useTheme();
 
   function selectHeader(e) {
@@ -34,30 +32,26 @@ function Header(props) {
   }
 
   function swipeLeft() {
-    if (!OpenAdd) {
-      if (selectMode === "ToDay") {
-        RefBody.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
-        RefTitle.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
-        setSelectMode("AllDays");
-      } else if (selectMode === "TomorrowDay") {
-        RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-        RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-        setSelectMode("ToDay");
-      }
+    if (selectMode === "ToDay") {
+      RefBody.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
+      RefTitle.current.style.transform = `translate3d(-0vw, 0px, 0px)`;
+      setSelectMode("AllDays");
+    } else if (selectMode === "TomorrowDay") {
+      RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+      RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+      setSelectMode("ToDay");
     }
   }
 
   function swipeRight() {
-    if (!OpenAdd) {
-      if (selectMode === "ToDay") {
-        RefBody.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
-        RefTitle.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
-        setSelectMode("TomorrowDay");
-      } else if (selectMode === "AllDays") {
-        RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-        RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
-        setSelectMode("ToDay");
-      }
+    if (selectMode === "ToDay") {
+      RefBody.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
+      RefTitle.current.style.transform = `translate3d(-200vw, 0px, 0px)`;
+      setSelectMode("TomorrowDay");
+    } else if (selectMode === "AllDays") {
+      RefBody.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+      RefTitle.current.style.transform = `translate3d(-100vw, 0px, 0px)`;
+      setSelectMode("ToDay");
     }
   }
 
@@ -103,7 +97,7 @@ function Header(props) {
           />
         </svg>
       </div>
-      <div className="title" ref={RefTitle}>
+      <div className="title maintitle" ref={RefTitle}>
         <div className="titleAll title-text">{showTitle()}</div>
         <div className="titleToDay title-text">Сегодня</div>
         <div className="titleTomorrowDay title-text">Завтра</div>
