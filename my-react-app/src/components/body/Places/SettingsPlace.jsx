@@ -1,8 +1,11 @@
 import themeappleicon from "../../../assets/theme-apple-icon.svg";
 import themetempusicon from "../../../assets/theme-tempus-icon.svg";
 import themestasicon from "../../../assets/theme-stas-icon.svg";
+import themestempusLicon from "../../../assets/theme-tempusL-icon.svg";
 import { createRef } from "react";
 import { useTheme } from "../../../hooks/UseTheme";
+import back from "../../../assets/dark/back.svg";
+import backL from "../../../assets/light/back.svg";
 
 function SettingsPlace(props) {
   const { setSettingOpen, setSelectTilte } = props;
@@ -14,6 +17,7 @@ function SettingsPlace(props) {
   const imageApple = createRef();
   const imageTempus = createRef();
   const imageStas = createRef();
+  const imageLTempus = createRef();
 
   function HeandlerSelectTheme(e) {
     if (e.target.classList.contains("theme")) {
@@ -32,6 +36,13 @@ function SettingsPlace(props) {
         e.target.children[0].classList.add("select");
         setTheme("Stas");
       }
+      if (e.target.classList[1] == "tempusL") {
+        e.target.children[0].classList.add("select");
+        setTheme("LTempus");
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 200);
     }
   }
 
@@ -64,9 +75,24 @@ function SettingsPlace(props) {
               alt=""
             />
           </div>
+          <div className="theme tempusL">
+            <img
+              ref={imageLTempus}
+              className={theme == "LTempus" ? "select" : ""}
+              src={themestempusLicon}
+              alt=""
+            />
+          </div>
         </div>
       </div>
-      <div className="GoBack s" onClick={GoBack}></div>
+      <div className="GoBack s" onClick={GoBack}>
+        {" "}
+        {theme === "LTempus" ? (
+          <img src={backL} alt="" />
+        ) : (
+          <img src={back} alt="" />
+        )}
+      </div>
     </div>
   );
 }

@@ -148,7 +148,7 @@ path {
     pointer-events: none;
   }
   .dellButton {
-    background-image: url(./backet.svg);
+    background-image: url(./dark/backet.svg);
     height: 18px;
     cursor: pointer;
     width: 18px;
@@ -340,7 +340,7 @@ path {
     transition: color 200ms linear, background-color 200ms linear;
   }
   input::placeholder {
-    color: #585858;
+    color: var(--textColor);
   }
   select {
     color: var(--textColor);
@@ -426,7 +426,7 @@ path {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 70%;
-  background-image: url(../assets/pluss.svg);
+  background-image: url(../assets/dark/pluss.svg);
 }
 
 .GoBack {
@@ -447,8 +447,10 @@ path {
   background-color: var(--secondColor);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 70%;
-  background-image: url(../assets/back.svg);
+  img {
+    width: 70%;
+    height: 70%;
+  }
 }
 .s {
   right: 20px;
@@ -549,7 +551,7 @@ path {
     }
     .themes {
       display: flex;
-      gap: 40px;
+      gap: 20px;
       margin-top: 30px;
       justify-content: space-between;
       .theme {

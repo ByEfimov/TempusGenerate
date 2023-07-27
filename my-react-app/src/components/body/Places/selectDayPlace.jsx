@@ -7,12 +7,16 @@ import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { sortedTasksSelectDay } from "../logic/sorting";
 import { useCustomHook } from "../../../App";
+import { useTheme } from "../../../hooks/UseTheme";
+import back from "../../../assets/dark/back.svg";
+import backL from "../../../assets/light/back.svg";
 
 function SelectDay(props) {
   const { setOpenSelect, setSelectTilte, clickDay } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
   const RefSelectDay = React.createRef();
   const { OpenAdd, setOpenAdd } = useCustomHook();
+  const { theme } = useTheme();
 
   function selectDate(day) {
     const date = new Date();
@@ -76,9 +80,21 @@ function SelectDay(props) {
         ""
       )}
       {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
-        <div className="GoBack" onClick={GoBack}></div>
+        <div className="GoBack" onClick={GoBack}>
+          {theme === "LTempus" ? (
+            <img src={backL} alt="" />
+          ) : (
+            <img src={back} alt="" />
+          )}
+        </div>
       ) : (
-        <div className="GoBack s" onClick={GoBack}></div>
+        <div className="GoBack s" onClick={GoBack}>
+          {theme === "LTempus" ? (
+            <img src={backL} alt="" />
+          ) : (
+            <img src={back} alt="" />
+          )}
+        </div>
       )}
       {OpenAdd ? (
         <AddTask

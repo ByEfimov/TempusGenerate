@@ -57,6 +57,8 @@ function Done(props) {
                       ? "#017afb"
                       : theme == "Tempus"
                       ? "#446457"
+                      : theme == "LTempus"
+                      ? "#d6a79e"
                       : "#017e54",
                   data: data.map((row) => row.count),
                 },
@@ -75,6 +77,8 @@ function Done(props) {
               ? "#017afb"
               : theme == "Tempus"
               ? "#446457"
+              : theme == "LTempus"
+              ? "#d6a79e"
               : "#017e54";
           Chart.defaults.plugins.tooltip.enabled = false;
           Chart.defaults.plugins.legend.display = false;

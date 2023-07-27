@@ -138,6 +138,16 @@ html[data-theme="Apple"] {
   --green: #017afb;
 }
 
+html[data-theme="LTempus"] {
+  --bg: #edd3c4;
+  --secondColor: #f3e8e6;
+  --w: #fff;
+  --textColor: #502632;
+  --thirdColo: #dfc6c1;
+  --red: #502632;
+  --green: #d6a79e;
+}
+
 html[data-support-svh="True"] {
   --height92: 92dvh;
   --height8: 8dvh;
