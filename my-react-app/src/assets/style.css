@@ -73,8 +73,8 @@ html {
   transition: color 200ms linear, background-color 200ms linear;
   background-color: var(--secondColor);
   z-index: 10;
-  height: 60px;
-  width: 8vh;
+  height: var(--height8);
+  width: var(--height8);
   padding-top: 2px;
   cursor: pointer;
   display: flex;
@@ -89,9 +89,9 @@ html {
   transition: color 200ms linear, background-color 200ms linear;
   background-color: var(--secondColor);
   z-index: 10;
-  height: 60px;
   padding-top: 2px;
-  width: 8vh;
+  height: var(--height8);
+  width: var(--height8);
   display: flex;
   justify-content: center;
   align-items: start;
