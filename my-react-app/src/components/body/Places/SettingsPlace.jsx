@@ -4,8 +4,7 @@ import themestasicon from "../../../assets/theme-stas-icon.svg";
 import themestempusLicon from "../../../assets/theme-tempusL-icon.svg";
 import { createRef } from "react";
 import { useTheme } from "../../../hooks/UseTheme";
-import back from "../../../assets/dark/back.svg";
-import backL from "../../../assets/light/back.svg";
+import GoBackComp from "../components/GoBack";
 
 function SettingsPlace(props) {
   const { setSettingOpen, setSelectTilte } = props;
@@ -53,6 +52,7 @@ function SettingsPlace(props) {
         <div className="themes" onClick={HeandlerSelectTheme}>
           <div className="theme apple">
             <img
+              rel="preload"
               className={theme == "Apple" ? "select" : ""}
               ref={imageApple}
               src={themeappleicon}
@@ -61,6 +61,7 @@ function SettingsPlace(props) {
           </div>
           <div className="theme tempus">
             <img
+              rel="preload"
               className={theme == "Tempus" ? "select" : ""}
               ref={imageTempus}
               src={themetempusicon}
@@ -69,6 +70,7 @@ function SettingsPlace(props) {
           </div>
           <div className="theme stas">
             <img
+              rel="preload"
               ref={imageStas}
               className={theme == "Stas" ? "select" : ""}
               src={themestasicon}
@@ -77,6 +79,7 @@ function SettingsPlace(props) {
           </div>
           <div className="theme tempusL">
             <img
+              rel="preload"
               ref={imageLTempus}
               className={theme == "LTempus" ? "select" : ""}
               src={themestempusLicon}
@@ -85,14 +88,7 @@ function SettingsPlace(props) {
           </div>
         </div>
       </div>
-      <div className="GoBack s" onClick={GoBack}>
-        {" "}
-        {theme === "LTempus" ? (
-          <img src={backL} alt="" />
-        ) : (
-          <img src={back} alt="" />
-        )}
-      </div>
+      <GoBackComp isS={true} GoBack={GoBack}></GoBackComp>
     </div>
   );
 }

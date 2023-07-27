@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import back from "../../../assets/dark/back.svg";
-import backL from "../../../assets/light/back.svg";
-import { useTheme } from "../../../hooks/UseTheme";
 import AddTask from "../logic/AddTask";
+import GoBackComp from "../components/GoBack";
 
 function AddTaskPlace(props) {
   const { setOpenAdd, dayOpen } = props;
@@ -12,7 +10,6 @@ function AddTaskPlace(props) {
   const [inputDate, setInputDate] = useState(dayOpen);
   const [inputName, setInputName] = useState("");
   const RefAddtask = React.createRef();
-  const { theme } = useTheme();
 
   function GoBack() {
     RefAddtask.current.style.cssText = "animation: 0.5s CloseAddTask forwards;";
@@ -61,14 +58,7 @@ function AddTaskPlace(props) {
       <button className="AddTaskButton" onClick={Addhendler}>
         Добавить задачу
       </button>
-
-      <div className="GoBack s bg" onClick={GoBack}>
-        {theme === "LTempus" ? (
-          <img src={backL} alt="" />
-        ) : (
-          <img src={back} alt="" />
-        )}
-      </div>
+      <GoBackComp isS={true} GoBack={GoBack}></GoBackComp>
     </div>
   );
 }

@@ -1,22 +1,18 @@
 import NoHaveTasks from "../components/nohavetasks";
 import AddButton from "../components/AddButton";
 import AddTask from "./AddtaskPlace";
-import { SelectTask } from "../logic/selectTask";
-import DeleteTask from "../logic/deleteTask";
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { sortedTasksSelectDay } from "../logic/sorting";
 import { useCustomHook } from "../../../App";
-import { useTheme } from "../../../hooks/UseTheme";
-import back from "../../../assets/dark/back.svg";
-import backL from "../../../assets/light/back.svg";
+import TaskRender from "../components/TaskRender";
+import GoBackComp from "../components/GoBack";
 
 function SelectDay(props) {
   const { setOpenSelect, setSelectTilte, clickDay } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
   const RefSelectDay = React.createRef();
   const { OpenAdd, setOpenAdd } = useCustomHook();
-  const { theme } = useTheme();
 
   function selectDate(day) {
     const date = new Date();
@@ -44,30 +40,15 @@ function SelectDay(props) {
       <div className="scroll">
         {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
           sortedTasksSelectDay(UserTasks, selectDate, clickDay).map((task) => {
-            return (
-              <div
-                className={
-                  task.TaskSatus === "Done" ? "opacity07 Task" : "opacity1 Task"
-                }
-                onClick={SelectTask}
-                id={task.id}
-                key={task.id}
-              >
-                <input
-                  defaultChecked={task.TaskSatus === "Done" ? true : false}
-                  className="CheckBox"
-                  type="checkbox"
-                />
-                <label className="Label">{task.TaskName}</label>
-                <div className="date">
-                  {task.date[5] +
-                    task.date[6] +
-                    task.date[7] +
-                    task.date[8] +
-                    task.date[9]}
-                </div>
-                <div className="dellButton" onClick={DeleteTask}></div>
-              </div>
+            return TaskRender(
+              task,
+              `${
+                task.date[5] +
+                task.date[6] +
+                task.date[7] +
+                task.date[8] +
+                task.date[9]
+              }`
             );
           })
         ) : (
@@ -80,21 +61,9 @@ function SelectDay(props) {
         ""
       )}
       {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
-        <div className="GoBack" onClick={GoBack}>
-          {theme === "LTempus" ? (
-            <img src={backL} alt="" />
-          ) : (
-            <img src={back} alt="" />
-          )}
-        </div>
+        <GoBackComp isS={false} GoBack={GoBack}></GoBackComp>
       ) : (
-        <div className="GoBack s" onClick={GoBack}>
-          {theme === "LTempus" ? (
-            <img src={backL} alt="" />
-          ) : (
-            <img src={back} alt="" />
-          )}
-        </div>
+        <GoBackComp isS={true} GoBack={GoBack}></GoBackComp>
       )}
       {OpenAdd ? (
         <AddTask
