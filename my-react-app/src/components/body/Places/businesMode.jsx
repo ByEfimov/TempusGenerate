@@ -15,23 +15,33 @@ function BusinessMode(props) {
     }, 500);
   }
 
-  function NextTask() {
-    console.log(filtredTasks[numberToShow].id);
-    filtredTasks.map((task) => {
-      if (task.id == filtredTasks[numberToShow].id) {
-        console.log(task.TaskName);
-        task.TaskSatus = "Done";
-        DellDispatch({
-          type: "CHANGE_TASK",
-          taskId: filtredTasks[numberToShow].id,
-          newStatus: "Done",
+  function NextTask(e) {
+    const timeout = 500;
+    let idTimeout;
+
+    e.target.addEventListener("mousedown", function () {
+      idTimeout = setTimeout(function () {
+        filtredTasks.map((task) => {
+          if (task.id == filtredTasks[numberToShow].id) {
+            console.log(task.TaskName);
+            task.TaskSatus = "Done";
+            DellDispatch({
+              type: "CHANGE_TASK",
+              taskId: filtredTasks[numberToShow].id,
+              newStatus: "Done",
+            });
+            DellDispatch({
+              type: "CHANGE_PRIOR",
+              taskId: filtredTasks[numberToShow].id,
+              newPriority: task.FirstPrior + 1000,
+            });
+          }
         });
-        DellDispatch({
-          type: "CHANGE_PRIOR",
-          taskId: filtredTasks[numberToShow].id,
-          newPriority: task.FirstPrior + 1000,
-        });
-      }
+      }, timeout);
+    });
+
+    e.target.addEventListener("mouseup", function () {
+      clearTimeout(idTimeout);
     });
   }
 

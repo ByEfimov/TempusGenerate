@@ -657,6 +657,9 @@ path {
     transition: all 0.5s;
     user-select: none;
     background-color: var(--secondColor);
+    .button-text {
+      pointer-events: none;
+    }
   }
   .task_name {
     word-break: break-all;

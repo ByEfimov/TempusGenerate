@@ -662,6 +662,9 @@ path {
           user-select: none;
   background-color: var(--secondColor);
 }
+.BusinesMode .button .button-text {
+  pointer-events: none;
+}
 .BusinesMode .task_name {
   word-break: break-all;
   top: 20px;
