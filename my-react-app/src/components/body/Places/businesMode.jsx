@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { createRef, useState } from "react";
 import GoBackComp from "../components/GoBack";
 import { DellDispatch } from "../Body";
 
 function BusinessMode(props) {
   const { filtredTasks, setBusinesMode } = props;
   const [numberToShow] = useState(0);
+  const BusinesMode = createRef();
 
   function GoBack() {
-    setBusinesMode(false);
+    BusinesMode.current.style.cssText =
+      "animation: SettingsDell 500ms forwards;";
+    setTimeout(() => {
+      setBusinesMode(false);
+    }, 500);
   }
 
   function NextTask() {
@@ -31,7 +36,7 @@ function BusinessMode(props) {
   }
 
   return (
-    <div className="BusinesMode">
+    <div className="BusinesMode" ref={BusinesMode}>
       <div className="task_name">
         {filtredTasks.some((task) => task.TaskSatus === "Make")
           ? filtredTasks[numberToShow].TaskName

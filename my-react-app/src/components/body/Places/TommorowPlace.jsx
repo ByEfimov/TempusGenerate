@@ -33,11 +33,15 @@ function TommorowPlace() {
               <div className="group">
                 <div className="title">
                   Планы
-                  <img
-                    src={theme == "LTempus" ? businessIcon : businessIconD}
-                    alt=""
-                    onClick={OpenBussinesMode}
-                  />
+                  {theme == "LTempus" ? (
+                    <img src={businessIcon} alt="" onClick={OpenBussinesMode} />
+                  ) : (
+                    <img
+                      src={businessIconD}
+                      alt=""
+                      onClick={OpenBussinesMode}
+                    />
+                  )}
                 </div>
                 <div className="tasks">
                   {sortedTasksNextDay(UserTasks, nextDate).map((task) => {
@@ -62,12 +66,16 @@ function TommorowPlace() {
             ) ? (
               <div className="group">
                 <div className="title">
-                  Задачи{" "}
-                  <img
-                    src={theme == "LTempus" ? businessIcon : businessIconD}
-                    alt=""
-                    onClick={OpenBussinesMode}
-                  />
+                  Задачи
+                  {theme == "LTempus" ? (
+                    <img src={businessIcon} alt="" onClick={OpenBussinesMode} />
+                  ) : (
+                    <img
+                      src={businessIconD}
+                      alt=""
+                      onClick={OpenBussinesMode}
+                    />
+                  )}
                 </div>
                 <div className="tasks">
                   {sortedTasksNextDay(UserTasks, nextDate).map((task) => {

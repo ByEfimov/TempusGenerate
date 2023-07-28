@@ -3,6 +3,9 @@ import DeleteTask from "../logic/deleteTask";
 import { useTheme } from "../../../hooks/UseTheme";
 import backL from "../../../assets/light/backet.svg";
 import back from "../../../assets/dark/backet.svg";
+import edit from "../../../assets/dark/edit.svg";
+import editL from "../../../assets/light/edit.svg";
+import { EditTask } from "../logic/editTask";
 
 export default function TaskRender(props) {
   const { theme } = useTheme();
@@ -25,6 +28,13 @@ export default function TaskRender(props) {
           <img src={backL} alt="" />
         ) : (
           <img src={back} alt="" />
+        )}
+      </div>
+      <div className="editButton" onClick={EditTask}>
+        {theme === "LTempus" ? (
+          <img src={editL} alt="" />
+        ) : (
+          <img src={edit} alt="" />
         )}
       </div>
     </div>

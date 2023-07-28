@@ -13,7 +13,7 @@ import { useTheme } from "../../../hooks/UseTheme";
 import BusinessMode from "./businesMode";
 
 function SelectDay(props) {
-  const { setOpenSelect, setSelectTilte, clickDay } = props;
+  const { setOpenSelect, allBody, setSelectTilte, clickDay } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
   const RefSelectDay = React.createRef();
   const { OpenAdd, setOpenAdd } = useCustomHook();
@@ -38,6 +38,7 @@ function SelectDay(props) {
     setTimeout(() => {
       setOpenSelect(false);
       setSelectTilte("Все дни");
+      allBody.current.style.cssText = "animation: AllShow 300ms forwards;";
     }, 250);
   }
 
@@ -55,12 +56,16 @@ function SelectDay(props) {
             ) ? (
               <div className="group">
                 <div className="title">
-                  Планы{" "}
-                  <img
-                    onClick={OpenBussinesMode}
-                    src={theme == "LTempus" ? businessIcon : businessIconD}
-                    alt=""
-                  />
+                  Планы
+                  {theme == "LTempus" ? (
+                    <img src={businessIcon} alt="" onClick={OpenBussinesMode} />
+                  ) : (
+                    <img
+                      src={businessIconD}
+                      alt=""
+                      onClick={OpenBussinesMode}
+                    />
+                  )}
                 </div>
                 <div className="tasks">
                   {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
@@ -92,12 +97,16 @@ function SelectDay(props) {
             ) ? (
               <div className="group">
                 <div className="title">
-                  Задачи{" "}
-                  <img
-                    onClick={OpenBussinesMode}
-                    src={theme == "LTempus" ? businessIcon : businessIconD}
-                    alt=""
-                  />
+                  Задачи
+                  {theme == "LTempus" ? (
+                    <img src={businessIcon} alt="" onClick={OpenBussinesMode} />
+                  ) : (
+                    <img
+                      src={businessIconD}
+                      alt=""
+                      onClick={OpenBussinesMode}
+                    />
+                  )}
                 </div>
                 <div className="tasks">
                   {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(

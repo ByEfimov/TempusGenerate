@@ -55,12 +55,12 @@ html {
 
 .header {
   width: var(--width100);
-  font-family: Raleway;
+  font-family: Nunito;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: var(--textColor);
-  font-weight: 500;
+  font-weight: 700;
   font-size: 36px;
   transition: color 200ms linear, background-color 200ms linear;
   height: var(--height8);
@@ -123,14 +123,15 @@ path {
   display: flex;
   transition: color 200ms linear, background-color 200ms linear;
   cursor: pointer;
+  animation: TaskShow 300ms forwards;
   background-color: var(--secondColor);
   .Label {
     pointer-events: none;
-    font-family: Raleway;
+    font-family: Nunito;
     color: var(--textColor);
     width: 100%;
     word-break: break-all;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 17px;
     transition: color 200ms linear, background-color 200ms linear;
   }
@@ -139,7 +140,7 @@ path {
     pointer-events: none;
     font-size: 15px;
     padding-left: 5px;
-    font-family: Raleway;
+    font-family: Nunito;
     font-weight: 600;
     color: var(--red);
     transition: color 200ms linear, background-color 200ms linear;
@@ -151,7 +152,6 @@ path {
     min-height: 18px;
     cursor: pointer;
     min-width: 18px;
-
     background-position: center;
     background-size: contain;
     display: flex;
@@ -162,6 +162,11 @@ path {
       width: 18px;
       height: 18px;
     }
+  }
+  .editButton {
+    min-height: 18px;
+    cursor: pointer;
+    min-width: 18px;
   }
 }
 
@@ -216,13 +221,13 @@ path {
           flex-direction: column;
           gap: 10px;
           .title {
-            font-family: Raleway;
+            font-family: Nunito;
             color: var(--textColor);
             font-size: 18px;
             display: flex;
             align-items: center;
             gap: 5px;
-            font-weight: 500;
+            font-weight: 700;
             img {
               width: 20px;
               height: 20px;
@@ -312,7 +317,7 @@ path {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: Raleway;
+    font-family: Nunito;
     color: var(--textColor);
     font-size: 25px;
     font-weight: 500;
@@ -367,10 +372,10 @@ path {
   transition: color 200ms linear, background-color 200ms linear;
   input {
     color: var(--textColor);
-    font-family: Raleway;
+    font-family: Nunito;
     font-size: 20px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     line-height: normal;
     transition: color 200ms linear, background-color 200ms linear;
   }
@@ -379,10 +384,10 @@ path {
   }
   select {
     color: var(--textColor);
-    font-family: Raleway;
+    font-family: Nunito;
     font-size: 18px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     line-height: normal;
     transition: color 200ms linear, background-color 200ms linear;
   }
@@ -407,12 +412,12 @@ path {
   }
   .AddTaskButton {
     color: var(--textColor);
-    font-family: Raleway;
+    font-family: Nunito;
     font-size: 20px;
     padding: 12px 15px;
     font-style: normal;
     transition: background-color, border 5000ms linear;
-    font-weight: 300;
+    font-weight: 700;
     line-height: normal;
     border-radius: 15px;
     margin-top: 50px;
@@ -451,7 +456,7 @@ path {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Raleway;
+  font-family: Nunito;
   color: var(--textColor);
   font-size: 40px;
   font-weight: 500;
@@ -473,7 +478,7 @@ path {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Raleway;
+  font-family: Nunito;
   color: var(--textColor);
   font-size: 40px;
   font-weight: 500;
@@ -534,11 +539,11 @@ path {
   background-color: var(--secondColor);
   .title {
     transition: all 0s;
-    font-family: Raleway;
+    font-family: Nunito;
     color: var(--textColor);
     font-size: 25px;
     transition: color 200ms linear, background-color 200ms linear;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -562,17 +567,18 @@ path {
     width: 100%;
   }
   .text-stat {
-    font-family: Raleway;
+    font-family: Nunito;
     color: var(--textColor);
     font-size: 20px;
     margin-top: 20px;
-    font-weight: 400;
+    font-weight: 500;
     text-align: center;
   }
 }
 
 .settings {
   position: absolute;
+  animation: SettingsShow 500ms forwards;
   .settings-theme {
     background-color: var(--secondColor);
     border-radius: 10px;
@@ -580,8 +586,8 @@ path {
     transition: color 200ms linear, background-color 200ms linear;
     .title {
       font-size: 25px;
-      font-weight: 400;
-      font-family: Raleway;
+      font-weight: 500;
+      font-family: Nunito;
       transition: color 200ms linear, background-color 200ms linear;
       color: var(--textColor);
     }
@@ -608,7 +614,7 @@ path {
   width: 100%;
   height: 50px;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   margin-top: 30px;
   display: flex;
@@ -617,11 +623,12 @@ path {
   align-items: center;
   border-radius: 10px;
   background-color: var(--secondColor);
-  font-family: Raleway;
+  font-family: Nunito;
   color: var(--textColor);
 }
 
 .BusinesMode {
+  animation: SettingsShow 500ms forwards;
   position: absolute;
   width: var(--width100);
   top: 0;
@@ -644,7 +651,7 @@ path {
     width: 70vw;
     max-width: 300px;
     max-height: 300px;
-    font-family: Raleway;
+    font-family: Nunito;
     height: 70vw;
     border-radius: 50%;
     transition: all 0.5s;
@@ -660,12 +667,82 @@ path {
     position: absolute;
     border-radius: 20px;
     font-weight: 400;
-    font-family: Raleway;
+    font-family: Nunito;
     margin-bottom: 100px;
     padding: 15px;
     background-color: var(--secondColor);
   }
   .button:active {
     transform: scale(0.98);
+  }
+}
+.helper {
+  width: 100%;
+  height: 50px;
+  background-color: var(--secondColor);
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Nunito;
+  color: var(--textColor);
+}
+
+@keyframes TaskShow {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes TaskDell {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes AllDell {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes AllShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes SettingsShow {
+  0% {
+    top: var(--height100);
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes SettingsDell {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: var(--height100);
   }
 }

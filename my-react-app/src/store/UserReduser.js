@@ -35,6 +35,7 @@ export const userReduser = (state = UserData, action) => {
           return task;
         }),
       };
+
     case "CHANGE_TASK":
       return {
         ...state.userTasks,
@@ -48,7 +49,19 @@ export const userReduser = (state = UserData, action) => {
           return task;
         }),
       };
-
+    case "CHANGE_TASK_NAME":
+      return {
+        ...state.userTasks,
+        userTasks: state.userTasks.map((task) => {
+          if (task.id == action.taskId) {
+            return {
+              ...task,
+              TaskName: action.newTaskName,
+            };
+          }
+          return task;
+        }),
+      };
     default:
       return state;
   }

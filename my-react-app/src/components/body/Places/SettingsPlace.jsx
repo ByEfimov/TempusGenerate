@@ -8,9 +8,13 @@ import GoBackComp from "../components/GoBack";
 
 function SettingsPlace(props) {
   const { setSettingOpen, setSelectTilte } = props;
+  const settings = createRef();
   function GoBack() {
-    setSettingOpen(false);
+    settings.current.style.cssText = "animation: SettingsDell 500ms forwards;";
     setSelectTilte("Все дни");
+    setTimeout(() => {
+      setSettingOpen(false);
+    }, 500);
   }
   const { theme, setTheme } = useTheme();
   const imageApple = createRef();
@@ -46,7 +50,7 @@ function SettingsPlace(props) {
   }
 
   return (
-    <div className="settings place">
+    <div className="settings place" ref={settings}>
       <div className="settings-theme">
         <div className="title">Настройка темы</div>
         <div className="themes" onClick={HeandlerSelectTheme}>
@@ -88,6 +92,10 @@ function SettingsPlace(props) {
           </div>
         </div>
       </div>
+
+      <a className="helper" href="https://t.me/NikitaEfimovv">
+        Открыть чат поддержки
+      </a>
       <GoBackComp isS={true} GoBack={GoBack}></GoBackComp>
     </div>
   );

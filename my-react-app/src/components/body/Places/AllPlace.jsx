@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createRef, useState } from "react";
 import SelectDay from "./selectDayPlace";
 import { thisDay } from "../logic/time";
 import { useSelector } from "react-redux";
@@ -14,6 +14,7 @@ function AllPlace(props) {
   const [openSelect, setOpenSelect] = useState(false);
   const [clickDay, setClickDay] = useState("");
   const UserTasks = useSelector((state) => state.user.userTasks);
+  const allBody = createRef();
 
   function showDaysOnMounth() {
     function GetDaysOnMounth() {
@@ -49,8 +50,11 @@ function AllPlace(props) {
       if (e.target.textContent < 11) {
         result = "0" + e.target.textContent;
       }
-      setClickDay(result);
-      setOpenSelect(true);
+      allBody.current.style.cssText = "animation: AllDell 300ms forwards;";
+      setTimeout(() => {
+        setClickDay(result);
+        setOpenSelect(true);
+      }, 200);
     }
   }
 
@@ -63,6 +67,7 @@ function AllPlace(props) {
     <section className="All-place place" onClick={selectDay}>
       {openSelect ? (
         <SelectDay
+          allBody={allBody}
           setBusinesModeOpen={setBusinesModeOpen}
           setFiltredTasks={setFiltredTasks}
           setOpenSelect={setOpenSelect}
@@ -72,15 +77,17 @@ function AllPlace(props) {
       ) : (
         ""
       )}
-      <div className="callendar">{showDaysOnMounth()}</div>
+      <div className="allBody" ref={allBody}>
+        <div className="callendar">{showDaysOnMounth()}</div>
 
-      {UserTasks.length > 0 ? (
-        <Statistic showDaysOnMounth={showDaysOnMounth}></Statistic>
-      ) : (
-        ""
-      )}
-      <div className="settings-button" onClick={openSettings}>
-        Открыть настройки
+        {UserTasks.length > 0 ? (
+          <Statistic showDaysOnMounth={showDaysOnMounth}></Statistic>
+        ) : (
+          ""
+        )}
+        <div className="settings-button" onClick={openSettings}>
+          Открыть настройки
+        </div>
       </div>
     </section>
   );
