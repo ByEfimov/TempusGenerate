@@ -18,7 +18,26 @@ function BusinessMode(props) {
   function NextTask(e) {
     const timeout = 500;
     let idTimeout;
-
+    e.target.addEventListener("touchstart", function () {
+      idTimeout = setTimeout(function () {
+        filtredTasks.map((task) => {
+          if (task.id == filtredTasks[numberToShow].id) {
+            console.log(task.TaskName);
+            task.TaskSatus = "Done";
+            DellDispatch({
+              type: "CHANGE_TASK",
+              taskId: filtredTasks[numberToShow].id,
+              newStatus: "Done",
+            });
+            DellDispatch({
+              type: "CHANGE_PRIOR",
+              taskId: filtredTasks[numberToShow].id,
+              newPriority: task.FirstPrior + 1000,
+            });
+          }
+        });
+      }, timeout);
+    });
     e.target.addEventListener("mousedown", function () {
       idTimeout = setTimeout(function () {
         filtredTasks.map((task) => {
@@ -41,6 +60,9 @@ function BusinessMode(props) {
     });
 
     e.target.addEventListener("mouseup", function () {
+      clearTimeout(idTimeout);
+    });
+    e.target.addEventListener("touchend", function () {
       clearTimeout(idTimeout);
     });
   }
