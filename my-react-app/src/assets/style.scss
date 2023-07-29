@@ -694,6 +694,22 @@ path {
   color: var(--textColor);
 }
 
+.planPlace {
+  animation: PlanShow 500ms forwards;
+  position: absolute;
+  width: var(--width100);
+  top: 0;
+  width: 100%;
+  right: 0;
+  color: var(--textColor);
+  height: var(--height92);
+  background-color: var(--bg);
+
+  .scroll {
+    width: 100%;
+  }
+}
+
 @keyframes TaskShow {
   0% {
     opacity: 0;
@@ -747,5 +763,44 @@ path {
   }
   100% {
     top: var(--height100);
+  }
+}
+
+.AddPlanButton {
+  position: absolute;
+  bottom: 20px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Nunito;
+  color: var(--textColor);
+  font-size: 40px;
+  font-weight: 500;
+  transition: color 200ms linear, background-color 200ms linear;
+  border-radius: 10px;
+  background-color: var(--green);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-image: url(/src/assets/dark/planicon.svg);
+}
+
+@keyframes PlanShow {
+  0% {
+    right: var(--width100);
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes PlanDell {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: var(--width100);
   }
 }

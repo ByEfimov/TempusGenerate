@@ -26,16 +26,22 @@ function All(props) {
       });
 
       const formattedTasks = [];
-      const currentDate = new Date(UserTasks[0].date);
-      currentDate.setDate(1);
+      if (UserTasks[0].TaskSatus != "Plan") {
+        const currentDate = new Date(UserTasks[0].date);
+        currentDate.setDate(1);
 
-      for (let i = 0; i < showDaysOnMounth().length; i++) {
-        const formattedDate = currentDate.getDate().toString().padStart(2, "0");
-        const count =
-          dateCountMap.get(currentDate.toISOString().slice(0, 10)) || 0;
-        formattedTasks.push({ date: formattedDate, count });
-        currentDate.setDate(currentDate.getDate() + 1);
+        for (let i = 0; i < showDaysOnMounth().length; i++) {
+          const formattedDate = currentDate
+            .getDate()
+            .toString()
+            .padStart(2, "0");
+          const count =
+            dateCountMap.get(currentDate.toISOString().slice(0, 10)) || 0;
+          formattedTasks.push({ date: formattedDate, count });
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
       }
+
       (async function () {
         const data = formattedTasks;
 

@@ -11,12 +11,15 @@ import { useTheme } from "../../../hooks/UseTheme";
 import TaskRender from "../components/TaskRender";
 import BusinessMode from "./businesMode";
 import { useState } from "react";
+import AddPlanButton from "../components/addPlanButton";
+import PlanPlace from "./PlanPlace";
 
 function TommorowPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
   const { theme } = useTheme();
+  const [openPlan, setOpenPlan] = useState(false);
 
   function OpenBussinesMode() {
     setBusinesModeOpen(true);
@@ -25,11 +28,10 @@ function TommorowPlace() {
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
       <div className="scroll">
-        {sortedTasksNextDay(UserTasks, nextDate).length > 0 ? (
+        {sortedTasksNextDay(UserTasks, nextDate).length > 0 ||
+        UserTasks.some((task) => task.TaskSatus === "Plan") ? (
           <div className="groups">
-            {sortedTasksNextDay(UserTasks, nextDate).some(
-              (task) => task.TaskSatus === "Plan"
-            ) ? (
+            {UserTasks.some((task) => task.TaskSatus === "Plan") ? (
               <div className="group">
                 <div className="title">
                   Планы
@@ -44,13 +46,15 @@ function TommorowPlace() {
                   )}
                 </div>
                 <div className="tasks">
-                  {sortedTasksNextDay(UserTasks, nextDate).map((task) => {
+                  {UserTasks.map((task) => {
                     if (task.TaskSatus == "Plan") {
                       return (
                         <TaskRender
+                          itsPlan={true}
                           task={task}
-                          Day={"Завтра"}
-                          key={task.id}
+                          Day={"План"}
+                          date={nextDate()}
+                          key={task.planId}
                         ></TaskRender>
                       );
                     }
@@ -125,13 +129,19 @@ function TommorowPlace() {
           ></NoHaveTasks>
         )}
       </div>
-      {sortedTasksNextDay(UserTasks, nextDate).length > 0 ? (
+      <AddPlanButton setOpenPlan={setOpenPlan}></AddPlanButton>
+      {sortedTasksNextDay(UserTasks, nextDate).length > 0 ||
+      UserTasks.some((task) => task.TaskSatus === "Plan") ? (
         <AddButton setOpenAdd={setOpenAdd}></AddButton>
       ) : (
         ""
       )}
       {OpenAdd ? (
-        <AddTask dayOpen={nextDate()} setOpenAdd={setOpenAdd}></AddTask>
+        <AddTask
+          openPlan={openPlan}
+          dayOpen={nextDate()}
+          setOpenAdd={setOpenAdd}
+        ></AddTask>
       ) : (
         ""
       )}
@@ -140,6 +150,14 @@ function TommorowPlace() {
           filtredTasks={sortedTasksNextDay(UserTasks, nextDate)}
           setBusinesMode={setBusinesModeOpen}
         ></BusinessMode>
+      ) : (
+        ""
+      )}
+      {openPlan ? (
+        <PlanPlace
+          setOpenAdd={setOpenAdd}
+          setOpenPlan={setOpenPlan}
+        ></PlanPlace>
       ) : (
         ""
       )}

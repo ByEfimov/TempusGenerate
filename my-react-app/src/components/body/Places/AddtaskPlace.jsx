@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddTask from "../logic/AddTask";
+import AddTaskPlan from "../logic/AddtaskPlan";
 import GoBackComp from "../components/GoBack";
 
 function AddTaskPlace(props) {
-  const { setOpenAdd, dayOpen } = props;
+  const { setOpenAdd, dayOpen, openPlan } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
   const dispatch = useDispatch();
   const [inputDate, setInputDate] = useState(dayOpen);
@@ -19,7 +20,11 @@ function AddTaskPlace(props) {
   }
 
   function Addhendler() {
-    AddTask(inputName, inputDate, GoBack, UserTasks, dispatch);
+    if (openPlan) {
+      AddTaskPlan(inputName, inputDate, GoBack, UserTasks, dispatch);
+    } else {
+      AddTask(inputName, inputDate, GoBack, UserTasks, dispatch);
+    }
   }
 
   return (

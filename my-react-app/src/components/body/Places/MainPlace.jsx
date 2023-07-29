@@ -11,12 +11,16 @@ import businessIconD from "../../../assets/dark/info-circle.svg";
 import { useTheme } from "../../../hooks/UseTheme";
 import { useState } from "react";
 import BusinessMode from "./businesMode";
+import PlanPlace from "./PlanPlace";
+import AddPlanButton from "../components/addPlanButton";
 
 function MainPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const { theme } = useTheme();
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
+  const [openPlan, setOpenPlan] = useState(false);
+  console.log(UserTasks);
 
   function OpenBussinesMode() {
     setBusinesModeOpen(true);
@@ -25,11 +29,10 @@ function MainPlace() {
   return (
     <section className="Main-place place" id="modetoday">
       <div className="scroll">
-        {sortedTasksToDay(UserTasks, thisDate).length > 0 ? (
+        {sortedTasksToDay(UserTasks, thisDate).length > 0 ||
+        UserTasks.some((task) => task.TaskSatus === "Plan") ? (
           <div className="groups">
-            {sortedTasksToDay(UserTasks, thisDate).some(
-              (task) => task.TaskSatus === "Plan"
-            ) ? (
+            {UserTasks.some((task) => task.TaskSatus == "Plan") ? (
               <div className="group">
                 <div className="title">
                   Планы
@@ -44,13 +47,15 @@ function MainPlace() {
                   )}
                 </div>
                 <div className="tasks">
-                  {sortedTasksToDay(UserTasks, thisDate).map((task) => {
+                  {UserTasks.map((task) => {
                     if (task.TaskSatus == "Plan") {
                       return (
                         <TaskRender
+                          itsPlan={true}
                           task={task}
-                          Day={"Сегодня"}
-                          key={task.id}
+                          Day={"План"}
+                          date={thisDate()}
+                          key={task.planId}
                         ></TaskRender>
                       );
                     }
@@ -65,7 +70,7 @@ function MainPlace() {
             ) ? (
               <div className="group">
                 <div className="title">
-                  Задачи{" "}
+                  Задачи
                   {theme == "LTempus" ? (
                     <img src={businessIcon} onClick={OpenBussinesMode} alt="" />
                   ) : (
@@ -121,13 +126,21 @@ function MainPlace() {
           <NoHaveTasks page="MainPlace" setOpenAdd={setOpenAdd}></NoHaveTasks>
         )}
       </div>
-      {sortedTasksToDay(UserTasks, thisDate).length > 0 ? (
-        <AddButton setOpenAdd={setOpenAdd}></AddButton>
+      <AddPlanButton setOpenPlan={setOpenPlan}></AddPlanButton>
+      {sortedTasksToDay(UserTasks, thisDate).length > 0 ||
+      UserTasks.some((task) => task.TaskSatus === "Plan") ? (
+        <div className="buttons">
+          <AddButton setOpenAdd={setOpenAdd}></AddButton>
+        </div>
       ) : (
         ""
       )}
       {OpenAdd ? (
-        <AddTask dayOpen={thisDate()} setOpenAdd={setOpenAdd}></AddTask>
+        <AddTask
+          openPlan={openPlan}
+          dayOpen={thisDate()}
+          setOpenAdd={setOpenAdd}
+        ></AddTask>
       ) : (
         ""
       )}
@@ -136,6 +149,14 @@ function MainPlace() {
           filtredTasks={sortedTasksToDay(UserTasks, thisDate)}
           setBusinesMode={setBusinesModeOpen}
         ></BusinessMode>
+      ) : (
+        ""
+      )}
+      {openPlan ? (
+        <PlanPlace
+          setOpenAdd={setOpenAdd}
+          setOpenPlan={setOpenPlan}
+        ></PlanPlace>
       ) : (
         ""
       )}

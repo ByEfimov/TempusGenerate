@@ -10,11 +10,8 @@ export let DellDispatch;
 
 function Body(props) {
   const { setSelectTilte, RefBody } = props;
-
   const [SettingOpen, setSettingOpen] = useState(false);
-
   DellDispatch = useDispatch();
-
   const UserTasks = useSelector((state) => state.user.userTasks);
   UsersData = UserTasks;
   return (

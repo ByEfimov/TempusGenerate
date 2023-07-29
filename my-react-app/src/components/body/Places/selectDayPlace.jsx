@@ -10,6 +10,8 @@ import GoBackComp from "../components/GoBack";
 import businessIcon from "../../../assets/light/info-circle.svg";
 import businessIconD from "../../../assets/dark/info-circle.svg";
 import { useTheme } from "../../../hooks/UseTheme";
+import AddPlanButton from "../components/addPlanButton";
+import PlanPlace from "./PlanPlace";
 import BusinessMode from "./businesMode";
 
 function SelectDay(props) {
@@ -18,6 +20,7 @@ function SelectDay(props) {
   const RefSelectDay = React.createRef();
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const { theme } = useTheme();
+  const [openPlan, setOpenPlan] = useState(false);
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
 
   function OpenBussinesMode() {
@@ -49,11 +52,10 @@ function SelectDay(props) {
   return (
     <div className="place selectDay" ref={RefSelectDay}>
       <div className="scroll">
-        {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
+        {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length ||
+        UserTasks.some((task) => task.TaskSatus === "Plan") > 0 ? (
           <div className="groups">
-            {sortedTasksSelectDay(UserTasks, selectDate, clickDay).some(
-              (task) => task.TaskSatus === "Plan"
-            ) ? (
+            {UserTasks.some((task) => task.TaskSatus === "Plan") ? (
               <div className="group">
                 <div className="title">
                   Планы
@@ -68,25 +70,19 @@ function SelectDay(props) {
                   )}
                 </div>
                 <div className="tasks">
-                  {sortedTasksSelectDay(UserTasks, selectDate, clickDay).map(
-                    (task) => {
-                      if (task.TaskSatus == "Plan") {
-                        return (
-                          <TaskRender
-                            task={task}
-                            Day={
-                              task.date[5] +
-                              task.date[6] +
-                              task.date[7] +
-                              task.date[8] +
-                              task.date[9]
-                            }
-                            key={task.id}
-                          ></TaskRender>
-                        );
-                      }
+                  {UserTasks.map((task) => {
+                    if (task.TaskSatus == "Plan") {
+                      return (
+                        <TaskRender
+                          itsPlan={true}
+                          task={task}
+                          Day={"План"}
+                          date={selectDate()}
+                          key={task.planId}
+                        ></TaskRender>
+                      );
                     }
-                  )}
+                  })}
                 </div>
               </div>
             ) : (
@@ -169,18 +165,22 @@ function SelectDay(props) {
           <NoHaveTasks setOpenAdd={setOpenAdd} page="MainPlace"></NoHaveTasks>
         )}
       </div>
-      {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
+      <AddPlanButton setOpenPlan={setOpenPlan}></AddPlanButton>
+      {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ||
+      UserTasks.some((task) => task.TaskSatus === "Plan") ? (
         <AddButton setOpenAdd={setOpenAdd}></AddButton>
       ) : (
         ""
       )}
-      {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ? (
+      {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length > 0 ||
+      UserTasks.some((task) => task.TaskSatus === "Plan") ? (
         <GoBackComp isS={false} GoBack={GoBack}></GoBackComp>
       ) : (
         <GoBackComp isS={true} GoBack={GoBack}></GoBackComp>
       )}
       {OpenAdd ? (
         <AddTask
+          openPlan={openPlan}
           dayOpen={selectDate(clickDay)}
           setOpenAdd={setOpenAdd}
         ></AddTask>
@@ -192,6 +192,14 @@ function SelectDay(props) {
           filtredTasks={sortedTasksSelectDay(UserTasks, selectDate, clickDay)}
           setBusinesMode={setBusinesModeOpen}
         ></BusinessMode>
+      ) : (
+        ""
+      )}
+      {openPlan ? (
+        <PlanPlace
+          setOpenAdd={setOpenAdd}
+          setOpenPlan={setOpenPlan}
+        ></PlanPlace>
       ) : (
         ""
       )}
