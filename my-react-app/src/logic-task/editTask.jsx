@@ -1,4 +1,4 @@
-import { DellDispatch } from "../Body";
+import { DellDispatch } from "../pages/body/index";
 
 export function EditTask(e) {
   const NewTaskName = prompt("Новое название");

@@ -1,18 +1,18 @@
-import NoHaveTasks from "../components/nohavetasks";
-import AddButton from "../components/AddButton";
-import AddTask from "./AddtaskPlace";
-import { nextDate } from "../logic/time";
+import NoHaveTasks from "../../../components/buttons/nohavetasks";
+import AddButton from "../../../components/buttons/AddButton";
+import AddTask from "../../../logic-task/AddTask";
+import { nextDate } from "../../../utils/time";
 import { useSelector } from "react-redux";
-import { sortedTasksNextDay } from "../logic/sorting";
+import { sortedTasksNextDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";
 import businessIcon from "../../../assets/light/info-circle.svg";
 import businessIconD from "../../../assets/dark/info-circle.svg";
 import { useTheme } from "../../../hooks/UseTheme";
-import TaskRender from "../components/TaskRender";
-import BusinessMode from "./businesMode";
+import TaskRender from "../../../components/render/TaskRender";
+import BusinessMode from "../../busines-mode.jsx";
 import { useState } from "react";
-import AddPlanButton from "../components/addPlanButton";
-import PlanPlace from "./PlanPlace";
+import AddPlanButton from "../../../components/buttons/addPlanButton";
+import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
 
 function TommorowPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);

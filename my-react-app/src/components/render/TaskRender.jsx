@@ -1,13 +1,13 @@
-import { SelectTask } from "../logic/selectTask";
-import DeleteTask from "../logic/deleteTask";
-import { useTheme } from "../../../hooks/UseTheme";
-import backL from "../../../assets/light/backet.svg";
-import back from "../../../assets/dark/backet.svg";
-import edit from "../../../assets/dark/edit.svg";
-import editL from "../../../assets/light/edit.svg";
-import { EditTask } from "../logic/editTask";
+import { SelectTask } from "../../logic-task/selectTask";
+import DeleteTask from "../../logic-task/deleteTask";
+import { useTheme } from "../../hooks/UseTheme";
+import backL from "../../assets/light/backet.svg";
+import back from "../../assets/dark/backet.svg";
+import edit from "../../assets/dark/edit.svg";
+import editL from "../../assets/light/edit.svg";
+import { EditTask } from "../../logic-task/editTask";
 import { useSelector } from "react-redux";
-import { DellDispatch } from "../Body";
+import { DellDispatch } from "../../pages/body/index";
 
 export default function TaskRender(props) {
   const { theme } = useTheme();

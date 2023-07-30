@@ -1,6 +1,6 @@
 import Chart from "chart.js/auto";
 import { useSelector } from "react-redux";
-import { useTheme } from "../../../../../hooks/UseTheme";
+import { useTheme } from "../../../hooks/UseTheme";
 
 function All(props) {
   const { theme } = useTheme();

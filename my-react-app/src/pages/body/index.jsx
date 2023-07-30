@@ -1,8 +1,8 @@
-import AllPlace from "./Places/AllPlace";
-import TommorowPlace from "./Places/TommorowPlace";
-import MainPlace from "./Places/MainPlace";
+import AllPlace from "../days/all-days";
+import TommorowPlace from "../days/tommorow-day/tommorow_day";
+import MainPlace from "../days/main-day/main_day";
 import { useSelector, useDispatch } from "react-redux";
-import SettingsPlace from "./Places/SettingsPlace";
+import SettingsPlace from "../modal-windows/settings_modal/SettingsPlace";
 import { useState } from "react";
 
 export let UsersData;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { nextDate, lastDate, thisDate } from "../body/logic/time";
+import { nextDate, thisDate, lastDate } from "../../utils/time";
 import { useTheme } from "../../hooks/UseTheme";
 
 function Header(props) {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import All from "./modsStatistic/all";
 import Done from "./modsStatistic/done";
 import { useSelector } from "react-redux";
-import { useTheme } from "../../../../hooks/UseTheme";
+import { useTheme } from "../../hooks/UseTheme";
 
 function Statistic(props) {
   const { showDaysOnMounth } = props;

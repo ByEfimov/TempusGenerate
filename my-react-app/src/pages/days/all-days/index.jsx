@@ -1,8 +1,8 @@
 import { createRef, useState } from "react";
-import SelectDay from "./selectDayPlace";
-import { thisDay } from "../logic/time";
+import SelectDay from "../select-day/select_day";
+import { thisDay } from "../../../utils/time";
 import { useSelector } from "react-redux";
-import Statistic from "../components/statistic/statistic-router";
+import Statistic from "../../../components/statistic/statistic-router";
 
 function AllPlace(props) {
   const {

@@ -1,4 +1,4 @@
-import { DellDispatch } from "../Body";
+import { DellDispatch } from "../pages/body/index";
 
 function DeleteTask(e) {
   e.target.parentNode.style.cssText = `animation: TaskDell 300ms forwards;`;

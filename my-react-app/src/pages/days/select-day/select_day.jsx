@@ -1,18 +1,18 @@
-import NoHaveTasks from "../components/nohavetasks";
-import AddButton from "../components/AddButton";
-import AddTask from "./AddtaskPlace";
+import NoHaveTasks from "../../../components/buttons/nohavetasks";
+import AddButton from "../../../components/buttons/AddButton";
+import AddTask from "../../../logic-task/AddTask";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { sortedTasksSelectDay } from "../logic/sorting";
+import { sortedTasksSelectDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";
-import TaskRender from "../components/TaskRender";
-import GoBackComp from "../components/GoBack";
+import TaskRender from "../../../components/render/TaskRender";
+import GoBackComp from "../../../components/buttons/GoBack";
 import businessIcon from "../../../assets/light/info-circle.svg";
 import businessIconD from "../../../assets/dark/info-circle.svg";
 import { useTheme } from "../../../hooks/UseTheme";
-import AddPlanButton from "../components/addPlanButton";
-import PlanPlace from "./PlanPlace";
-import BusinessMode from "./businesMode";
+import AddPlanButton from "../../../components/buttons/addPlanButton";
+import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
+import BusinessMode from "../../busines-mode.jsx";
 
 function SelectDay(props) {
   const { setOpenSelect, allBody, setSelectTilte, clickDay } = props;

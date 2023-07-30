@@ -1,6 +1,6 @@
 import { createRef, useState } from "react";
-import GoBackComp from "../components/GoBack";
-import { DellDispatch } from "../Body";
+import GoBackComp from "../../components/buttons/GoBack";
+import { DellDispatch } from "../body/index";
 
 function BusinessMode(props) {
   const { filtredTasks, setBusinesMode } = props;

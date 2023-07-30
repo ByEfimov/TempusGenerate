@@ -1,6 +1,6 @@
-import back from "../../../assets/dark/back.svg";
-import backL from "../../../assets/light/back.svg";
-import { useTheme } from "../../../hooks/UseTheme";
+import back from "../../assets/dark/back.svg";
+import backL from "../../assets/light/back.svg";
+import { useTheme } from "../../hooks/UseTheme";
 
 export default function GoBackComp(props) {
   const { GoBack, isS } = props;

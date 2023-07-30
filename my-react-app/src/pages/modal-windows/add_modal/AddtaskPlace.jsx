@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AddTask from "../logic/AddTask";
-import AddTaskPlan from "../logic/AddtaskPlan";
-import GoBackComp from "../components/GoBack";
+import AddTask from "../../../logic-task/AddTask";
+import AddTaskPlan from "../../../logic-task/AddtaskPlan";
+import GoBackComp from "../../../components/buttons/GoBack";
 
 function AddTaskPlace(props) {
   const { setOpenAdd, dayOpen, openPlan } = props;

@@ -4,7 +4,7 @@ import themestasicon from "../../../assets/theme-stas-icon.svg";
 import themestempusLicon from "../../../assets/theme-tempusL-icon.svg";
 import { createRef } from "react";
 import { useTheme } from "../../../hooks/UseTheme";
-import GoBackComp from "../components/GoBack";
+import GoBackComp from "../../../components/buttons/GoBack";
 
 function SettingsPlace(props) {
   const { setSettingOpen, setSelectTilte } = props;

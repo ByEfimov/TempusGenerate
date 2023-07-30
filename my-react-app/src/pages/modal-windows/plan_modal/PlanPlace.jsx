@@ -1,14 +1,14 @@
 import { createRef } from "react";
-import GoBackComp from "../components/GoBack";
+import GoBackComp from "../../../components/buttons/GoBack";
 import { useSelector } from "react-redux";
 import { useTheme } from "../../../hooks/UseTheme";
 import backL from "../../../assets/light/backet.svg";
 import back from "../../../assets/dark/backet.svg";
 import edit from "../../../assets/dark/edit.svg";
 import editL from "../../../assets/light/edit.svg";
-import AddButton from "../components/AddButton";
-import DeleteTask from "../logic/deleteTask";
-import { EditTask } from "../logic/editTask";
+import AddButton from "../../../components/buttons/AddButton";
+import DeleteTask from "../../../logic-task/deleteTask";
+import { EditTask } from "../../../logic-task/editTask";
 
 function PlanPlace(props) {
   const { setOpenPlan, setOpenAdd } = props;

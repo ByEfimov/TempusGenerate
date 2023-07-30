@@ -1,5 +1,4 @@
-import { UsersData } from "../Body";
-import { DellDispatch } from "../Body";
+import { DellDispatch, UsersData } from "../pages/body/index";
 
 export function SelectTask(e) {
   if (e.target.classList.contains("Task")) {
