@@ -273,6 +273,9 @@ path {
   flex-direction: column;
   gap: 15px;
 }
+.body .All-place .planPlace {
+  padding-top: 15px;
+}
 .body .All-place .callendar {
   display: grid;
   align-items: start;
