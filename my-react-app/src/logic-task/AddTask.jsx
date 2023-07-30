@@ -1,4 +1,4 @@
-function AddTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
+function addTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
   function findMaxid() {
     let result = 0;
     UserTasks.map((item) => {
@@ -10,21 +10,23 @@ function AddTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
     return result;
   }
 
-  function Addtasks() {
+  function AddtasksFinal() {
     if (inputName != "") {
       let Value = 1000;
-      if (document.querySelector(".Priority").value == "up") {
-        UserTasks.map((task) => {
-          if (task.FirstPrior <= Value) {
-            Value = task.FirstPrior - 1;
-          }
-        });
-      } else if (document.querySelector(".Priority").value == "down") {
-        UserTasks.map((task) => {
-          if (task.FirstPrior >= Value) {
-            Value = task.FirstPrior + 1;
-          }
-        });
+      if (document.querySelector(".Priority")) {
+        if (document.querySelector(".Priority").value == "up") {
+          UserTasks.map((task) => {
+            if (task.FirstPrior <= Value) {
+              Value = task.FirstPrior - 1;
+            }
+          });
+        } else if (document.querySelector(".Priority").value == "down") {
+          UserTasks.map((task) => {
+            if (task.FirstPrior >= Value) {
+              Value = task.FirstPrior + 1;
+            }
+          });
+        }
       }
 
       const NewTask = {
@@ -40,7 +42,7 @@ function AddTask(inputName, inputDate, GoBack, UserTasks, dispatch) {
       GoBack();
     }
   }
-  Addtasks();
+  AddtasksFinal();
 }
 
-export default AddTask;
+export default addTask;

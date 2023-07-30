@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import NoHaveTasks from "../../../components/buttons/nohavetasks";
 import AddButton from "../../../components/buttons/AddButton";
-import AddTask from "../../../logic-task/AddTask";
+import AddTaskPlace from "../../modal-windows/add_modal/AddtaskPlace";
 import { sortedTasksSelectDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";
 import TaskRender from "../../../components/render/TaskRender";
@@ -77,7 +77,7 @@ function SelectDay(props) {
                           itsPlan={true}
                           task={task}
                           Day={"План"}
-                          date={selectDate()}
+                          date={selectDate(clickDay)}
                           key={task.planId}
                         ></TaskRender>
                       );
@@ -162,7 +162,7 @@ function SelectDay(props) {
             )}
           </div>
         ) : (
-          <NoHaveTasks setOpenAdd={setOpenAdd} page="MainPlace"></NoHaveTasks>
+          <NoHaveTasks setOpenAdd={setOpenAdd}></NoHaveTasks>
         )}
       </div>
       <AddPlanButton setOpenPlan={setOpenPlan}></AddPlanButton>
@@ -179,11 +179,11 @@ function SelectDay(props) {
         <GoBackComp isS={true} GoBack={GoBack}></GoBackComp>
       )}
       {OpenAdd ? (
-        <AddTask
+        <AddTaskPlace
           openPlan={openPlan}
           dayOpen={selectDate(clickDay)}
           setOpenAdd={setOpenAdd}
-        ></AddTask>
+        ></AddTaskPlace>
       ) : (
         ""
       )}

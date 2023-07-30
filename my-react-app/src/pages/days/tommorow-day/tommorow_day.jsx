@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NoHaveTasks from "../../../components/buttons/nohavetasks";
 import AddButton from "../../../components/buttons/AddButton";
-import AddTask from "../../../logic-task/AddTask";
+import AddTaskPlace from "../../modal-windows/add_modal/AddtaskPlace";
 import { nextDate } from "../../../utils/time";
 import { useSelector } from "react-redux";
 import { sortedTasksNextDay } from "../../../utils/sorting";
@@ -137,11 +137,11 @@ function TommorowPlace() {
         ""
       )}
       {OpenAdd ? (
-        <AddTask
+        <AddTaskPlace
           openPlan={openPlan}
           dayOpen={nextDate()}
           setOpenAdd={setOpenAdd}
-        ></AddTask>
+        ></AddTaskPlace>
       ) : (
         ""
       )}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import AddButton from "../../../components/buttons/AddButton";
-import AddTask from "../../modal-windows/add_task/AddtaskPlace";
+import AddTask from "../../modal-windows/add_modal/AddtaskPlace";
 import { thisDate } from "../../../utils/time";
 import { sortedTasksToDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";

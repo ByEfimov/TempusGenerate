@@ -19,7 +19,7 @@ function AllPlace(props) {
   function selectDay(e) {
     if (e.target.classList.contains("day")) {
       let result = e.target.textContent;
-      if (e.target.textContent < 11) {
+      if (e.target.textContent < 10) {
         result = "0" + e.target.textContent;
       }
       allBody.current.style.cssText = "animation: AllDell 300ms forwards;";
