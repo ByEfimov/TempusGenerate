@@ -1,8 +1,8 @@
+import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import NoHaveTasks from "../../../components/buttons/nohavetasks";
 import AddButton from "../../../components/buttons/AddButton";
 import AddTask from "../../../logic-task/AddTask";
-import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
 import { sortedTasksSelectDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";
 import TaskRender from "../../../components/render/TaskRender";

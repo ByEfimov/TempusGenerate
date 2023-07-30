@@ -1,14 +1,15 @@
+import { createRef } from "react";
 import themeappleicon from "../../../assets/theme-apple-icon.svg";
 import themetempusicon from "../../../assets/theme-tempus-icon.svg";
 import themestasicon from "../../../assets/theme-stas-icon.svg";
 import themestempusLicon from "../../../assets/theme-tempusL-icon.svg";
-import { createRef } from "react";
 import { useTheme } from "../../../hooks/UseTheme";
 import GoBackComp from "../../../components/buttons/GoBack";
 
 function SettingsPlace(props) {
   const { setSettingOpen, setSelectTilte } = props;
   const settings = createRef();
+
   function GoBack() {
     settings.current.style.cssText = "animation: SettingsDell 500ms forwards;";
     setSelectTilte("Все дни");
@@ -16,6 +17,7 @@ function SettingsPlace(props) {
       setSettingOpen(false);
     }, 500);
   }
+
   const { theme, setTheme } = useTheme();
   const imageApple = createRef();
   const imageTempus = createRef();

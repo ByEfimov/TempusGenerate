@@ -1,7 +1,7 @@
 import { createRef, useState } from "react";
-import SelectDay from "../select-day/select_day";
-import { thisDay } from "../../../utils/time";
 import { useSelector } from "react-redux";
+import SelectDay from "../select-day/select_day";
+import { showDaysOnMounth } from "../../../utils/calendar";
 import Statistic from "../../../components/statistic/statistic-router";
 
 function AllPlace(props) {
@@ -15,34 +15,6 @@ function AllPlace(props) {
   const [clickDay, setClickDay] = useState("");
   const UserTasks = useSelector((state) => state.user.userTasks);
   const allBody = createRef();
-
-  function showDaysOnMounth() {
-    function GetDaysOnMounth() {
-      const date = new Date();
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      return daysInMonth;
-    }
-
-    const rows = [];
-    for (let i = 1; i < GetDaysOnMounth() + 1; i++) {
-      if (i == thisDay) {
-        rows.push(
-          <div className="day color" key={i}>
-            {i}
-          </div>
-        );
-      } else {
-        rows.push(
-          <div className="day " key={i}>
-            {i}
-          </div>
-        );
-      }
-    }
-    return rows;
-  }
 
   function selectDay(e) {
     if (e.target.classList.contains("day")) {

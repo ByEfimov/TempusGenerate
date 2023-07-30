@@ -28,7 +28,6 @@ export default function TaskRender(props) {
   function selectTaskPlan(e) {
     UserTasks.map((task) => {
       if (task.planId == e.target.id) {
-        console.log(task);
         const NewTask = {
           id: findMaxid(),
           TaskName: task.TaskName,

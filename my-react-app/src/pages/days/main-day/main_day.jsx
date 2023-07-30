@@ -1,15 +1,15 @@
-import NoHaveTasks from "../../../components/buttons/nohavetasks";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import AddButton from "../../../components/buttons/AddButton";
 import AddTask from "../../modal-windows/add_task/AddtaskPlace";
 import { thisDate } from "../../../utils/time";
-import { useSelector } from "react-redux";
 import { sortedTasksToDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";
 import TaskRender from "../../../components/render/TaskRender";
 import businessIcon from "../../../assets/light/info-circle.svg";
 import businessIconD from "../../../assets/dark/info-circle.svg";
 import { useTheme } from "../../../hooks/UseTheme";
-import { useState } from "react";
+import NoHaveTasks from "../../../components/buttons/nohavetasks";
 import BusinessMode from "../../busines-mode.jsx";
 import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
 import AddPlanButton from "../../../components/buttons/addPlanButton";

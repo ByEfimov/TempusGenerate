@@ -5,9 +5,9 @@ import AddTaskPlan from "../../../logic-task/AddtaskPlan";
 import GoBackComp from "../../../components/buttons/GoBack";
 
 function AddTaskPlace(props) {
+  const dispatch = useDispatch();
   const { setOpenAdd, dayOpen, openPlan } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
-  const dispatch = useDispatch();
   const [inputDate, setInputDate] = useState(dayOpen);
   const [inputName, setInputName] = useState("");
   const RefAddtask = React.createRef();
@@ -38,15 +38,20 @@ function AddTaskPlace(props) {
         className="Name"
         placeholder="Название задачи"
       />
-      <input
-        type="date"
-        className="date inputDate"
-        value={inputDate}
-        onChange={(e) => {
-          setInputDate(e.target.value);
-        }}
-        placeholder="Дата"
-      />
+
+      {openPlan ? (
+        ""
+      ) : (
+        <input
+          type="date"
+          className="date inputDate"
+          value={inputDate}
+          onChange={(e) => {
+            setInputDate(e.target.value);
+          }}
+          placeholder="Дата"
+        />
+      )}
       <select
         type="number"
         max="3"

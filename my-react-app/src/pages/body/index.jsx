@@ -22,7 +22,6 @@ function Body(props) {
       ></AllPlace>
       <MainPlace></MainPlace>
       <TommorowPlace></TommorowPlace>
-
       {SettingOpen ? (
         <SettingsPlace
           setSelectTilte={setSelectTilte}
