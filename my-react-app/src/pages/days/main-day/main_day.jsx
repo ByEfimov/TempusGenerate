@@ -6,9 +6,6 @@ import { thisDate } from "../../../utils/time";
 import { sortedTasksToDay } from "../../../utils/sorting";
 import { useCustomHook } from "../../../App";
 import TaskRender from "../../../components/render/TaskRender";
-import businessIcon from "../../../assets/light/info-circle.svg";
-import businessIconD from "../../../assets/dark/info-circle.svg";
-import { useTheme } from "../../../hooks/UseTheme";
 import NoHaveTasks from "../../../components/buttons/nohavetasks";
 import BusinessMode from "../../busines-mode.jsx";
 import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
@@ -18,7 +15,6 @@ import { searchSelect } from "../../../utils/seachSelectTask";
 function MainPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { OpenAdd, setOpenAdd } = useCustomHook();
-  const { theme } = useTheme();
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
   const [openPlan, setOpenPlan] = useState(false);
 
@@ -60,27 +56,43 @@ function MainPlace() {
               (task) => task.TaskSatus === "Make"
             ) ? (
               <div className="group">
-                <div className="title">
+                <div className="title" onClick={OpenBussinesMode}>
                   Задачи
-                  {theme == "LTempus" ? (
-                    <img src={businessIcon} onClick={OpenBussinesMode} alt="" />
-                  ) : (
-                    <img
-                      src={businessIconD}
-                      onClick={OpenBussinesMode}
-                      alt=""
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                      stroke="var(--textColor)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
-                  )}
+                    <path
+                      d="M12 8V13"
+                      stroke="var(--textColor)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M11.9946 16H12.0036"
+                      stroke="var(--textColor)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
                 <div className="tasks">
                   {sortedTasksToDay(UserTasks, thisDate).map((task) => {
                     if (task.TaskSatus == "Make") {
                       return (
-                        <TaskRender
-                          task={task}
-                          Day={"Сегодня"}
-                          key={task.id}
-                        ></TaskRender>
+                        <TaskRender task={task} key={task.id}></TaskRender>
                       );
                     }
                   })}
@@ -99,11 +111,7 @@ function MainPlace() {
                   {sortedTasksToDay(UserTasks, thisDate).map((task) => {
                     if (task.TaskSatus == "Done") {
                       return (
-                        <TaskRender
-                          task={task}
-                          Day={"Сегодня"}
-                          key={task.id}
-                        ></TaskRender>
+                        <TaskRender task={task} key={task.id}></TaskRender>
                       );
                     }
                   })}

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { nextDate, thisDate, lastDate } from "../../utils/time";
-import { useTheme } from "../../hooks/UseTheme";
 
 function Header(props) {
   const { selectTilte, selectMode, setSelectMode, RefBody } = props;
-  const { theme } = useTheme();
 
   function selectHeader(e) {
     if (e.target.classList.contains("header-arrow-left")) {
@@ -93,7 +91,7 @@ function Header(props) {
         >
           <path
             d="M7.33494 14.75C8.29719 16.4167 10.7028 16.4167 11.6651 14.75L17.2942 5C18.2565 3.33333 17.0537 1.25 15.1292 1.25L3.87083 1.25C1.94633 1.25 0.743522 3.33334 1.70577 5L7.33494 14.75Z"
-            stroke={theme == "LTempus" ? "#502632" : "#fff"}
+            stroke="var(--textColor)"
           />
         </svg>
       </div>
@@ -112,7 +110,7 @@ function Header(props) {
         >
           <path
             d="M7.33494 14.75C8.29719 16.4167 10.7028 16.4167 11.6651 14.75L17.2942 5C18.2565 3.33333 17.0537 1.25 15.1292 1.25L3.87083 1.25C1.94633 1.25 0.743522 3.33334 1.70577 5L7.33494 14.75Z"
-            stroke={theme == "LTempus" ? "#502632" : "#fff"}
+            stroke="var(--textColor)"
           />
         </svg>
       </div>

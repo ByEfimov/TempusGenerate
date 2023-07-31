@@ -108,6 +108,18 @@ legend {
   display: block;
 }
 
+Task svg {
+  min-width: 24px;
+  min-height: 24px;
+}
+
+svg {
+  pointer-events: none;
+}
+
+svg path {
+  pointer-events: none;
+}
 html[data-theme="Stas"] {
   --bg: #16171b;
   --secondColor: #202124;
@@ -144,7 +156,7 @@ html[data-theme="LTempus"] {
   --w: #fff;
   --textColor: #502632;
   --thirdColo: #dfc6c1;
-  --red: #502632;
+  --red: #810e06;
   --green: #d6a79e;
 }
 

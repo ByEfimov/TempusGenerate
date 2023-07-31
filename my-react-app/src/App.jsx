@@ -3,6 +3,7 @@ import "./App.css";
 import "./assets/style.css";
 import Body from "./pages/body/index";
 import Header from "./components/header/header";
+import { useTheme } from "./hooks/UseTheme";
 
 export let useCustomHook = () => {
   const [OpenAdd, setOpenAdd] = useState(false);
@@ -12,6 +13,7 @@ export let useCustomHook = () => {
 function App() {
   const [selectTilte, setSelectTilte] = useState("Все дни");
   const [selectMode, setSelectMode] = useState("ToDay");
+  const theme = useTheme();
   const RefBody = React.createRef();
 
   const ReliseVersion = "0.8";

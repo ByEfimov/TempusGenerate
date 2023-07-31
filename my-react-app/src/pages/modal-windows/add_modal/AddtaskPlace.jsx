@@ -24,18 +24,20 @@ function AddTaskPlace(props) {
   }
 
   function Addhendler() {
-    if (openPlan) {
-      dispatch({
-        type: "ADD_TASK",
-        payload: generateTaskPlan(inputName, UserTasks),
-      });
-      GoBack();
-    } else {
-      dispatch({
-        type: "ADD_TASK",
-        payload: generateTask(inputName, inputDate, UserTasks),
-      });
-      GoBack();
+    if (inputDate && inputName && document.querySelector(".Priority").value) {
+      if (openPlan) {
+        dispatch({
+          type: "ADD_TASK",
+          payload: generateTaskPlan(inputName, UserTasks),
+        });
+        GoBack();
+      } else {
+        dispatch({
+          type: "ADD_TASK",
+          payload: generateTask(inputName, inputDate, UserTasks),
+        });
+        GoBack();
+      }
     }
   }
 
