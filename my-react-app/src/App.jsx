@@ -14,6 +14,13 @@ function App() {
   const [selectMode, setSelectMode] = useState("ToDay");
   const RefBody = React.createRef();
 
+  const ReliseVersion = "0.8";
+  if (localStorage.getItem("UseVersion") !== ReliseVersion) {
+    localStorage.setItem("UseVersion", ReliseVersion);
+    localStorage.removeItem("persist:root");
+    location.reload();
+  }
+
   return (
     <>
       <Header
