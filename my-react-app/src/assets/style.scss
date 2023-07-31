@@ -65,6 +65,15 @@ select {
   appearance: none;
   -o-appearance: none;
 }
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -o-appearance: none;
+}
+input::-ms-expand {
+  opacity: 0;
+}
 select::-ms-expand {
   display: none;
 }
