@@ -34,6 +34,7 @@ function AddTaskPlan(inputName, inputDate, GoBack, UserTasks, dispatch) {
         TaskSatus: "Plan",
         TaskPriority: Value,
         date: "Plan",
+        selectOn: [],
         FirstPrior: Value,
       };
       dispatch({ type: "ADD_TASK", payload: NewTask });

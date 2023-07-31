@@ -14,7 +14,7 @@ function Body(props) {
   DellDispatch = useDispatch();
   const UserTasks = useSelector((state) => state.user.userTasks);
   UsersData = UserTasks;
-  console.log(UserTasks);
+
   return (
     <section className="body" ref={RefBody}>
       <AllPlace

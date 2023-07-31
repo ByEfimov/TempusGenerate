@@ -38,8 +38,13 @@ export default function TaskRender(props) {
         };
         DellDispatch({ type: "ADD_TASK", payload: NewTask });
         e.target.style.cssText = "animation: TaskDell 300ms forwards;";
+
         setTimeout(() => {
-          e.target.style.display = "none";
+          DellDispatch({
+            type: "ADD_TO_SELECTON",
+            taskId: task.id,
+            newValue: date,
+          });
         }, 300);
       }
     });

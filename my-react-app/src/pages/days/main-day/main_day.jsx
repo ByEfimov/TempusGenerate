@@ -13,6 +13,7 @@ import NoHaveTasks from "../../../components/buttons/nohavetasks";
 import BusinessMode from "../../busines-mode.jsx";
 import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
 import AddPlanButton from "../../../components/buttons/addPlanButton";
+import { searchSelect } from "../../../utils/seachSelectTask";
 
 function MainPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
@@ -25,13 +26,19 @@ function MainPlace() {
     setBusinesModeOpen(true);
   }
 
+  const ArrayPlans = [];
+  UserTasks.map((task) =>
+    searchSelect(task, thisDate()) ? ArrayPlans.push(task) : ""
+  );
+
   return (
     <section className="Main-place place" id="modetoday">
       <div className="scroll">
         {sortedTasksToDay(UserTasks, thisDate).length > 0 ||
         UserTasks.some((task) => task.TaskSatus === "Plan") ? (
           <div className="groups">
-            {UserTasks.some((task) => task.TaskSatus == "Plan") ? (
+            {UserTasks.some((task) => task.TaskSatus == "Plan") &&
+            ArrayPlans.length > 0 ? (
               <div className="group">
                 <div className="title">
                   Планы
@@ -46,19 +53,15 @@ function MainPlace() {
                   )}
                 </div>
                 <div className="tasks">
-                  {UserTasks.map((task) => {
-                    if (task.TaskSatus == "Plan") {
-                      return (
-                        <TaskRender
-                          itsPlan={true}
-                          task={task}
-                          Day={"План"}
-                          date={thisDate()}
-                          key={task.planId}
-                        ></TaskRender>
-                      );
-                    }
-                  })}
+                  {ArrayPlans.map((task) => (
+                    <TaskRender
+                      itsPlan={true}
+                      task={task}
+                      Day={"План"}
+                      date={thisDate()}
+                      key={task.planId}
+                    ></TaskRender>
+                  ))}
                 </div>
               </div>
             ) : (

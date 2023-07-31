@@ -62,6 +62,19 @@ export const userReduser = (state = UserData, action) => {
           return task;
         }),
       };
+    case "ADD_TO_SELECTON":
+      return {
+        ...state,
+        userTasks: state.userTasks.map((task) => {
+          if (task.id == action.taskId) {
+            return {
+              ...task,
+              selectOn: [...task.selectOn, action.newValue],
+            };
+          }
+          return task;
+        }),
+      };
     default:
       return state;
   }

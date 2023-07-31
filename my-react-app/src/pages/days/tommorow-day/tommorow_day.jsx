@@ -13,6 +13,7 @@ import TaskRender from "../../../components/render/TaskRender";
 import BusinessMode from "../../busines-mode.jsx";
 import AddPlanButton from "../../../components/buttons/addPlanButton";
 import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
+import { searchSelect } from "../../../utils/seachSelectTask";
 
 function TommorowPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
@@ -25,13 +26,19 @@ function TommorowPlace() {
     setBusinesModeOpen(true);
   }
 
+  const ArrayPlans = [];
+  UserTasks.map((task) =>
+    searchSelect(task, nextDate()) ? ArrayPlans.push(task) : ""
+  );
+
   return (
     <section className="Tomorrow-place place" id="modetomorrow">
       <div className="scroll">
         {sortedTasksNextDay(UserTasks, nextDate).length > 0 ||
         UserTasks.some((task) => task.TaskSatus === "Plan") ? (
           <div className="groups">
-            {UserTasks.some((task) => task.TaskSatus === "Plan") ? (
+            {UserTasks.some((task) => task.TaskSatus === "Plan") &&
+            ArrayPlans.length > 0 ? (
               <div className="group">
                 <div className="title">
                   Планы
@@ -46,19 +53,15 @@ function TommorowPlace() {
                   )}
                 </div>
                 <div className="tasks">
-                  {UserTasks.map((task) => {
-                    if (task.TaskSatus == "Plan") {
-                      return (
-                        <TaskRender
-                          itsPlan={true}
-                          task={task}
-                          Day={"План"}
-                          date={nextDate()}
-                          key={task.planId}
-                        ></TaskRender>
-                      );
-                    }
-                  })}
+                  {ArrayPlans.map((task) => (
+                    <TaskRender
+                      itsPlan={true}
+                      task={task}
+                      Day={"План"}
+                      date={nextDate()}
+                      key={task.planId}
+                    ></TaskRender>
+                  ))}
                 </div>
               </div>
             ) : (

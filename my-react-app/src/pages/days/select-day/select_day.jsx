@@ -13,6 +13,7 @@ import { useTheme } from "../../../hooks/UseTheme";
 import AddPlanButton from "../../../components/buttons/addPlanButton";
 import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
 import BusinessMode from "../../busines-mode.jsx";
+import { searchSelect } from "../../../utils/seachSelectTask";
 
 function SelectDay(props) {
   const { setOpenSelect, allBody, setSelectTilte, clickDay } = props;
@@ -49,13 +50,19 @@ function SelectDay(props) {
     props.setSelectTilte(selectDate(clickDay));
   });
 
+  const ArrayPlans = [];
+  UserTasks.map((task) =>
+    searchSelect(task, selectDate(clickDay)) ? ArrayPlans.push(task) : ""
+  );
+
   return (
     <div className="place selectDay" ref={RefSelectDay}>
       <div className="scroll">
         {sortedTasksSelectDay(UserTasks, selectDate, clickDay).length ||
         UserTasks.some((task) => task.TaskSatus === "Plan") > 0 ? (
           <div className="groups">
-            {UserTasks.some((task) => task.TaskSatus === "Plan") ? (
+            {UserTasks.some((task) => task.TaskSatus === "Plan") &&
+            ArrayPlans.length > 0 ? (
               <div className="group">
                 <div className="title">
                   Планы
@@ -70,19 +77,15 @@ function SelectDay(props) {
                   )}
                 </div>
                 <div className="tasks">
-                  {UserTasks.map((task) => {
-                    if (task.TaskSatus == "Plan") {
-                      return (
-                        <TaskRender
-                          itsPlan={true}
-                          task={task}
-                          Day={"План"}
-                          date={selectDate(clickDay)}
-                          key={task.planId}
-                        ></TaskRender>
-                      );
-                    }
-                  })}
+                  {ArrayPlans.map((task) => (
+                    <TaskRender
+                      itsPlan={true}
+                      task={task}
+                      Day={"План"}
+                      date={selectDate(clickDay)}
+                      key={task.planId}
+                    ></TaskRender>
+                  ))}
                 </div>
               </div>
             ) : (
