@@ -23,7 +23,6 @@ function App() {
         RefBody={RefBody}
       ></Header>
       <Body RefBody={RefBody} setSelectTilte={setSelectTilte}></Body>
-      <footer className="footers"></footer>
     </>
   );
 }

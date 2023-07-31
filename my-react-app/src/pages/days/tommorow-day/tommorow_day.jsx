@@ -40,18 +40,7 @@ function TommorowPlace() {
             {UserTasks.some((task) => task.TaskSatus === "Plan") &&
             ArrayPlans.length > 0 ? (
               <div className="group">
-                <div className="title">
-                  Планы
-                  {theme == "LTempus" ? (
-                    <img src={businessIcon} alt="" onClick={OpenBussinesMode} />
-                  ) : (
-                    <img
-                      src={businessIconD}
-                      alt=""
-                      onClick={OpenBussinesMode}
-                    />
-                  )}
-                </div>
+                <div className="title">Планы</div>
                 <div className="tasks">
                   {ArrayPlans.map((task) => (
                     <TaskRender

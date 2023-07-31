@@ -1,28 +1,19 @@
+import moment from "moment";
+
 export function nextDate() {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate() + 1).padStart(2, "0");
-  const formattedDate = `${year}-${month}-${day}`;
-  return formattedDate;
+  const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
+  return tomorrow;
 }
-const date = new Date();
-export const thisDay = String(date.getDate()).padStart(2, "0");
 
 export function lastDate() {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate() - 1).padStart(2, "0");
-  const formattedDate = `${year}-${month}-${day}`;
-  return formattedDate;
+  const yesterday = moment().subtract(1, "days").format("YYYY-MM-DD");
+  return yesterday;
 }
 
 export function thisDate() {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const formattedDate = `${year}-${month}-${day}`;
-  return formattedDate;
+  const today = moment().format("YYYY-MM-DD");
+  return today;
 }
+
+const date = new Date();
+export const thisDay = String(date.getDate()).padStart(2, "0");

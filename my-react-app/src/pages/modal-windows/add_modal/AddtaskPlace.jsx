@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AddTask from "../../../logic-task/AddTask";
-import AddTaskPlan from "../../../logic-task/AddtaskPlan";
+import {
+  generateTask,
+  generateTaskPlan,
+} from "../../../logic-task/GenerateTask";
+
 import GoBackComp from "../../../components/buttons/GoBack";
 import { Animate } from "../../../assets/animations";
 
@@ -22,9 +25,17 @@ function AddTaskPlace(props) {
 
   function Addhendler() {
     if (openPlan) {
-      AddTaskPlan(inputName, inputDate, GoBack, UserTasks, dispatch);
+      dispatch({
+        type: "ADD_TASK",
+        payload: generateTaskPlan(inputName, UserTasks),
+      });
+      GoBack();
     } else {
-      AddTask(inputName, inputDate, GoBack, UserTasks, dispatch);
+      dispatch({
+        type: "ADD_TASK",
+        payload: generateTask(inputName, inputDate, UserTasks),
+      });
+      GoBack();
     }
   }
 

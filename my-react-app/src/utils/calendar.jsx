@@ -1,12 +1,10 @@
 import { thisDay } from "./time";
+import moment from "moment";
 
 export function showDaysOnMounth() {
   function GetDaysOnMounth() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    return daysInMonth;
+    const daysInCurrentMonth = moment().daysInMonth();
+    return daysInCurrentMonth;
   }
 
   const rows = [];
