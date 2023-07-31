@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddTask from "../../../logic-task/AddTask";
 import AddTaskPlan from "../../../logic-task/AddtaskPlan";
 import GoBackComp from "../../../components/buttons/GoBack";
+import { Animate } from "../../../assets/animations";
 
 function AddTaskPlace(props) {
   const { setOpenAdd, dayOpen, openPlan } = props;
@@ -13,7 +14,7 @@ function AddTaskPlace(props) {
   const RefAddtask = React.createRef();
 
   function GoBack() {
-    RefAddtask.current.style.cssText = "animation: 0.5s CloseAddTask forwards;";
+    Animate(RefAddtask.current, "CloseAddTask", "500");
     setTimeout(() => {
       setOpenAdd(false);
     }, 500);

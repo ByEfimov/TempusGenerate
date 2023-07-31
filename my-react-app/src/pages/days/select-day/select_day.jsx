@@ -14,6 +14,7 @@ import AddPlanButton from "../../../components/buttons/addPlanButton";
 import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
 import BusinessMode from "../../busines-mode.jsx";
 import { searchSelect } from "../../../utils/seachSelectTask";
+import { Animate } from "../../../assets/animations";
 
 function SelectDay(props) {
   const { setOpenSelect, allBody, setSelectTilte, clickDay } = props;
@@ -37,12 +38,11 @@ function SelectDay(props) {
   }
 
   function GoBack() {
-    RefSelectDay.current.style.cssText =
-      "animation: 0.3s closeSelect forwards;";
+    Animate(RefSelectDay.current, "closeSelect", "300");
     setTimeout(() => {
       setOpenSelect(false);
       setSelectTilte("Все дни");
-      allBody.current.style.cssText = "animation: AllShow 300ms forwards;";
+      Animate(allBody.current, "AllShow", "300");
     }, 250);
   }
 

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import SelectDay from "../select-day/select_day";
 import { showDaysOnMounth } from "../../../utils/calendar";
 import Statistic from "../../../components/statistic/statistic-router";
+import { Animate } from "../../../assets/animations";
 
 function AllPlace(props) {
   const {
@@ -22,7 +23,7 @@ function AllPlace(props) {
       if (e.target.textContent < 10) {
         result = "0" + e.target.textContent;
       }
-      allBody.current.style.cssText = "animation: AllDell 300ms forwards;";
+      Animate(allBody.current, "AllDell", "300");
       setTimeout(() => {
         setClickDay(result);
         setOpenSelect(true);

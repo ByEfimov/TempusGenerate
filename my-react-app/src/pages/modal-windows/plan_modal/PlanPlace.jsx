@@ -9,6 +9,7 @@ import editL from "../../../assets/light/edit.svg";
 import AddButton from "../../../components/buttons/AddButton";
 import DeleteTask from "../../../logic-task/deleteTask";
 import { EditTask } from "../../../logic-task/editTask";
+import { Animate } from "../../../assets/animations";
 
 function PlanPlace(props) {
   const { setOpenPlan, setOpenAdd } = props;
@@ -17,7 +18,7 @@ function PlanPlace(props) {
   const { theme } = useTheme();
 
   function GoBack() {
-    BusinesMode.current.style.cssText = "animation: PlanDell 500ms forwards;";
+    Animate(BusinesMode.current, "PlanDell", "500");
     setTimeout(() => {
       setOpenPlan(false);
     }, 500);

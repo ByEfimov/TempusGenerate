@@ -5,13 +5,14 @@ import themestasicon from "../../../assets/theme-stas-icon.svg";
 import themestempusLicon from "../../../assets/theme-tempusL-icon.svg";
 import { useTheme } from "../../../hooks/UseTheme";
 import GoBackComp from "../../../components/buttons/GoBack";
+import { Animate } from "../../../assets/animations";
 
 function SettingsPlace(props) {
   const { setSettingOpen, setSelectTilte } = props;
   const settings = createRef();
 
   function GoBack() {
-    settings.current.style.cssText = "animation: SettingsDell 500ms forwards;";
+    Animate(settings.current, "SettingsDell", "500");
     setSelectTilte("Все дни");
     setTimeout(() => {
       setSettingOpen(false);

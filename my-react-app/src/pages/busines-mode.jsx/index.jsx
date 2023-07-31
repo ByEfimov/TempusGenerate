@@ -1,6 +1,7 @@
 import { createRef, useState } from "react";
 import GoBackComp from "../../components/buttons/GoBack";
 import { DellDispatch } from "../body/index";
+import { Animate } from "../../assets/animations";
 
 function BusinessMode(props) {
   const { filtredTasks, setBusinesMode } = props;
@@ -8,8 +9,7 @@ function BusinessMode(props) {
   const BusinesMode = createRef();
 
   function GoBack() {
-    BusinesMode.current.style.cssText =
-      "animation: SettingsDell 500ms forwards;";
+    Animate(BusinesMode.current, "SettingsDell", "500");
     setTimeout(() => {
       setBusinesMode(false);
     }, 500);

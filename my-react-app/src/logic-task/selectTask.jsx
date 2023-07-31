@@ -1,3 +1,4 @@
+import { Animate } from "../assets/animations";
 import { DellDispatch, UsersData } from "../pages/body/index";
 
 export function SelectTask(e) {
@@ -6,7 +7,7 @@ export function SelectTask(e) {
       e.target.childNodes[0].checked = false;
       UsersData.map((task) => {
         if (task.id == e.target.id) {
-          e.target.style.cssText = `animation: TaskDell 300ms forwards;`;
+          Animate(e.target, "TaskDell", "300");
           setTimeout(() => {
             task.TaskSatus = "Make";
             DellDispatch({
@@ -27,7 +28,7 @@ export function SelectTask(e) {
       e.target.childNodes[0].checked = true;
       UsersData.map((task) => {
         if (task.id == e.target.id) {
-          e.target.style.cssText = `animation: TaskDell 300ms forwards;`;
+          Animate(e.target, "TaskDell", "300");
           setTimeout(() => {
             task.TaskSatus = "Done";
             DellDispatch({

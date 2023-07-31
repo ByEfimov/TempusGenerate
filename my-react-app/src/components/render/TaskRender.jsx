@@ -8,6 +8,7 @@ import editL from "../../assets/light/edit.svg";
 import { EditTask } from "../../logic-task/editTask";
 import { useSelector } from "react-redux";
 import { DellDispatch } from "../../pages/body/index";
+import { Animate } from "../../assets/animations";
 
 export default function TaskRender(props) {
   const { theme } = useTheme();
@@ -37,8 +38,7 @@ export default function TaskRender(props) {
           FirstPrior: task.FirstPrior,
         };
         DellDispatch({ type: "ADD_TASK", payload: NewTask });
-        e.target.style.cssText = "animation: TaskDell 300ms forwards;";
-
+        Animate(e.target, "TaskDell", "300");
         setTimeout(() => {
           DellDispatch({
             type: "ADD_TO_SELECTON",
