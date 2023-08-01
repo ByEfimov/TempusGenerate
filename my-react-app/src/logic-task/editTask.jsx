@@ -1,7 +1,8 @@
 import { DellDispatch } from "../pages/body/index";
+import { inputValueExport } from "../pages/modal-windows/rename_modal/ModalRename";
 
 export function EditTask(e) {
-  const NewTaskName = prompt("Новое название");
+  const NewTaskName = inputValueExport;
   if (NewTaskName != "" && NewTaskName) {
     DellDispatch({
       type: "CHANGE_TASK_NAME",

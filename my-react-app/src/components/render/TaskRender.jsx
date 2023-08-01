@@ -1,5 +1,4 @@
 import { SelectTask } from "../../logic-task/selectTask";
-import { EditTask } from "../../logic-task/editTask";
 import { useSelector } from "react-redux";
 import { Animate } from "../../assets/animations";
 import { findMaxid } from "../../utils/findMaxid";
@@ -7,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 export default function TaskRender(props) {
   const dispatch = useDispatch();
-  const { task, Day, itsPlan, date } = props;
+  const { task, Day, setModalRenameOpen, itsPlan, date } = props;
   const UserTasks = useSelector((state) => state.user.userTasks);
 
   function selectTaskPlan(e) {
@@ -77,7 +76,12 @@ export default function TaskRender(props) {
       {itsPlan ? (
         ""
       ) : (
-        <div className="editButton" onClick={EditTask}>
+        <div
+          className="editButton"
+          onClick={(e) => {
+            setModalRenameOpen(e.target);
+          }}
+        >
           <svg
             width="24"
             height="24"

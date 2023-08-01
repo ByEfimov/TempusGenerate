@@ -13,12 +13,16 @@ import { searchSelect } from "../../../utils/seachSelectTask";
 import GroupPlan from "../../../components/render/groups/planGroup";
 import GroupMake from "../../../components/render/groups/makeGroup";
 import DoneGroup from "../../../components/render/groups/doneGroup";
+import ModalRename from "../../modal-windows/rename_modal/ModalRename";
+import ModalDell from "../../modal-windows/dellate_modal/ModalDell";
 
 function TommorowPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
   const [openPlan, setOpenPlan] = useState(false);
+  const [modalRenameOpen, setModalRenameOpen] = useState(false);
+  const [modalDellateOpen, setModalDellateOpen] = useState(false);
 
   const ArrayPlans = [];
   UserTasks.map((task) =>
@@ -33,10 +37,12 @@ function TommorowPlace() {
           <div className="groups">
             <GroupPlan date={nextDate}></GroupPlan>
             <GroupMake
+              setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksNextDay(UserTasks, nextDate)}
               setBusinesModeOpen={setBusinesModeOpen}
             ></GroupMake>
             <DoneGroup
+              setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksNextDay(UserTasks, nextDate)}
             ></DoneGroup>
           </div>
@@ -75,10 +81,20 @@ function TommorowPlace() {
         <PlanPlace
           setOpenAdd={setOpenAdd}
           setOpenPlan={setOpenPlan}
+          setModalRenameOpen={setModalRenameOpen}
         ></PlanPlace>
       ) : (
         ""
       )}
+      {modalRenameOpen ? (
+        <ModalRename
+          modalRenameOpen={modalRenameOpen}
+          setModalRenameOpen={setModalRenameOpen}
+        ></ModalRename>
+      ) : (
+        ""
+      )}
+      {modalDellateOpen ? <ModalDell></ModalDell> : ""}
     </section>
   );
 }

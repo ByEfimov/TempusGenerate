@@ -3,11 +3,10 @@ import { useSelector } from "react-redux";
 import GoBackComp from "../../../components/buttons/GoBack";
 import AddButton from "../../../components/buttons/AddButton";
 import DeleteTask from "../../../logic-task/deleteTask";
-import { EditTask } from "../../../logic-task/editTask";
 import { Animate } from "../../../assets/animations";
 
 function PlanPlace(props) {
-  const { setOpenPlan, setOpenAdd } = props;
+  const { setOpenPlan, setOpenAdd, setModalRenameOpen } = props;
   const BusinesMode = createRef();
   const UserTasks = useSelector((state) => state.user.userTasks);
 
@@ -40,7 +39,12 @@ function PlanPlace(props) {
                       >
                         <label className="Label">{task.TaskName}</label>
 
-                        <div className="editButton" onClick={EditTask}>
+                        <div
+                          className="editButton"
+                          onClick={(e) => {
+                            setModalRenameOpen(e.target);
+                          }}
+                        >
                           <svg
                             width="24"
                             height="24"

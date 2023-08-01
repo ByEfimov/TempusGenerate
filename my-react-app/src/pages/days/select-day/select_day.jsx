@@ -14,6 +14,8 @@ import { searchSelect } from "../../../utils/seachSelectTask";
 import { Animate } from "../../../assets/animations";
 import GroupMake from "../../../components/render/groups/makeGroup";
 import DoneGroup from "../../../components/render/groups/doneGroup";
+import ModalRename from "../../modal-windows/rename_modal/ModalRename";
+import ModalDell from "../../modal-windows/dellate_modal/ModalDell";
 
 function SelectDay(props) {
   const { setOpenSelect, allBody, setSelectTilte, clickDay } = props;
@@ -22,6 +24,8 @@ function SelectDay(props) {
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const [openPlan, setOpenPlan] = useState(false);
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
+  const [modalRenameOpen, setModalRenameOpen] = useState(false);
+  const [modalDellateOpen, setModalDellateOpen] = useState(false);
 
   function FormatDayToDate(day) {
     const date = new Date();
@@ -81,6 +85,7 @@ function SelectDay(props) {
                 FormatDayToDate,
                 clickDay
               )}
+              setModalRenameOpen={setModalRenameOpen}
               setBusinesModeOpen={setBusinesModeOpen}
             ></GroupMake>
 
@@ -90,6 +95,7 @@ function SelectDay(props) {
                 FormatDayToDate,
                 clickDay
               )}
+              setModalRenameOpen={setModalRenameOpen}
             ></DoneGroup>
           </div>
         ) : (
@@ -134,10 +140,20 @@ function SelectDay(props) {
         <PlanPlace
           setOpenAdd={setOpenAdd}
           setOpenPlan={setOpenPlan}
+          setModalRenameOpen={setModalRenameOpen}
         ></PlanPlace>
       ) : (
         ""
       )}
+      {modalRenameOpen ? (
+        <ModalRename
+          modalRenameOpen={modalRenameOpen}
+          setModalRenameOpen={setModalRenameOpen}
+        ></ModalRename>
+      ) : (
+        ""
+      )}
+      {modalDellateOpen ? <ModalDell></ModalDell> : ""}
     </div>
   );
 }

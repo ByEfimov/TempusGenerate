@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function GroupMake(props) {
   const UserTasks = useSelector((state) => state.user.userTasks);
-  const { setBusinesModeOpen, sorting } = props;
+  const { setBusinesModeOpen, sorting, setModalRenameOpen } = props;
   const [currentTask, setCurrentTask] = useState({});
   const dispatch = useDispatch();
 
@@ -95,7 +95,11 @@ export default function GroupMake(props) {
                     onDragOver={(e) => dragOverHandler(e)}
                     onDrop={(e) => dropHandler(e, task)}
                   >
-                    <TaskRender task={task} itsPlan={false}></TaskRender>
+                    <TaskRender
+                      setModalRenameOpen={setModalRenameOpen}
+                      task={task}
+                      itsPlan={false}
+                    ></TaskRender>
                   </div>
                 );
               }

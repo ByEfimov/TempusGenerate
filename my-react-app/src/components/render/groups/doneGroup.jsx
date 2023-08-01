@@ -1,7 +1,7 @@
 import TaskRender from "../TaskRender";
 
 export default function DoneGroup(props) {
-  const { sorting } = props;
+  const { sorting, setModalRenameOpen } = props;
   return (
     <>
       {sorting.some((task) => task.TaskSatus === "Done") ? (
@@ -10,7 +10,13 @@ export default function DoneGroup(props) {
           <div className="tasks">
             {sorting.map((task) => {
               if (task.TaskSatus == "Done") {
-                return <TaskRender task={task} key={task.id}></TaskRender>;
+                return (
+                  <TaskRender
+                    setModalRenameOpen={setModalRenameOpen}
+                    task={task}
+                    key={task.id}
+                  ></TaskRender>
+                );
               }
             })}
           </div>

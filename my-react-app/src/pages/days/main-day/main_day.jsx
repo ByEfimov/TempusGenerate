@@ -12,12 +12,16 @@ import AddPlanButton from "../../../components/buttons/addPlanButton";
 import GroupPlan from "../../../components/render/groups/planGroup";
 import GroupMake from "../../../components/render/groups/makeGroup";
 import DoneGroup from "../../../components/render/groups/doneGroup";
+import ModalRename from "../../modal-windows/rename_modal/ModalRename";
+import ModalDell from "../../modal-windows/dellate_modal/ModalDell";
 
 function MainPlace() {
   const UserTasks = useSelector((state) => state.user.userTasks);
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
   const [openPlan, setOpenPlan] = useState(false);
+  const [modalRenameOpen, setModalRenameOpen] = useState(false);
+  const [modalDellateOpen, setModalDellateOpen] = useState(false);
 
   return (
     <section className="Main-place place" id="modetoday">
@@ -27,10 +31,12 @@ function MainPlace() {
           <div className="groups">
             <GroupPlan date={thisDate}></GroupPlan>
             <GroupMake
+              setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksToDay(UserTasks, thisDate)}
               setBusinesModeOpen={setBusinesModeOpen}
             ></GroupMake>
             <DoneGroup
+              setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksToDay(UserTasks, thisDate)}
             ></DoneGroup>
           </div>
@@ -68,10 +74,20 @@ function MainPlace() {
         <PlanPlace
           setOpenAdd={setOpenAdd}
           setOpenPlan={setOpenPlan}
+          setModalRenameOpen={setModalRenameOpen}
         ></PlanPlace>
       ) : (
         ""
       )}
+      {modalRenameOpen ? (
+        <ModalRename
+          modalRenameOpen={modalRenameOpen}
+          setModalRenameOpen={setModalRenameOpen}
+        ></ModalRename>
+      ) : (
+        ""
+      )}
+      {modalDellateOpen ? <ModalDell></ModalDell> : ""}
     </section>
   );
 }

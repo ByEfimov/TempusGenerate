@@ -17,6 +17,74 @@ html[data-theme="Stas"] {
   --green: #017e54;
 }
 
+.ModalRename {
+  position: absolute;
+  display: flex;
+  top: -8vh;
+  animation: TaskShow 300ms forwards;
+  left: 0;
+  width: var(--width100);
+  height: var(--height100);
+  justify-content: center;
+  align-items: center;
+  .bg {
+    position: absolute;
+    z-index: 1000;
+    width: var(--width100);
+    height: var(--height100);
+    background-color: #00000090;
+  }
+  &-body {
+    z-index: 10000;
+    background-color: var(--secondColor);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    max-width: 400px;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    h1 {
+      color: var(--textColor);
+      font-family: Nunito;
+      font-size: 25px;
+      font-style: normal;
+      text-align: center;
+      line-height: normal;
+      font-weight: 700;
+    }
+    input {
+      color: var(--textColor);
+      font-family: Nunito;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      border-radius: 15px;
+      background: var(--thirdColo);
+      padding: 12px 15px;
+    }
+    button {
+      color: var(--textColor);
+      font-family: Nunito;
+      font-size: 18px;
+      padding: 10px 10px;
+      font-style: normal;
+      transition: background-color, border 5000ms linear;
+      font-weight: 500;
+      line-height: normal;
+      border-radius: 15px;
+      margin-top: 5px;
+      border: 2px solid var(--textColor);
+    }
+  }
+  @media (max-width: 500px) {
+    &-body {
+      width: calc(var(--width100) - 30px);
+    }
+  }
+}
+
 html[data-theme="Tempus"] {
   --bg: #161c1a;
   --secondColor: #23302b;
@@ -87,6 +155,19 @@ select::-ms-expand {
   outline-offset: 0;
 }
 
+@media (min-width: 1000px) {
+  .groups {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row !important;
+    .group {
+      width: 100%;
+    }
+  }
+  .scroll {
+    flex-direction: row;
+  }
+}
 .header {
   width: var(--width100);
   font-family: Nunito;
