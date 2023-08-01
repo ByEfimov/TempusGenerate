@@ -35,7 +35,6 @@ export const userReduser = (state = UserData, action) => {
           return task;
         }),
       };
-
     case "CHANGE_TASK":
       return {
         ...state.userTasks,

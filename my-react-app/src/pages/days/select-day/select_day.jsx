@@ -12,6 +12,8 @@ import PlanPlace from "../../modal-windows/plan_modal/PlanPlace";
 import BusinessMode from "../../busines-mode.jsx";
 import { searchSelect } from "../../../utils/seachSelectTask";
 import { Animate } from "../../../assets/animations";
+import GroupMake from "../../../components/render/groups/makeGroup";
+import DoneGroup from "../../../components/render/groups/doneGroup";
 
 function SelectDay(props) {
   const { setOpenSelect, allBody, setSelectTilte, clickDay } = props;
@@ -20,10 +22,6 @@ function SelectDay(props) {
   const { OpenAdd, setOpenAdd } = useCustomHook();
   const [openPlan, setOpenPlan] = useState(false);
   const [BusinesModeOpen, setBusinesModeOpen] = useState(false);
-
-  function OpenBussinesMode() {
-    setBusinesModeOpen(true);
-  }
 
   function FormatDayToDate(day) {
     const date = new Date();
@@ -76,102 +74,23 @@ function SelectDay(props) {
             ) : (
               ""
             )}
-            {sortedTasksSelectDay(UserTasks, FormatDayToDate, clickDay).some(
-              (task) => task.TaskSatus === "Make"
-            ) ? (
-              <div className="group">
-                <div className="title" onClick={OpenBussinesMode}>
-                  Задачи
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-                      stroke="var(--textColor)"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 8V13"
-                      stroke="var(--textColor)"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M11.9946 16H12.0036"
-                      stroke="var(--textColor)"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className="tasks">
-                  {sortedTasksSelectDay(
-                    UserTasks,
-                    FormatDayToDate,
-                    clickDay
-                  ).map((task) => {
-                    if (task.TaskSatus == "Make") {
-                      return (
-                        <TaskRender
-                          task={task}
-                          Day={
-                            task.date[5] +
-                            task.date[6] +
-                            task.date[7] +
-                            task.date[8] +
-                            task.date[9]
-                          }
-                          key={task.id}
-                        ></TaskRender>
-                      );
-                    }
-                  })}
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
 
-            {sortedTasksSelectDay(UserTasks, FormatDayToDate, clickDay).some(
-              (task) => task.TaskSatus === "Done"
-            ) ? (
-              <div className="group">
-                <div className="title">Выполнено</div>
-                <div className="tasks">
-                  {sortedTasksSelectDay(
-                    UserTasks,
-                    FormatDayToDate,
-                    clickDay
-                  ).map((task) => {
-                    if (task.TaskSatus == "Done") {
-                      return (
-                        <TaskRender
-                          task={task}
-                          Day={
-                            task.date[5] +
-                            task.date[6] +
-                            task.date[7] +
-                            task.date[8] +
-                            task.date[9]
-                          }
-                          key={task.id}
-                        ></TaskRender>
-                      );
-                    }
-                  })}
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+            <GroupMake
+              sorting={sortedTasksSelectDay(
+                UserTasks,
+                FormatDayToDate,
+                clickDay
+              )}
+              setBusinesModeOpen={setBusinesModeOpen}
+            ></GroupMake>
+
+            <DoneGroup
+              sorting={sortedTasksSelectDay(
+                UserTasks,
+                FormatDayToDate,
+                clickDay
+              )}
+            ></DoneGroup>
           </div>
         ) : (
           <NoHaveTasks setOpenAdd={setOpenAdd}></NoHaveTasks>

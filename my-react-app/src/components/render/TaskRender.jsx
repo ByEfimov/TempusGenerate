@@ -17,9 +17,8 @@ export default function TaskRender(props) {
           id: findMaxid(UserTasks),
           TaskName: task.TaskName,
           TaskSatus: "Done",
-          TaskPriority: task.FirstPrior,
+          TaskPriority: task.TaskPriority,
           date: date,
-          FirstPrior: task.FirstPrior,
         };
         dispatch({ type: "ADD_TASK", payload: NewTask });
         Animate(e.target, "TaskDell", "300");
@@ -57,19 +56,16 @@ export default function TaskRender(props) {
       dispatch({
         type: "CHANGE_PRIOR",
         taskId: e.target.id,
-        newPriority:
-          NewStatus[1] == "Done"
-            ? NewStatus[0].FirstPrior + 1000
-            : NewStatus[0].FirstPrior,
+        newPriority: NewStatus[0].TaskPriority,
       });
     }, 300);
   }
 
   return (
     <div
+      id={task.id}
       className={task.TaskSatus === "Done" ? "opacity07 Task" : "opacity1 Task"}
       onClick={itsPlan ? selectTaskPlan : selectTask}
-      id={task.id}
     >
       <input
         defaultChecked={task.TaskSatus === "Done" ? true : false}

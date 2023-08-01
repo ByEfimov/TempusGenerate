@@ -149,14 +149,15 @@ svg {
 path {
   pointer-events: none;
 }
+
 .Task {
   gap: 10px;
   align-items: center;
   padding: 10px 10px;
   border-radius: 10px;
+  overflow: hidden;
   display: flex;
   transition: color 200ms linear, background-color 200ms linear;
-  cursor: pointer;
   animation: TaskShow 300ms forwards;
   background-color: var(--secondColor);
   .Label {
@@ -545,6 +546,7 @@ path {
   bottom: 20px;
   right: 90px;
   width: 50px;
+  cursor: pointer;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -874,4 +876,12 @@ path {
   100% {
     right: var(--width100);
   }
+}
+
+.MakeTask {
+  cursor: grab;
+  border-radius: 10px;
+}
+.opacity07 {
+  cursor: pointer;
 }
