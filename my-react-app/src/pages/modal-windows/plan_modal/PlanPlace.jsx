@@ -2,7 +2,6 @@ import { createRef } from "react";
 import { useSelector } from "react-redux";
 import GoBackComp from "../../../components/buttons/GoBack";
 import AddButton from "../../../components/buttons/AddButton";
-import DeleteTask from "../../../logic-task/deleteTask";
 import { Animate } from "../../../assets/animations";
 
 function PlanPlace(props) {
