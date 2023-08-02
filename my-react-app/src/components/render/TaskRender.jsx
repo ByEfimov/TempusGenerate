@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux";
 
 export default function TaskRender(props) {
   const dispatch = useDispatch();
-  const { task, Day, setModalRenameOpen, itsPlan, date } = props;
+  const { task, Day, setModalRenameOpen, itsPlan, date, setModalDellateOpen } =
+    props;
   const UserTasks = useSelector((state) => state.user.userTasks);
 
   function selectTaskPlan(e) {
@@ -30,16 +31,6 @@ export default function TaskRender(props) {
         }, 300);
       }
     });
-  }
-
-  function DeleteTask(e) {
-    Animate(e.target.parentNode, "TaskDell", "300");
-    setTimeout(() => {
-      dispatch({
-        type: "REMOVE_TASK",
-        payload: e.target.parentNode.id - 1,
-      });
-    }, 300);
   }
 
   async function selectTask(e) {
@@ -119,7 +110,12 @@ export default function TaskRender(props) {
       {itsPlan ? (
         ""
       ) : (
-        <div className="dellButton" onClick={DeleteTask}>
+        <div
+          className="dellButton"
+          onClick={(e) => {
+            setModalDellateOpen(e.target);
+          }}
+        >
           <svg
             width="24"
             height="24"

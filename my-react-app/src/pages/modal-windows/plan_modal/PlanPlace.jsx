@@ -6,7 +6,8 @@ import DeleteTask from "../../../logic-task/deleteTask";
 import { Animate } from "../../../assets/animations";
 
 function PlanPlace(props) {
-  const { setOpenPlan, setOpenAdd, setModalRenameOpen } = props;
+  const { setOpenPlan, setOpenAdd, setModalRenameOpen, setModalDellateOpen } =
+    props;
   const BusinesMode = createRef();
   const UserTasks = useSelector((state) => state.user.userTasks);
 
@@ -78,7 +79,12 @@ function PlanPlace(props) {
                             />
                           </svg>
                         </div>
-                        <div className="dellButton" onClick={DeleteTask}>
+                        <div
+                          className="dellButton"
+                          onClick={(e) => {
+                            setModalDellateOpen(e.target);
+                          }}
+                        >
                           <svg
                             width="24"
                             height="24"

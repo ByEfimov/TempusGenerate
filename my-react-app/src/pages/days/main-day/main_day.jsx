@@ -31,11 +31,13 @@ function MainPlace() {
           <div className="groups">
             <GroupPlan date={thisDate}></GroupPlan>
             <GroupMake
+              setModalDellateOpen={setModalDellateOpen}
               setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksToDay(UserTasks, thisDate)}
               setBusinesModeOpen={setBusinesModeOpen}
             ></GroupMake>
             <DoneGroup
+              setModalDellateOpen={setModalDellateOpen}
               setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksToDay(UserTasks, thisDate)}
             ></DoneGroup>
@@ -72,6 +74,7 @@ function MainPlace() {
       )}
       {openPlan ? (
         <PlanPlace
+          setModalDellateOpen={setModalDellateOpen}
           setOpenAdd={setOpenAdd}
           setOpenPlan={setOpenPlan}
           setModalRenameOpen={setModalRenameOpen}
@@ -87,7 +90,14 @@ function MainPlace() {
       ) : (
         ""
       )}
-      {modalDellateOpen ? <ModalDell></ModalDell> : ""}
+      {modalDellateOpen ? (
+        <ModalDell
+          modalDellateOpen={modalDellateOpen}
+          setModalDellateOpen={setModalDellateOpen}
+        ></ModalDell>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

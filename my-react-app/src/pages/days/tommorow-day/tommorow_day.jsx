@@ -37,11 +37,13 @@ function TommorowPlace() {
           <div className="groups">
             <GroupPlan date={nextDate}></GroupPlan>
             <GroupMake
+              setModalDellateOpen={setModalDellateOpen}
               setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksNextDay(UserTasks, nextDate)}
               setBusinesModeOpen={setBusinesModeOpen}
             ></GroupMake>
             <DoneGroup
+              setModalDellateOpen={setModalDellateOpen}
               setModalRenameOpen={setModalRenameOpen}
               sorting={sortedTasksNextDay(UserTasks, nextDate)}
             ></DoneGroup>
@@ -82,6 +84,7 @@ function TommorowPlace() {
           setOpenAdd={setOpenAdd}
           setOpenPlan={setOpenPlan}
           setModalRenameOpen={setModalRenameOpen}
+          setModalDellateOpen={setModalDellateOpen}
         ></PlanPlace>
       ) : (
         ""
@@ -94,7 +97,14 @@ function TommorowPlace() {
       ) : (
         ""
       )}
-      {modalDellateOpen ? <ModalDell></ModalDell> : ""}
+      {modalDellateOpen ? (
+        <ModalDell
+          setModalDellateOpen={setModalDellateOpen}
+          modalDellateOpen={modalDellateOpen}
+        ></ModalDell>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

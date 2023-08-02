@@ -85,11 +85,13 @@ function SelectDay(props) {
                 FormatDayToDate,
                 clickDay
               )}
+              setModalDellateOpen={setModalDellateOpen}
               setModalRenameOpen={setModalRenameOpen}
               setBusinesModeOpen={setBusinesModeOpen}
             ></GroupMake>
 
             <DoneGroup
+              setModalDellateOpen={setModalDellateOpen}
               sorting={sortedTasksSelectDay(
                 UserTasks,
                 FormatDayToDate,
@@ -141,6 +143,7 @@ function SelectDay(props) {
           setOpenAdd={setOpenAdd}
           setOpenPlan={setOpenPlan}
           setModalRenameOpen={setModalRenameOpen}
+          setModalDellateOpen={setModalDellateOpen}
         ></PlanPlace>
       ) : (
         ""
@@ -153,7 +156,14 @@ function SelectDay(props) {
       ) : (
         ""
       )}
-      {modalDellateOpen ? <ModalDell></ModalDell> : ""}
+      {modalDellateOpen ? (
+        <ModalDell
+          setModalDellateOpen={setModalDellateOpen}
+          modalDellateOpen={modalDellateOpen}
+        ></ModalDell>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
