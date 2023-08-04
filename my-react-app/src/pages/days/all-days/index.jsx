@@ -1,8 +1,6 @@
 import { createRef, useState } from "react";
-import { useSelector } from "react-redux";
 import SelectDay from "../select-day/select_day";
 import { showDaysOnMounth } from "../../../utils/calendar";
-import Statistic from "../../../components/statistic/statistic-router";
 import { Animate } from "../../../assets/animations";
 
 function AllPlace(props) {
@@ -14,7 +12,6 @@ function AllPlace(props) {
   } = props;
   const [openSelect, setOpenSelect] = useState(false);
   const [clickDay, setClickDay] = useState("");
-  const UserTasks = useSelector((state) => state.user.userTasks);
   const allBody = createRef();
 
   function selectDay(e) {
@@ -53,11 +50,6 @@ function AllPlace(props) {
       <div className="allBody" ref={allBody}>
         <div className="callendar">{showDaysOnMounth()}</div>
 
-        {UserTasks.length > 0 ? (
-          <Statistic showDaysOnMounth={showDaysOnMounth}></Statistic>
-        ) : (
-          ""
-        )}
         <div className="settings-button" onClick={openSettings}>
           Открыть настройки
         </div>
